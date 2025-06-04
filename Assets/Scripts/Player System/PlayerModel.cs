@@ -5,6 +5,7 @@ namespace TradeMarket.PlayerSystem
     public class PlayerModel
     {
         public float MovementSpeed { get; private set; }
+
         public Vector2 Movement { get; private set; }
         public Vector2 LastMovement { get; private set; }
 
@@ -22,5 +23,8 @@ namespace TradeMarket.PlayerSystem
             if (newMovement != Vector2.zero)
                 LastMovement = newMovement;
         }
+
+        private Vector2 PlayerVelocity() => Movement * MovementSpeed;
+        public Vector2 PlayerMovementVelocity => PlayerVelocity();
     }
 }

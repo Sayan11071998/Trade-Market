@@ -15,10 +15,10 @@ namespace TradeMarket.Core
         protected override void Awake()
         {
             base.Awake();
-            InitializeService();
+            InitializeServices();
         }
 
-        private void InitializeService()
+        private void InitializeServices()
         {
             playerService = new PlayerService(playerView, playerScriptableObject);
         }

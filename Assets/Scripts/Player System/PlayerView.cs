@@ -38,12 +38,12 @@ namespace TradeMarket.PlayerSystem
             playerController.SetMovement(movement);
         }
 
-        private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetVelocity();
+        private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.PlayerModel.PlayerMovementVelocity;
 
         private void UpdateAnimator()
         {
-            Vector2 movement = playerController.GetMovement();
-            Vector2 lastMovement = playerController.GetLastMovement();
+            Vector2 movement = playerController.PlayerModel.Movement;
+            Vector2 lastMovement = playerController.PlayerModel.LastMovement;
 
             playerAnimator.SetFloat("Horizontal", movement.x);
             playerAnimator.SetFloat("Vertical", movement.y);
