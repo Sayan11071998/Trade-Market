@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -19,7 +20,7 @@ namespace TradeMarket.PlayerSystem
             playerAnimator = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
-            moveAction = playerInput.actions["Move"];
+            moveAction = playerInput.actions[GameString.PlayerInputActionMove];
         }
 
         private void Update()
@@ -46,10 +47,10 @@ namespace TradeMarket.PlayerSystem
             Vector2 movement = playerController.PlayerModel.Movement;
             Vector2 lastMovement = playerController.PlayerModel.LastMovement;
 
-            playerAnimator.SetFloat("Horizontal", movement.x);
-            playerAnimator.SetFloat("Vertical", movement.y);
-            playerAnimator.SetFloat("LastHorizontal", lastMovement.x);
-            playerAnimator.SetFloat("LastVertical", lastMovement.y);
+            playerAnimator.SetFloat(GameString.PlayerAnimationFloatHorizontal, movement.x);
+            playerAnimator.SetFloat(GameString.PlayerAnimationFloatVertical, movement.y);
+            playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastHorizontal, lastMovement.x);
+            playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastVertical, lastMovement.y);
         }
     }
 }
