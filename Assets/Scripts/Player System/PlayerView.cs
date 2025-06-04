@@ -5,39 +5,50 @@ namespace TradeMarket.PlayerSystem
 {
     public class PlayerView : MonoBehaviour
     {
-        private PlayerModel model;
-        private PlayerController controller;
+        private PlayerController playerController;
         private PlayerInput playerInput;
         private InputAction moveAction;
         private Rigidbody2D playerRigidBody;
-        private Animator animator;
+        private Animator playerAnimator;
 
-        public void SetModelAndController(PlayerModel model, PlayerController controller)
-        {
-            this.model = model;
-            this.controller = controller;
-        }
+        public void SetController(PlayerController controllerToSet) => playerController = controllerToSet;
 
         private void Awake()
         {
             playerRigidBody = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
+            playerAnimator = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
+
             moveAction = playerInput.actions["Move"];
         }
 
         private void Update()
         {
-            if (controller != null && model != null)
+            if (playerController != null)
             {
-                Vector2 movement = moveAction.ReadValue<Vector2>();
-                controller.SetMovement(movement);
-                playerRigidBody.linearVelocity = model.Movement * model.MovementSpeed;
-                animator.SetFloat("Horizontal", model.Movement.x);
-                animator.SetFloat("Vertical", model.Movement.y);
-                animator.SetFloat("LastHorizontal", model.LastMovement.x);
-                animator.SetFloat("LastVertical", model.LastMovement.y);
+                HandleInput();
+                UpdatePhysics();
+                UpdateAnimator();
             }
+        }
+
+        private void HandleInput()
+        {
+            Vector2 movement = moveAction.ReadValue<Vector2>();
+            playerController.SetMovement(movement);
+        }
+
+        private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetVelocity();
+
+        private void UpdateAnimator()
+        {
+            Vector2 movement = playerController.GetMovement();
+            Vector2 lastMovement = playerController.GetLastMovement();
+
+            playerAnimator.SetFloat("Horizontal", movement.x);
+            playerAnimator.SetFloat("Vertical", movement.y);
+            playerAnimator.SetFloat("LastHorizontal", lastMovement.x);
+            playerAnimator.SetFloat("LastVertical", lastMovement.y);
         }
     }
 }

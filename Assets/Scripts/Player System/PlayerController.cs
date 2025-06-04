@@ -4,16 +4,30 @@ namespace TradeMarket.PlayerSystem
 {
     public class PlayerController
     {
-        private PlayerModel model;
+        private PlayerModel playerModel;
 
-        public PlayerController(PlayerModel model)
+        public PlayerController(PlayerModel modelToSet) => playerModel = modelToSet;
+
+        public void SetMovement(Vector2 movement) => playerModel.SetMovement(movement);
+
+        public Vector2 GetMovement()
         {
-            this.model = model;
+            return playerModel.Movement;
         }
 
-        public void SetMovement(Vector2 movement)
+        public Vector2 GetLastMovement()
         {
-            model.SetMovement(movement);
+            return playerModel.LastMovement;
+        }
+
+        public float GetMovementSpeed()
+        {
+            return playerModel.MovementSpeed;
+        }
+
+        public Vector2 GetVelocity()
+        {
+            return playerModel.Movement * playerModel.MovementSpeed;
         }
     }
 }

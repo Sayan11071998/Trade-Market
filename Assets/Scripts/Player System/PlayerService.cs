@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace TradeMarket.PlayerSystem
 {
     public class PlayerService
@@ -11,9 +9,9 @@ namespace TradeMarket.PlayerSystem
         public PlayerService(PlayerView playerView, PlayerScriptableObject playerScriptableObject)
         {
             PlayerView = playerView;
-            PlayerModel = new PlayerModel(playerScriptableObject.playerMovementSpeed);
+            PlayerModel = new PlayerModel(playerScriptableObject);
             PlayerController = new PlayerController(PlayerModel);
-            PlayerView.SetModelAndController(PlayerModel, PlayerController);
+            PlayerView.SetController(PlayerController);
         }
     }
 }
