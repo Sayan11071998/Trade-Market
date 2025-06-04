@@ -27,6 +27,7 @@ namespace TradeMarket.PlayerSystem
             if (playerController != null)
             {
                 HandleInput();
+                playerController.Update();
                 UpdatePhysics();
                 UpdateAnimator();
             }
