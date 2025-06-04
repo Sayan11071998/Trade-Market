@@ -31,6 +31,8 @@ namespace TradeMarket.PlayerSystem
 
         public void ChangeState(PlayerState newState)
         {
+            if (currentPlayerState == newState) return;
+
             if (states.ContainsKey(newState))
             {
                 currentState?.OnStateExit();
