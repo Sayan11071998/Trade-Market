@@ -1,5 +1,6 @@
 using UnityEngine;
 using TradeMarket.ItemSystem;
+using TradeMarket.Core;
 
 namespace TradeMarket.NPCSystem
 {
@@ -31,7 +32,11 @@ namespace TradeMarket.NPCSystem
                 return;
             }
 
-            npcView?.ShowDialogue(npcModel.TradeOfferText);
+            var playerItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
+            if (CanTrade(playerItem))
+                GameService.Instance.uiService.ShowTradeConfirmation(npcModel.NPCName, playerItem, npcModel.ItemNPCHaving);
+            else
+                npcView?.ShowDialogue(npcModel.TradeOfferText);
         }
 
         public bool CanTrade(ItemScriptableObject playerItem)
