@@ -1,5 +1,4 @@
 using TradeMarket.Core;
-using TradeMarket.PlayerSystem;
 
 namespace TradeMarket.UISystem
 {
@@ -15,15 +14,11 @@ namespace TradeMarket.UISystem
             InitializeUI();
         }
 
-        private void InitializeUI()
-        {
-            bool isInventoryOpen = GameService.Instance.playerService.PlayerModel.IsInventoryOpen;
-            UIView.SetInventoryPanelActive(isInventoryOpen);
+        private void InitializeUI() => RefreshInventoryUI();
 
-            UpdateInventoryDisplay();
-        }
+        public void ToggleInventoryPanel() => RefreshInventoryUI();
 
-        public void ToggleInventoryPanel()
+        private void RefreshInventoryUI()
         {
             bool isInventoryOpen = GameService.Instance.playerService.PlayerModel.IsInventoryOpen;
             UIView.SetInventoryPanelActive(isInventoryOpen);
