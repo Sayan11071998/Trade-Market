@@ -30,39 +30,16 @@ namespace TradeMarket.Core
         protected override void Awake()
         {
             base.Awake();
-            ValidateReferences();
             InitializeServices();
-        }
-
-        private void ValidateReferences()
-        {
-            if (playerView == null) Debug.LogError("PlayerView is not assigned!");
-            if (playerScriptableObject == null) Debug.LogError("PlayerScriptableObject is not assigned!");
-            if (uiView == null) Debug.LogError("UIView is not assigned!");
-            if (npcSetups.Count == 0) Debug.LogWarning("No NPCs have been set up!");
-
-            foreach (var npcSetup in npcSetups)
-            {
-                if (npcSetup.npcView == null) Debug.LogError("NPC View is missing in setup!");
-                if (npcSetup.npcData == null) Debug.LogError("NPC Data is missing in setup!");
-            }
         }
 
         private void InitializeServices()
         {
-            // Initialize Player Service
             playerService = new PlayerService(playerView, playerScriptableObject, initialPlayerItem);
-
-            // Initialize NPC Manager
             npcManager = new NPCManager(npcSetups);
-
-            // Initialize UI Service
             uiService = new UIService(uiView);
 
-            // Set up event connections
             playerService.PlayerModel.OnInventoryToggled += uiService.ToggleInventoryPanel;
-
-            Debug.Log($"All services initialized successfully! {npcSetups.Count} NPCs loaded.");
         }
 
         private void OnDestroy()
@@ -71,20 +48,10 @@ namespace TradeMarket.Core
                 playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
         }
 
-        // Helper methods for NPC system
-        public NPCService GetNPCByName(string npcName)
-        {
-            return npcManager.GetNPCByName(npcName);
-        }
+        public NPCService GetNPCByName(string npcName) => npcManager.GetNPCByName(npcName);
 
-        public List<NPCService> GetAllNPCs()
-        {
-            return npcManager.GetAllNPCs();
-        }
+        public List<NPCService> GetAllNPCs() => npcManager.GetAllNPCs();
 
-        public int GetNPCCount()
-        {
-            return npcManager.GetNPCCount();
-        }
+        public int GetNPCCount() => npcManager.GetNPCCount();
     }
 }

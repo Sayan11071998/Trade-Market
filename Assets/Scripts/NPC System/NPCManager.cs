@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace TradeMarket.NPCSystem
 {
@@ -27,17 +26,11 @@ namespace TradeMarket.NPCSystem
         {
             foreach (var npcSetup in npcSetups)
             {
-                if (npcSetup.npcView == null || npcSetup.npcData == null)
-                {
-                    Debug.LogError("NPC Setup has missing references!");
-                    continue;
-                }
+                if (npcSetup.npcView == null || npcSetup.npcData == null) continue;
 
                 NPCService npcService = new NPCService(npcSetup.npcView, npcSetup.npcData);
                 npcServices.Add(npcService);
                 npcServicesByName[npcService.GetNPCName()] = npcService;
-
-                Debug.Log($"Initialized NPC: {npcService.GetNPCName()}");
             }
         }
 
@@ -47,14 +40,8 @@ namespace TradeMarket.NPCSystem
             return npcService;
         }
 
-        public List<NPCService> GetAllNPCs()
-        {
-            return new List<NPCService>(npcServices);
-        }
+        public List<NPCService> GetAllNPCs() => new List<NPCService>(npcServices);
 
-        public int GetNPCCount()
-        {
-            return npcServices.Count;
-        }
+        public int GetNPCCount() => npcServices.Count;
     }
 }

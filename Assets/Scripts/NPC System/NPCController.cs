@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace TradeMarket.NPCSystem
 {
     public class NPCController
@@ -13,11 +11,7 @@ namespace TradeMarket.NPCSystem
 
         public void SetView(NPCView npcViewToSet) => npcView = npcViewToSet;
 
-        public void OnPlayerInteract()
-        {
-            Debug.Log($"{npcModel.NPCName}: {npcModel.GreetingText}");
-            npcView?.ShowDialogue(npcModel.GreetingText);
-        }
+        public void OnPlayerInteract() => npcView?.ShowDialogue(npcModel.GreetingText);
 
         public string GetCurrentDialogue() => npcModel.GreetingText;
     }
