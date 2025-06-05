@@ -21016,6 +21016,8 @@ MonoBehaviour:
   playerView: {fileID: 1034010581}
   playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
   initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  npcView: {fileID: 0}
+  npcScriptableObject: {fileID: 0}
   uiView: {fileID: 741758458}
 --- !u!4 &2047405265
 Transform:

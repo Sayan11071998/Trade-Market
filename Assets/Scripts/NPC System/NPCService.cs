@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace TradeMarket.NPCSystem
 {
     public class NPCService
