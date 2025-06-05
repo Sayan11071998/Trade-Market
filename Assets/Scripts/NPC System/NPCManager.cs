@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using UnityEngine;
+using TradeMarket.ItemSystem;
 
 namespace TradeMarket.NPCSystem
 {
@@ -42,6 +44,26 @@ namespace TradeMarket.NPCSystem
 
         public List<NPCService> GetAllNPCs() => new List<NPCService>(npcServices);
 
-        public int GetNPCCount() => npcServices.Count;
+        public List<NPCService> GetNPCsWantingItem(ItemScriptableObject item)
+        {
+            List<NPCService> interestedNPCs = new List<NPCService>();
+
+            foreach (var npc in npcServices)
+            {
+                if (!npc.HasTraded() && npc.CanPlayerTrade(item))
+                    interestedNPCs.Add(npc);
+            }
+
+            return interestedNPCs;
+        }
+
+        public int GetTradedNPCCount()
+        {
+            int count = 0;
+
+            foreach (var npc in npcServices)
+                if (npc.HasTraded()) count++;
+            return count;
+        }
     }
 }

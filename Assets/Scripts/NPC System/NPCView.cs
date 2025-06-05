@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +8,9 @@ namespace TradeMarket.NPCSystem
         [Header("Visual Components")]
         [SerializeField] private SpriteRenderer npcSpriteRenderer;
         [SerializeField] private GameObject interactionPrompt;
+
+        [Header("Trade Status Visual")]
+        [SerializeField] private GameObject tradedIndicator;
 
         [Header("Dialogue")]
         [SerializeField] private GameObject dialoguePanel;
@@ -29,6 +31,9 @@ namespace TradeMarket.NPCSystem
             if (interactionPrompt != null)
                 interactionPrompt.SetActive(false);
 
+            if (tradedIndicator != null)
+                tradedIndicator.SetActive(false);
+
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
         }
@@ -45,9 +50,6 @@ namespace TradeMarket.NPCSystem
         {
             if (dialoguePanel == null || dialogueText == null) return;
 
-            if (interactionPrompt != null)
-                interactionPrompt.SetActive(false);
-
             if (dialogueCoroutine != null)
                 StopCoroutine(dialogueCoroutine);
 
@@ -57,15 +59,21 @@ namespace TradeMarket.NPCSystem
             dialogueCoroutine = StartCoroutine(HideDialogueAfterDelay());
         }
 
-        private IEnumerator HideDialogueAfterDelay()
+        private System.Collections.IEnumerator HideDialogueAfterDelay()
         {
             yield return new WaitForSeconds(dialogueDisplayTime);
 
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
+        }
 
-            if (playerInRange && interactionPrompt != null)
-                interactionPrompt.SetActive(true);
+        public void UpdateTradeStatus(bool hasTraded)
+        {
+            if (tradedIndicator != null)
+                tradedIndicator.SetActive(hasTraded);
+
+            if (interactionPrompt != null && hasTraded)
+                interactionPrompt.SetActive(false);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -73,7 +81,7 @@ namespace TradeMarket.NPCSystem
             if (other.CompareTag("Player"))
             {
                 playerInRange = true;
-                if (interactionPrompt != null)
+                if (interactionPrompt != null && !npcController.NPCModel.HasTraded)
                     interactionPrompt.SetActive(true);
             }
         }
