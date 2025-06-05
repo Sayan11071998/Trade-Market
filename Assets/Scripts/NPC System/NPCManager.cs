@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TradeMarket.ItemSystem;
 
 namespace TradeMarket.NPCSystem
 {
@@ -32,8 +31,5 @@ namespace TradeMarket.NPCSystem
         }
 
         public NPCController GetNPCByName(string npcName) => npcRepository.GetNPCByName(npcName);
-        public List<NPCController> GetAllNPCs() => npcRepository.GetAllNPCs();
-        public List<NPCController> GetNPCsWantingItem(ItemScriptableObject item) => npcRepository.GetNPCsWantingItem(item);
-        public int GetTradedNPCCount() => npcRepository.GetTradedNPCCount();
     }
 }

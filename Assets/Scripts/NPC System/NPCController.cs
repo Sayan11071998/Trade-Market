@@ -1,5 +1,6 @@
 using TradeMarket.ItemSystem;
 using TradeMarket.Core;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.NPCSystem
 {
@@ -65,8 +66,12 @@ namespace TradeMarket.NPCSystem
 
         private string GetFormattedText(string text)
         {
-            return text.Replace("{itemHaving}", npcModel.ItemNPCHaving?.ItemName ?? "nothing")
-                      .Replace("{itemDesired}", npcModel.ItemDesired?.ItemName ?? "something");
+            string itemHaving = npcModel.ItemNPCHaving?.ItemName ?? GameString.NothingText;
+            string itemDesired = npcModel.ItemDesired?.ItemName ?? GameString.SomethingText;
+
+            return text.Replace(GameString.Placeholder_ItemHaving, itemHaving)
+                       .Replace(GameString.Placeholder_ItemDesired, itemDesired);
         }
+
     }
 }

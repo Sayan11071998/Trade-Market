@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using TradeMarket.ItemSystem;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.UISystem
 {
@@ -65,7 +66,7 @@ namespace TradeMarket.UISystem
             currentNPCName = npcName;
 
             if (tradeDescriptionText != null)
-                tradeDescriptionText.text = $"Trade with {npcName}?";
+                tradeDescriptionText.text = string.Format(GameString.TradePrompt, npcName);
 
             if (playerItemImage != null && playerItem != null)
             {
@@ -75,7 +76,7 @@ namespace TradeMarket.UISystem
 
             if (playerItemNameText != null && playerItem != null)
             {
-                playerItemNameText.text = $"Give: {playerItem.ItemName}";
+                playerItemNameText.text = string.Format(GameString.GiveItemText, playerItem.ItemName);
                 playerItemNameText.gameObject.SetActive(true);
             }
 
@@ -87,7 +88,7 @@ namespace TradeMarket.UISystem
 
             if (npcItemNameText != null && npcItem != null)
             {
-                npcItemNameText.text = $"Receive: {npcItem.ItemName}";
+                npcItemNameText.text = string.Format(GameString.ReceiveItemText, npcItem.ItemName);
                 npcItemNameText.gameObject.SetActive(true);
             }
 

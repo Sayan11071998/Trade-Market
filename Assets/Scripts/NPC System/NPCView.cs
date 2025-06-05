@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.NPCSystem
 {
@@ -61,7 +62,7 @@ namespace TradeMarket.NPCSystem
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(GameString.PlayerTag))
             {
                 playerInRange = true;
                 if (interactionPrompt != null && !npcController.NPCModel.HasTraded)
@@ -71,7 +72,7 @@ namespace TradeMarket.NPCSystem
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(GameString.PlayerTag))
             {
                 playerInRange = false;
                 npcController?.ResetTradeOfferState();
