@@ -22,7 +22,7 @@ namespace TradeMarket.PlayerSystem
 
             Vector2 movement = playerController.PlayerModel.Movement;
             if (movement.magnitude > 0.1f)
-                playerStateMachine.ChangeState(PlayerState.Run);
+                playerStateMachine.ChangeState(PlayerState.Walk);
         }
 
         public void OnStateExit() { }

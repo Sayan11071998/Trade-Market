@@ -25,7 +25,7 @@ namespace TradeMarket.PlayerSystem
             states = new Dictionary<PlayerState, IState>()
             {
                 { PlayerState.Idle, new IdleState(playerController, this) },
-                { PlayerState.Run, new RunState(playerController, this) },
+                { PlayerState.Walk, new WalkState(playerController, this) },
             };
         }
 
