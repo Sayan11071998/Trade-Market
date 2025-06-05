@@ -8,7 +8,7 @@ namespace TradeMarket.NPCSystem
         [Header("Visual Components")]
         [SerializeField] private SpriteRenderer npcSpriteRenderer;
         [SerializeField] private GameObject interactionPrompt;
-
+        
         [Header("Dialogue")]
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TextMeshProUGUI dialogueText;
@@ -18,38 +18,53 @@ namespace TradeMarket.NPCSystem
         private bool playerInRange = false;
         private Coroutine dialogueCoroutine;
 
-        public void SetController(NPCController npcControllerToSet) => npcController = npcControllerToSet;
+        public void SetController(NPCController npcControllerToSet)
+        {
+            npcController = npcControllerToSet;
+        }
 
         public void Initialize(NPCScriptableObject npcData)
         {
             if (npcSpriteRenderer != null && npcData.npcSprite != null)
+            {
                 npcSpriteRenderer.sprite = npcData.npcSprite;
+            }
 
+            // Hide interaction elements initially
             if (interactionPrompt != null)
                 interactionPrompt.SetActive(false);
-
+                
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
         }
 
-        private void Update() => HandleInput();
+        private void Update()
+        {
+            HandleInput();
+        }
 
         private void HandleInput()
         {
             if (playerInRange && Input.GetKeyDown(KeyCode.E))
+            {
                 npcController?.OnPlayerInteract();
+            }
         }
 
         public void ShowDialogue(string dialogue)
         {
             if (dialoguePanel == null || dialogueText == null) return;
-
+            
+            // Hide interaction prompt while showing dialogue
+            if (interactionPrompt != null)
+                interactionPrompt.SetActive(false);
+            
             if (dialogueCoroutine != null)
                 StopCoroutine(dialogueCoroutine);
-
+                
             dialogueText.text = dialogue;
             dialoguePanel.SetActive(true);
-
+            
             dialogueCoroutine = StartCoroutine(HideDialogueAfterDelay());
         }
 
@@ -58,6 +73,10 @@ namespace TradeMarket.NPCSystem
             yield return new WaitForSeconds(dialogueDisplayTime);
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
+                
+            // Show interaction prompt again if player is still in range
+            if (playerInRange && interactionPrompt != null)
+                interactionPrompt.SetActive(true);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -77,10 +96,10 @@ namespace TradeMarket.NPCSystem
                 playerInRange = false;
                 if (interactionPrompt != null)
                     interactionPrompt.SetActive(false);
-
+                    
                 if (dialoguePanel != null)
                     dialoguePanel.SetActive(false);
-
+                    
                 if (dialogueCoroutine != null)
                 {
                     StopCoroutine(dialogueCoroutine);
