@@ -22,6 +22,8 @@ namespace TradeMarket.NPCSystem
         [TextArea(3, 5)]
         public string tradeOfferText = "I have {itemHaving} and I want {itemDesired}.";
         [TextArea(3, 5)]
+        public string cantDoTradeText = "You don't have what I need. Come back when you have {itemDesired}.";
+        [TextArea(3, 5)]
         public string alreadyTradedText = "Thanks for the trade!";
     }
 }

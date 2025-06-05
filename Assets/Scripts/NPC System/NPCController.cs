@@ -10,6 +10,7 @@ namespace TradeMarket.NPCSystem
         private NPCView npcView;
 
         private bool hasGreeted = false;
+        private bool hasShownTradeOffer = false; // Add this new state
 
         public NPCModel NPCModel => npcModel;
 
@@ -32,11 +33,26 @@ namespace TradeMarket.NPCSystem
                 return;
             }
 
+            // Show trade offer first
+            if (!hasShownTradeOffer)
+            {
+                hasShownTradeOffer = true;
+                npcView?.ShowDialogue(npcModel.TradeOfferText);
+                return;
+            }
+
+            // Only after trade offer has been shown, check for trade confirmation
             var playerItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
             if (CanTrade(playerItem))
+            {
+                // Show trade confirmation UI
                 GameService.Instance.uiService.ShowTradeConfirmation(npcModel.NPCName, playerItem, npcModel.ItemNPCHaving);
+            }
             else
-                npcView?.ShowDialogue(npcModel.TradeOfferText);
+            {
+                // Show can't do trade text if player doesn't have the right item
+                npcView?.ShowDialogue(npcModel.CantDoTradeText);
+            }
         }
 
         public bool CanTrade(ItemScriptableObject playerItem)

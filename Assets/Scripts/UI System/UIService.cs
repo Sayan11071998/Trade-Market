@@ -36,22 +36,32 @@ namespace TradeMarket.UISystem
 
         public void ShowTradeConfirmation(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
         {
+            // Set player movement to be disabled
+            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(true);
             UIView.ShowTradeConfirmationPanel(npcName, playerItem, npcItem);
         }
 
         public void OnTradeConfirmed(string npcName)
         {
             bool tradeSuccess = GameService.Instance.ExecuteTradeWithNPC(npcName);
-
+            
             if (tradeSuccess)
             {
+                // Close trade confirmation panel and re-enable movement
                 UIView.HideTradeConfirmationPanel();
-
+                GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
+                
+                // Refresh inventory if it's open
                 if (GameService.Instance.playerService.PlayerModel.IsInventoryOpen)
                     UpdateInventoryDisplay();
             }
         }
 
-        public void OnTradeCancelled() => UIView.HideTradeConfirmationPanel();
+        public void OnTradeCancelled()
+        {
+            // Close trade confirmation panel and re-enable movement
+            UIView.HideTradeConfirmationPanel();
+            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
+        }
     }
 }

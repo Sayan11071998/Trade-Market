@@ -15,6 +15,7 @@ namespace TradeMarket.PlayerSystem
 
         public ItemScriptableObject CurrentItem { get; private set; }
         public bool IsInventoryOpen { get; private set; }
+        public bool IsTradeUIActive { get; private set; }
 
         public event Action OnInventoryToggled;
 
@@ -26,10 +27,19 @@ namespace TradeMarket.PlayerSystem
             IsWalking = false;
             CurrentItem = null;
             IsInventoryOpen = false;
+            IsTradeUIActive = false;
         }
 
         public void SetMovement(Vector2 newMovement)
         {
+            // Don't allow movement when trade UI is active
+            if (IsTradeUIActive)
+            {
+                Movement = Vector2.zero;
+                IsWalking = false;
+                return;
+            }
+
             Movement = newMovement;
             IsWalking = newMovement.magnitude > 0.1f;
 
@@ -49,5 +59,7 @@ namespace TradeMarket.PlayerSystem
             IsInventoryOpen = !IsInventoryOpen;
             OnInventoryToggled?.Invoke();
         }
+
+        public void SetTradeUIActive(bool isActive) => IsTradeUIActive = isActive;
     }
 }
