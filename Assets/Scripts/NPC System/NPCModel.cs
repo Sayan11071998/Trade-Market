@@ -1,19 +1,14 @@
-using UnityEngine;
-
 namespace TradeMarket.NPCSystem
 {
     public class NPCModel
     {
-        public GameObject ItemNPCHaving { get; private set; }
-        public GameObject ItemDesired { get; private set; }
-
-        public bool HasTraded { get; set; }
+        public string NPCName { get; private set; }
+        public string GreetingText { get; private set; }
 
         public NPCModel(NPCScriptableObject npcData)
         {
-            ItemNPCHaving = npcData.itemHaving;
-            ItemDesired = npcData.itemDesired;
-            HasTraded = false;
+            NPCName = npcData.npcName;
+            GreetingText = npcData.greetingText;
         }
     }
 }
