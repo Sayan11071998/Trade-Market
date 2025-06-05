@@ -5,10 +5,8 @@ namespace TradeMarket.NPCSystem
     public class NPCModel
     {
         public string NPCName { get; private set; }
-
         public ItemScriptableObject ItemNPCHaving { get; private set; }
         public ItemScriptableObject ItemDesired { get; private set; }
-
         public bool HasTraded { get; private set; }
 
         public string GreetingText { get; private set; }
@@ -24,12 +22,10 @@ namespace TradeMarket.NPCSystem
             HasTraded = false;
 
             GreetingText = npcData.greetingText;
-            TradeOfferText = npcData.tradeOfferText.Replace("{itemHaving}", ItemNPCHaving?.ItemName ?? "nothing").Replace("{itemDesired}", ItemDesired?.ItemName ?? "something");
-            CantDoTradeText = npcData.cantDoTradeText.Replace("{itemDesired}", ItemDesired?.ItemName ?? "something");
+            TradeOfferText = npcData.tradeOfferText;
+            CantDoTradeText = npcData.cantDoTradeText;
             AlreadyTradedText = npcData.alreadyTradedText;
         }
-
-        public void SetTradeStatus(bool traded) => HasTraded = traded;
 
         public void CompleteTrade() => HasTraded = true;
     }

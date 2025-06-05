@@ -50,8 +50,7 @@ namespace TradeMarket.Core
 
         public bool ExecuteTradeWithNPC(string npcName)
         {
-            NPCService npc = npcManager.GetNPCByName(npcName);
-
+            NPCController npc = npcManager.GetNPCByName(npcName);
             if (npc == null) return false;
 
             ItemScriptableObject playerItem = playerService.PlayerModel.CurrentItem;

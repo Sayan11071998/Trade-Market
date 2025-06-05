@@ -9,9 +9,6 @@ namespace TradeMarket.NPCSystem
         [SerializeField] private SpriteRenderer npcSpriteRenderer;
         [SerializeField] private GameObject interactionPrompt;
 
-        // [Header("Trade Status Visual")]
-        // [SerializeField] private GameObject tradedIndicator;
-
         [Header("Dialogue")]
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TextMeshProUGUI dialogueText;
@@ -28,19 +25,11 @@ namespace TradeMarket.NPCSystem
             if (npcSpriteRenderer != null && npcData.npcSprite != null)
                 npcSpriteRenderer.sprite = npcData.npcSprite;
 
-            if (interactionPrompt != null)
-                interactionPrompt.SetActive(false);
-
-            // if (tradedIndicator != null)
-            //     tradedIndicator.SetActive(false);
-
-            if (dialoguePanel != null)
-                dialoguePanel.SetActive(false);
+            interactionPrompt?.SetActive(false);
+            dialoguePanel?.SetActive(false);
         }
 
-        private void Update() => HandleInput();
-
-        private void HandleInput()
+        private void Update()
         {
             if (playerInRange && Input.GetKeyDown(KeyCode.E))
                 npcController?.OnPlayerInteract();
@@ -55,23 +44,17 @@ namespace TradeMarket.NPCSystem
 
             dialogueText.text = dialogue;
             dialoguePanel.SetActive(true);
-
             dialogueCoroutine = StartCoroutine(HideDialogueAfterDelay());
         }
 
         private System.Collections.IEnumerator HideDialogueAfterDelay()
         {
             yield return new WaitForSeconds(dialogueDisplayTime);
-
-            if (dialoguePanel != null)
-                dialoguePanel.SetActive(false);
+            dialoguePanel?.SetActive(false);
         }
 
         public void UpdateTradeStatus(bool hasTraded)
         {
-            // if (tradedIndicator != null)
-            //     tradedIndicator.SetActive(hasTraded);
-
             if (interactionPrompt != null && hasTraded)
                 interactionPrompt.SetActive(false);
         }
@@ -91,14 +74,9 @@ namespace TradeMarket.NPCSystem
             if (other.CompareTag("Player"))
             {
                 playerInRange = false;
-
                 npcController?.ResetTradeOfferState();
-
-                if (interactionPrompt != null)
-                    interactionPrompt.SetActive(false);
-
-                if (dialoguePanel != null)
-                    dialoguePanel.SetActive(false);
+                interactionPrompt?.SetActive(false);
+                dialoguePanel?.SetActive(false);
 
                 if (dialogueCoroutine != null)
                 {

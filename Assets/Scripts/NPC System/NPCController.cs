@@ -21,21 +21,21 @@ namespace TradeMarket.NPCSystem
         {
             if (npcModel.HasTraded)
             {
-                npcView?.ShowDialogue(npcModel.AlreadyTradedText);
+                npcView?.ShowDialogue(GetFormattedText(npcModel.AlreadyTradedText));
                 return;
             }
 
             if (!hasGreeted)
             {
                 hasGreeted = true;
-                npcView?.ShowDialogue(npcModel.GreetingText);
+                npcView?.ShowDialogue(GetFormattedText(npcModel.GreetingText));
                 return;
             }
 
             if (!hasShownTradeOffer)
             {
                 hasShownTradeOffer = true;
-                npcView?.ShowDialogue(npcModel.TradeOfferText);
+                npcView?.ShowDialogue(GetFormattedText(npcModel.TradeOfferText));
                 return;
             }
 
@@ -43,16 +43,10 @@ namespace TradeMarket.NPCSystem
             if (CanTrade(playerItem))
                 GameService.Instance.uiService.ShowTradeConfirmation(npcModel.NPCName, playerItem, npcModel.ItemNPCHaving);
             else
-                npcView?.ShowDialogue(npcModel.CantDoTradeText);
+                npcView?.ShowDialogue(GetFormattedText(npcModel.CantDoTradeText));
         }
 
-        public bool CanTrade(ItemScriptableObject playerItem)
-        {
-            if (npcModel.HasTraded) return false;
-            if (playerItem == null) return false;
-
-            return playerItem == npcModel.ItemDesired;
-        }
+        public bool CanTrade(ItemScriptableObject playerItem) => !npcModel.HasTraded && playerItem != null && playerItem == npcModel.ItemDesired;
 
         public ItemScriptableObject ExecuteTrade(ItemScriptableObject playerItem)
         {
@@ -62,21 +56,17 @@ namespace TradeMarket.NPCSystem
             npcModel.CompleteTrade();
 
             npcView?.UpdateTradeStatus(true);
-            npcView?.ShowDialogue(npcModel.AlreadyTradedText);
+            npcView?.ShowDialogue(GetFormattedText(npcModel.AlreadyTradedText));
 
             return npcItem;
         }
 
         public void ResetTradeOfferState() => hasShownTradeOffer = false;
 
-        public string GetCurrentDialogue()
+        private string GetFormattedText(string text)
         {
-            if (npcModel.HasTraded)
-                return npcModel.AlreadyTradedText;
-            else if (!hasGreeted)
-                return npcModel.GreetingText;
-            else
-                return npcModel.TradeOfferText;
+            return text.Replace("{itemHaving}", npcModel.ItemNPCHaving?.ItemName ?? "nothing")
+                      .Replace("{itemDesired}", npcModel.ItemDesired?.ItemName ?? "something");
         }
     }
 }

@@ -12,14 +12,11 @@ namespace TradeMarket.NPCSystem
 
     public class NPCManager
     {
-        private List<NPCService> npcServices;
-        private Dictionary<string, NPCService> npcServicesByName;
+        private NPCRepository npcRepository;
 
         public NPCManager(List<NPCSetup> npcSetups)
         {
-            npcServices = new List<NPCService>();
-            npcServicesByName = new Dictionary<string, NPCService>();
-
+            npcRepository = new NPCRepository();
             InitializeNPCs(npcSetups);
         }
 
@@ -29,40 +26,14 @@ namespace TradeMarket.NPCSystem
             {
                 if (npcSetup.npcView == null || npcSetup.npcData == null) continue;
 
-                NPCService npcService = new NPCService(npcSetup.npcView, npcSetup.npcData);
-                npcServices.Add(npcService);
-                npcServicesByName[npcService.GetNPCName()] = npcService;
+                NPCController npcController = NPCFactory.CreateNPC(npcSetup.npcView, npcSetup.npcData);
+                npcRepository.AddNPC(npcController);
             }
         }
 
-        public NPCService GetNPCByName(string npcName)
-        {
-            npcServicesByName.TryGetValue(npcName, out NPCService npcService);
-            return npcService;
-        }
-
-        public List<NPCService> GetAllNPCs() => new List<NPCService>(npcServices);
-
-        public List<NPCService> GetNPCsWantingItem(ItemScriptableObject item)
-        {
-            List<NPCService> interestedNPCs = new List<NPCService>();
-
-            foreach (var npc in npcServices)
-            {
-                if (!npc.HasTraded() && npc.CanPlayerTrade(item))
-                    interestedNPCs.Add(npc);
-            }
-
-            return interestedNPCs;
-        }
-
-        public int GetTradedNPCCount()
-        {
-            int count = 0;
-
-            foreach (var npc in npcServices)
-                if (npc.HasTraded()) count++;
-            return count;
-        }
+        public NPCController GetNPCByName(string npcName) => npcRepository.GetNPCByName(npcName);
+        public List<NPCController> GetAllNPCs() => npcRepository.GetAllNPCs();
+        public List<NPCController> GetNPCsWantingItem(ItemScriptableObject item) => npcRepository.GetNPCsWantingItem(item);
+        public int GetTradedNPCCount() => npcRepository.GetTradedNPCCount();
     }
 }
