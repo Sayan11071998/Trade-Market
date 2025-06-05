@@ -3,12 +3,12 @@ using TradeMarket.Utilities;
 
 namespace TradeMarket.PlayerSystem
 {
-    public class RunState : IState
+    public class WalkState : IState
     {
         private PlayerController playerController;
         private PlayerStateMachine playerStateMachine;
 
-        public RunState(PlayerController controllerToSet, PlayerStateMachine stateMachineToSet)
+        public WalkState(PlayerController controllerToSet, PlayerStateMachine stateMachineToSet)
         {
             playerController = controllerToSet;
             playerStateMachine = stateMachineToSet;

@@ -8,6 +8,7 @@ namespace TradeMarket.Utilities
         public const string PlayerAnimationFloatVertical = "Vertical";
         public const string PlayerAnimationFloatLastHorizontal = "LastHorizontal";
         public const string PlayerAnimationFloatLastVertical = "LastVertical";
+        public const string PlayerAnimationBoolIsWalking = "IsWalking";
         #endregion
     }
 }

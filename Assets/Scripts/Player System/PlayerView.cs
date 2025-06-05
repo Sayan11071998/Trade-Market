@@ -46,11 +46,13 @@ namespace TradeMarket.PlayerSystem
         {
             Vector2 movement = playerController.PlayerModel.Movement;
             Vector2 lastMovement = playerController.PlayerModel.LastMovement;
+            bool isWalking = playerController.PlayerModel.IsWalking;
 
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatHorizontal, movement.x);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatVertical, movement.y);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastHorizontal, lastMovement.x);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastVertical, lastMovement.y);
+            playerAnimator.SetBool(GameString.PlayerAnimationBoolIsWalking, isWalking);
         }
     }
 }
