@@ -38,9 +38,18 @@ namespace TradeMarket.PlayerSystem
 
         private void HandleInput()
         {
+            HandleMoveInput();
+            HandleInventoryInput();
+        }
+
+        private void HandleMoveInput()
+        {
             Vector2 movement = moveAction.ReadValue<Vector2>();
             playerController.SetMovement(movement);
+        }
 
+        private void HandleInventoryInput()
+        {
             if (inventoryAction.WasPressedThisFrame())
                 playerController.ToggleInventory();
         }
