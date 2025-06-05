@@ -78,6 +78,11 @@ namespace TradeMarket.NPCSystem
             return npcItem;
         }
 
+        public void ResetTradeOfferState()
+        {
+            hasShownTradeOffer = false;
+        }
+
         public string GetCurrentDialogue()
         {
             if (npcModel.HasTraded)
