@@ -48,17 +48,10 @@ namespace TradeMarket.Core
                 playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
         }
 
-        public List<NPCService> GetNPCsInterestedInPlayerItem()
-        {
-            if (playerService?.PlayerModel?.CurrentItem == null)
-                return new List<NPCService>();
-
-            return npcManager.GetNPCsWantingItem(playerService.PlayerModel.CurrentItem);
-        }
-
         public bool ExecuteTradeWithNPC(string npcName)
         {
             NPCService npc = npcManager.GetNPCByName(npcName);
+
             if (npc == null) return false;
 
             ItemScriptableObject playerItem = playerService.PlayerModel.CurrentItem;
@@ -71,11 +64,6 @@ namespace TradeMarket.Core
             }
 
             return false;
-        }
-
-        public int GetCompletedTradesCount()
-        {
-            return npcManager.GetTradedNPCCount();
         }
     }
 }
