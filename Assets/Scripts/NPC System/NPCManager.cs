@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using TradeMarket.ItemSystem;
 
 namespace TradeMarket.NPCSystem

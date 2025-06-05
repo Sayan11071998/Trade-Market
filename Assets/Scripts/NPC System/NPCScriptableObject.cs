@@ -9,14 +9,14 @@ namespace TradeMarket.NPCSystem
         [Header("NPC Details")]
         public string npcName;
 
-        [Header("Item Details")]
+        [Header("NPC Item Details")]
         public ItemScriptableObject itemHaving;
         public ItemScriptableObject itemDesired;
 
-        [Header("Visual")]
+        [Header("NPC Visual")]
         public Sprite npcSprite;
 
-        [Header("Dialogue")]
+        [Header("NPC Dialogue")]
         [TextArea(3, 5)]
         public string greetingText = "Hello there!";
         [TextArea(3, 5)]

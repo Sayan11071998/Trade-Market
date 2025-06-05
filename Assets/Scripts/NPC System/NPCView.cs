@@ -92,7 +92,6 @@ namespace TradeMarket.NPCSystem
             {
                 playerInRange = false;
 
-                // Reset the trade offer state when player leaves
                 npcController?.ResetTradeOfferState();
 
                 if (interactionPrompt != null)
