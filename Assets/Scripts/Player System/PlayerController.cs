@@ -17,6 +17,8 @@ namespace TradeMarket.PlayerSystem
 
         public void SetMovement(Vector2 movement) => playerModel.SetMovement(movement);
 
+        public void ToggleInventory() => playerModel.ToggleInventory();
+
         public void Update() => playerStateMachine.Update();
     }
 }

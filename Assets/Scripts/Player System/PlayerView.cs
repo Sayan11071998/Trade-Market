@@ -9,6 +9,7 @@ namespace TradeMarket.PlayerSystem
         private PlayerController playerController;
         private PlayerInput playerInput;
         private InputAction moveAction;
+        private InputAction inventoryAction;
         private Rigidbody2D playerRigidBody;
         private Animator playerAnimator;
 
@@ -21,6 +22,7 @@ namespace TradeMarket.PlayerSystem
             playerInput = GetComponent<PlayerInput>();
 
             moveAction = playerInput.actions[GameString.PlayerInputActionMove];
+            inventoryAction = playerInput.actions[GameString.PlayerInputActionInventory];
         }
 
         private void Update()
@@ -36,8 +38,20 @@ namespace TradeMarket.PlayerSystem
 
         private void HandleInput()
         {
+            HandleMoveInput();
+            HandleInventoryInput();
+        }
+
+        private void HandleMoveInput()
+        {
             Vector2 movement = moveAction.ReadValue<Vector2>();
             playerController.SetMovement(movement);
+        }
+
+        private void HandleInventoryInput()
+        {
+            if (inventoryAction.WasPressedThisFrame())
+                playerController.ToggleInventory();
         }
 
         private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.PlayerModel.PlayerMovementVelocity;
