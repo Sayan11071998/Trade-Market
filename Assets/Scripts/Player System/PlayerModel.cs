@@ -13,7 +13,8 @@ namespace TradeMarket.PlayerSystem
         public bool IsWalking { get; private set; }
 
         public ItemScriptableObject CurrentItem { get; private set; }
-        public bool HasItem => CurrentItem != null;
+
+        public bool IsInventoryOpen { get; private set; }
 
         public PlayerModel(PlayerScriptableObject playerScriptableObject)
         {
@@ -22,6 +23,7 @@ namespace TradeMarket.PlayerSystem
             LastMovement = Vector2.zero;
             IsWalking = false;
             CurrentItem = null;
+            IsInventoryOpen = false;
         }
 
         public void SetMovement(Vector2 newMovement)
@@ -39,5 +41,11 @@ namespace TradeMarket.PlayerSystem
 
         private Vector2 PlayerVelocity() => Movement * MovementSpeed;
         public Vector2 PlayerMovementVelocity => PlayerVelocity();
+
+        public void ToggleInventory()
+        {
+            IsInventoryOpen = !IsInventoryOpen;
+            Debug.Log(IsInventoryOpen ? "Inventory open" : "Inventory closed");
+        }
     }
 }
