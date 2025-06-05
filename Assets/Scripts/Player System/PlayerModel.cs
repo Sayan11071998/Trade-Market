@@ -14,7 +14,6 @@ namespace TradeMarket.PlayerSystem
         public bool IsWalking { get; private set; }
 
         public ItemScriptableObject CurrentItem { get; private set; }
-
         public bool IsInventoryOpen { get; private set; }
 
         public event Action OnInventoryToggled;
@@ -48,7 +47,6 @@ namespace TradeMarket.PlayerSystem
         public void ToggleInventory()
         {
             IsInventoryOpen = !IsInventoryOpen;
-            Debug.Log(IsInventoryOpen ? "Inventory open" : "Inventory closed");
             OnInventoryToggled?.Invoke();
         }
     }

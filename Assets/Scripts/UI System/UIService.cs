@@ -1,3 +1,4 @@
+using TradeMarket.Core;
 using TradeMarket.PlayerSystem;
 
 namespace TradeMarket.UISystem
@@ -5,12 +6,10 @@ namespace TradeMarket.UISystem
     public class UIService
     {
         public UIView UIView { get; private set; }
-        private PlayerService playerService;
 
-        public UIService(UIView uiView, PlayerService playerServiceToSet)
+        public UIService(UIView uiViewToSet)
         {
-            UIView = uiView;
-            playerService = playerServiceToSet;
+            UIView = uiViewToSet;
 
             UIView.SetService(this);
             InitializeUI();
@@ -18,7 +17,7 @@ namespace TradeMarket.UISystem
 
         private void InitializeUI()
         {
-            bool isInventoryOpen = playerService.PlayerModel.IsInventoryOpen;
+            bool isInventoryOpen = GameService.Instance.playerService.PlayerModel.IsInventoryOpen;
             UIView.SetInventoryPanelActive(isInventoryOpen);
 
             UpdateInventoryDisplay();
@@ -26,7 +25,7 @@ namespace TradeMarket.UISystem
 
         public void ToggleInventoryPanel()
         {
-            bool isInventoryOpen = playerService.PlayerModel.IsInventoryOpen;
+            bool isInventoryOpen = GameService.Instance.playerService.PlayerModel.IsInventoryOpen;
             UIView.SetInventoryPanelActive(isInventoryOpen);
 
             if (isInventoryOpen)
@@ -35,7 +34,7 @@ namespace TradeMarket.UISystem
 
         private void UpdateInventoryDisplay()
         {
-            var currentItem = playerService.PlayerModel.CurrentItem;
+            var currentItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
             UIView.UpdateInventoryItem(currentItem);
         }
     }

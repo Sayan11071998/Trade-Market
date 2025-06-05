@@ -1,7 +1,7 @@
+using UnityEngine;
 using TradeMarket.PlayerSystem;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
-using UnityEngine;
 using TradeMarket.UISystem;
 
 namespace TradeMarket.Core
@@ -30,7 +30,7 @@ namespace TradeMarket.Core
         private void InitializeServices()
         {
             playerService = new PlayerService(playerView, playerScriptableObject, initialPlayerItem);
-            uiService = new UIService(uiView, playerService);
+            uiService = new UIService(uiView);
 
             playerService.PlayerModel.OnInventoryToggled += uiService.ToggleInventoryPanel;
         }
