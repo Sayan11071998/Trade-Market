@@ -8,6 +8,8 @@ namespace TradeMarket.NPCSystem
         private NPCModel npcModel;
         private NPCView npcView;
 
+        private bool hasGreeted = false;
+
         public NPCModel NPCModel => npcModel;
 
         public NPCController(NPCModel npcModelToSet) => npcModel = npcModelToSet;
@@ -19,6 +21,13 @@ namespace TradeMarket.NPCSystem
             if (npcModel.HasTraded)
             {
                 npcView?.ShowDialogue(npcModel.AlreadyTradedText);
+                return;
+            }
+
+            if (!hasGreeted)
+            {
+                hasGreeted = true;
+                npcView?.ShowDialogue(npcModel.GreetingText);
                 return;
             }
 
@@ -52,6 +61,8 @@ namespace TradeMarket.NPCSystem
         {
             if (npcModel.HasTraded)
                 return npcModel.AlreadyTradedText;
+            else if (!hasGreeted)
+                return npcModel.GreetingText;
             else
                 return npcModel.TradeOfferText;
         }

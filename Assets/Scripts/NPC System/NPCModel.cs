@@ -23,7 +23,6 @@ namespace TradeMarket.NPCSystem
             HasTraded = false;
 
             GreetingText = npcData.greetingText;
-            GreetingText = npcData.greetingText;
             TradeOfferText = npcData.tradeOfferText.Replace("{itemHaving}", ItemNPCHaving?.ItemName ?? "nothing").Replace("{itemDesired}", ItemDesired?.ItemName ?? "something");
             AlreadyTradedText = npcData.alreadyTradedText;
         }
