@@ -32,11 +32,9 @@ namespace TradeMarket.PlayerSystem
 
         public void SetMovement(Vector2 newMovement)
         {
-            // Don't allow movement when trade UI is active
             if (IsTradeUIActive)
             {
-                Movement = Vector2.zero;
-                IsWalking = false;
+                StopPlayerMovement();
                 return;
             }
 
@@ -47,9 +45,14 @@ namespace TradeMarket.PlayerSystem
                 LastMovement = newMovement;
         }
 
-        public void SetItem(ItemScriptableObject item) => CurrentItem = item;
+        private void StopPlayerMovement()
+        {
+            Movement = Vector2.zero;
+            IsWalking = false;
+            return;
+        }
 
-        public void RemoveItem() => CurrentItem = null;
+        public void SetItem(ItemScriptableObject item) => CurrentItem = item;
 
         private Vector2 PlayerVelocity() => Movement * MovementSpeed;
         public Vector2 PlayerMovementVelocity => PlayerVelocity();
