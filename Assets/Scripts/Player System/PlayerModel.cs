@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TradeMarket.ItemSystem;
 
@@ -15,6 +16,8 @@ namespace TradeMarket.PlayerSystem
         public ItemScriptableObject CurrentItem { get; private set; }
 
         public bool IsInventoryOpen { get; private set; }
+
+        public event Action OnInventoryToggled;
 
         public PlayerModel(PlayerScriptableObject playerScriptableObject)
         {
@@ -46,6 +49,7 @@ namespace TradeMarket.PlayerSystem
         {
             IsInventoryOpen = !IsInventoryOpen;
             Debug.Log(IsInventoryOpen ? "Inventory open" : "Inventory closed");
+            OnInventoryToggled?.Invoke();
         }
     }
 }
