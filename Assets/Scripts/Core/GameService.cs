@@ -1,14 +1,17 @@
 using UnityEngine;
+using System.Collections.Generic;
 using TradeMarket.PlayerSystem;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
 using TradeMarket.UISystem;
+using TradeMarket.NPCSystem;
 
 namespace TradeMarket.Core
 {
     public class GameService : GenericMonoSingleton<GameService>
     {
         public PlayerService playerService { get; private set; }
+        public NPCManager npcManager { get; private set; }
         public UIService uiService { get; private set; }
 
         [Header("Player")]
@@ -17,6 +20,9 @@ namespace TradeMarket.Core
 
         [Header("Initial Item")]
         [SerializeField] private ItemScriptableObject initialPlayerItem;
+
+        [Header("NPCs")]
+        [SerializeField] private List<NPCSetup> npcSetups = new List<NPCSetup>();
 
         [Header("UI")]
         [SerializeField] private UIView uiView;
@@ -30,6 +36,7 @@ namespace TradeMarket.Core
         private void InitializeServices()
         {
             playerService = new PlayerService(playerView, playerScriptableObject, initialPlayerItem);
+            npcManager = new NPCManager(npcSetups);
             uiService = new UIService(uiView);
 
             playerService.PlayerModel.OnInventoryToggled += uiService.ToggleInventoryPanel;
@@ -40,5 +47,11 @@ namespace TradeMarket.Core
             if (playerService?.PlayerModel != null)
                 playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
         }
+
+        public NPCService GetNPCByName(string npcName) => npcManager.GetNPCByName(npcName);
+
+        public List<NPCService> GetAllNPCs() => npcManager.GetAllNPCs();
+
+        public int GetNPCCount() => npcManager.GetNPCCount();
     }
 }
