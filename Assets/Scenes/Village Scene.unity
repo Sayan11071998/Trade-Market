@@ -20317,6 +20317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerView: {fileID: 1034010581}
   playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
+  initialPlayerItem: {fileID: 11400000, guid: aa7bff43e43723f49bebf1a3f25c5ac1, type: 2}
 --- !u!4 &2047405265
 Transform:
   m_ObjectHideFlags: 0

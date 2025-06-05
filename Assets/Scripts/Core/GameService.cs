@@ -1,4 +1,5 @@
 using TradeMarket.PlayerSystem;
+using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ namespace TradeMarket.Core
         [SerializeField] private PlayerView playerView;
         [SerializeField] private PlayerScriptableObject playerScriptableObject;
 
+        [Header("Initial Item")]
+        [SerializeField] private ItemScriptableObject initialPlayerItem;
+
         protected override void Awake()
         {
             base.Awake();
@@ -20,7 +24,7 @@ namespace TradeMarket.Core
 
         private void InitializeServices()
         {
-            playerService = new PlayerService(playerView, playerScriptableObject);
+            playerService = new PlayerService(playerView, playerScriptableObject, initialPlayerItem);
         }
     }
 }
