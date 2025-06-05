@@ -11,14 +11,11 @@ namespace TradeMarket.NPCSystem
 
     public class NPCManager
     {
-        private List<NPCService> npcServices;
-        private Dictionary<string, NPCService> npcServicesByName;
+        private NPCRepository npcRepository;
 
         public NPCManager(List<NPCSetup> npcSetups)
         {
-            npcServices = new List<NPCService>();
-            npcServicesByName = new Dictionary<string, NPCService>();
-
+            npcRepository = new NPCRepository();
             InitializeNPCs(npcSetups);
         }
 
@@ -28,20 +25,11 @@ namespace TradeMarket.NPCSystem
             {
                 if (npcSetup.npcView == null || npcSetup.npcData == null) continue;
 
-                NPCService npcService = new NPCService(npcSetup.npcView, npcSetup.npcData);
-                npcServices.Add(npcService);
-                npcServicesByName[npcService.GetNPCName()] = npcService;
+                NPCController npcController = NPCFactory.CreateNPC(npcSetup.npcView, npcSetup.npcData);
+                npcRepository.AddNPC(npcController);
             }
         }
 
-        public NPCService GetNPCByName(string npcName)
-        {
-            npcServicesByName.TryGetValue(npcName, out NPCService npcService);
-            return npcService;
-        }
-
-        public List<NPCService> GetAllNPCs() => new List<NPCService>(npcServices);
-
-        public int GetNPCCount() => npcServices.Count;
+        public NPCController GetNPCByName(string npcName) => npcRepository.GetNPCByName(npcName);
     }
 }

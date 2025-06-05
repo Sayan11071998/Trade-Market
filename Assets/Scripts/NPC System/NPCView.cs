@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.NPCSystem
 {
@@ -26,16 +26,11 @@ namespace TradeMarket.NPCSystem
             if (npcSpriteRenderer != null && npcData.npcSprite != null)
                 npcSpriteRenderer.sprite = npcData.npcSprite;
 
-            if (interactionPrompt != null)
-                interactionPrompt.SetActive(false);
-
-            if (dialoguePanel != null)
-                dialoguePanel.SetActive(false);
+            interactionPrompt?.SetActive(false);
+            dialoguePanel?.SetActive(false);
         }
 
-        private void Update() => HandleInput();
-
-        private void HandleInput()
+        private void Update()
         {
             if (playerInRange && Input.GetKeyDown(KeyCode.E))
                 npcController?.OnPlayerInteract();
@@ -45,49 +40,44 @@ namespace TradeMarket.NPCSystem
         {
             if (dialoguePanel == null || dialogueText == null) return;
 
-            if (interactionPrompt != null)
-                interactionPrompt.SetActive(false);
-
             if (dialogueCoroutine != null)
                 StopCoroutine(dialogueCoroutine);
 
             dialogueText.text = dialogue;
             dialoguePanel.SetActive(true);
-
             dialogueCoroutine = StartCoroutine(HideDialogueAfterDelay());
         }
 
-        private IEnumerator HideDialogueAfterDelay()
+        private System.Collections.IEnumerator HideDialogueAfterDelay()
         {
             yield return new WaitForSeconds(dialogueDisplayTime);
+            dialoguePanel?.SetActive(false);
+        }
 
-            if (dialoguePanel != null)
-                dialoguePanel.SetActive(false);
-
-            if (playerInRange && interactionPrompt != null)
-                interactionPrompt.SetActive(true);
+        public void UpdateTradeStatus(bool hasTraded)
+        {
+            if (interactionPrompt != null && hasTraded)
+                interactionPrompt.SetActive(false);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(GameString.PlayerTag))
             {
                 playerInRange = true;
-                if (interactionPrompt != null)
+                if (interactionPrompt != null && !npcController.NPCModel.HasTraded)
                     interactionPrompt.SetActive(true);
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(GameString.PlayerTag))
             {
                 playerInRange = false;
-                if (interactionPrompt != null)
-                    interactionPrompt.SetActive(false);
-
-                if (dialoguePanel != null)
-                    dialoguePanel.SetActive(false);
+                npcController?.ResetTradeOfferState();
+                interactionPrompt?.SetActive(false);
+                dialoguePanel?.SetActive(false);
 
                 if (dialogueCoroutine != null)
                 {

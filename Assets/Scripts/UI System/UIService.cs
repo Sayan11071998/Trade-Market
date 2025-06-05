@@ -1,4 +1,5 @@
 using TradeMarket.Core;
+using TradeMarket.ItemSystem;
 
 namespace TradeMarket.UISystem
 {
@@ -31,6 +32,32 @@ namespace TradeMarket.UISystem
         {
             var currentItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
             UIView.UpdateInventoryItem(currentItem);
+        }
+
+        public void ShowTradeConfirmation(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
+        {
+            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(true);
+            UIView.ShowTradeConfirmationPanel(npcName, playerItem, npcItem);
+        }
+
+        public void OnTradeConfirmed(string npcName)
+        {
+            bool tradeSuccess = GameService.Instance.ExecuteTradeWithNPC(npcName);
+
+            if (tradeSuccess)
+            {
+                UIView.HideTradeConfirmationPanel();
+                GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
+
+                if (GameService.Instance.playerService.PlayerModel.IsInventoryOpen)
+                    UpdateInventoryDisplay();
+            }
+        }
+
+        public void OnTradeCancelled()
+        {
+            UIView.HideTradeConfirmationPanel();
+            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
         }
     }
 }
