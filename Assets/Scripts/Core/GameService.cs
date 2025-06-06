@@ -5,6 +5,7 @@ using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
 using TradeMarket.UISystem;
 using TradeMarket.NPCSystem;
+using TradeMarket.SaveSystem;
 
 namespace TradeMarket.Core
 {

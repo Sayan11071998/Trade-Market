@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using TradeMarket.ItemSystem;
+using TradeMarket.PlayerSystem;
 
-namespace TradeMarket.PlayerSystem
+namespace TradeMarket.SaveSystem
 {
     [CreateAssetMenu(fileName = "PlayerSaveDataScriptableObject", menuName = "SaveData/PlayerDataScriptableObject")]
     public class PlayerDataScriptableObject : ScriptableObject

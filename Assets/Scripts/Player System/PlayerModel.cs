@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TradeMarket.ItemSystem;
+using TradeMarket.SaveSystem;
 
 namespace TradeMarket.PlayerSystem
 {
