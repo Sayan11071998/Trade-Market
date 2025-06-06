@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8601520240537642785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7277312068582304914}
+  - component: {fileID: 9058507388750644673}
+  m_Layer: 0
+  m_Name: Game Service
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7277312068582304914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601520240537642785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9058507388750644673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601520240537642785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280f367aeccfb2f42a127bb191121d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerView: {fileID: 0}
+  playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
+  playerDataScriptableObject: {fileID: 11400000, guid: c25c300cb0d916d40b974f79bbe9aaf4, type: 2}
+  initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  npcSetups:
+  - npcView: {fileID: 0}
+    npcData: {fileID: 11400000, guid: 5af1d806329886e459f7bf8af76782ac, type: 2}
+  - npcView: {fileID: 0}
+    npcData: {fileID: 11400000, guid: a8f2ff8314a1e1c4aa7d66a1bb6e7ff2, type: 2}
+  - npcView: {fileID: 0}
+    npcData: {fileID: 11400000, guid: 1694337dea3d48a43a59d52e3a3262be, type: 2}
+  - npcView: {fileID: 0}
+    npcData: {fileID: 11400000, guid: 33499493cdbd940489e5a0e0634157c4, type: 2}
+  uiView: {fileID: 0}

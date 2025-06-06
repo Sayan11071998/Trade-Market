@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cea98086d7927f43b458cbbc8c2fe84, type: 3}
+  m_Name: Player Save Data SO
+  m_EditorClassIdentifier: 
+  currentItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  isInventoryOpen: 0
+  lastMovement: {x: 0, y: 0}
+  scenesCompleted: 0
+  completedSceneNames: []
+  hasInitializedThisSession: 0

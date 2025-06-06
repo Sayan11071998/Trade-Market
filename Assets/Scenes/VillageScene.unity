@@ -22577,63 +22577,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2047405263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2047405265}
-  - component: {fileID: 2047405264}
-  m_Layer: 0
-  m_Name: Game Service
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2047405264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047405263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280f367aeccfb2f42a127bb191121d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerView: {fileID: 1034010581}
-  playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
-  initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
-  npcSetups:
-  - npcView: {fileID: 3382672624379901746}
-    npcData: {fileID: 11400000, guid: 5af1d806329886e459f7bf8af76782ac, type: 2}
-  - npcView: {fileID: 3382672623970699639}
-    npcData: {fileID: 11400000, guid: a8f2ff8314a1e1c4aa7d66a1bb6e7ff2, type: 2}
-  - npcView: {fileID: 8890517395271333588}
-    npcData: {fileID: 11400000, guid: 1694337dea3d48a43a59d52e3a3262be, type: 2}
-  - npcView: {fileID: 3382672624186371829}
-    npcData: {fileID: 11400000, guid: 33499493cdbd940489e5a0e0634157c4, type: 2}
-  uiView: {fileID: 741758458}
---- !u!4 &2047405265
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047405263}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76234503677014324
 GameObject:
   m_ObjectHideFlags: 0
@@ -23176,6 +23119,7 @@ MonoBehaviour:
   sceneToLoad: TownScene
   fadeAnimator: {fileID: 7722683568824646342}
   fadeTimeDelay: 1
+  currentSceneName: VillageScene
 --- !u!114 &1498638720820510777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24434,6 +24378,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!4 &5464959885306892136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374838526716724443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!223 &5524603112061516656
 Canvas:
   m_ObjectHideFlags: 0
@@ -24610,6 +24569,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 30.4}
   m_SizeDelta: {x: 40, y: -80.36}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5953491193219458619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374838526716724443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280f367aeccfb2f42a127bb191121d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerView: {fileID: 1034010581}
+  playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
+  playerDataScriptableObject: {fileID: 11400000, guid: c25c300cb0d916d40b974f79bbe9aaf4, type: 2}
+  initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  npcSetups:
+  - npcView: {fileID: 3382672624379901746}
+    npcData: {fileID: 11400000, guid: 5af1d806329886e459f7bf8af76782ac, type: 2}
+  - npcView: {fileID: 3382672623970699639}
+    npcData: {fileID: 11400000, guid: a8f2ff8314a1e1c4aa7d66a1bb6e7ff2, type: 2}
+  - npcView: {fileID: 8890517395271333588}
+    npcData: {fileID: 11400000, guid: 1694337dea3d48a43a59d52e3a3262be, type: 2}
+  - npcView: {fileID: 3382672624186371829}
+    npcData: {fileID: 11400000, guid: 33499493cdbd940489e5a0e0634157c4, type: 2}
+  uiView: {fileID: 741758458}
 --- !u!222 &6025943837293637610
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24762,6 +24747,23 @@ GameObject:
   - component: {fileID: 7722683568824646342}
   m_Layer: 5
   m_Name: Fade To Black
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &6374838526716724443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5464959885306892136}
+  - component: {fileID: 5953491193219458619}
+  m_Layer: 0
+  m_Name: Game Service
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25729,7 +25731,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1700470934}
   - {fileID: 619394802}
-  - {fileID: 2047405265}
+  - {fileID: 5464959885306892136}
   - {fileID: 1034010575}
   - {fileID: 325246841}
   - {fileID: 146099622}
