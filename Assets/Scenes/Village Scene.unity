@@ -24247,7 +24247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2d4a9812931624c9ce59e6b3044420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFinalScene: 1
+  isFinalScene: 0
   ItemRequiredToComplete: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
 --- !u!114 &5291545346940296873
 MonoBehaviour:

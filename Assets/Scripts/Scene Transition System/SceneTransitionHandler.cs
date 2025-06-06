@@ -12,21 +12,26 @@ namespace TradeMarket.SceneTransitionSystem
         private bool IsPlayerHavingTheRequiredItem()
         {
             var playerItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
-
-            if (playerItem == ItemRequiredToComplete)
-                return true;
-
-            return false;
+            return playerItem == ItemRequiredToComplete;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(GameString.PlayerTag))
+            if (!other.CompareTag(GameString.PlayerTag))
+                return;
+
+            bool hasRequiredItem = IsPlayerHavingTheRequiredItem();
+
+            if (hasRequiredItem)
             {
-                if (IsPlayerHavingTheRequiredItem() && isFinalScene)
+                if (isFinalScene)
                     Debug.Log("Game Won!!");
                 else
                     Debug.Log("Scene Completed");
+            }
+            else
+            {
+                Debug.Log("Required item missing to complete this scene.");
             }
         }
     }
