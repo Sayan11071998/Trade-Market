@@ -57,7 +57,8 @@ namespace TradeMarket.SceneTransitionSystem
             }
             else
             {
-                Debug.Log("Required item missing to complete this scene.");
+                GameService.Instance.playerService.PlayerController.PlayerView.ActivateDialoguePanel();
+                GameService.Instance.playerService.PlayerController.PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
             }
         }
 

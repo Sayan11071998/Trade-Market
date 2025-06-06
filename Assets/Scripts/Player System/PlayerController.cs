@@ -6,13 +6,16 @@ namespace TradeMarket.PlayerSystem
     public class PlayerController
     {
         private PlayerModel playerModel;
+        private PlayerView playerView;
         private PlayerStateMachine playerStateMachine;
 
         public PlayerModel PlayerModel => playerModel;
+        public PlayerView PlayerView => playerView;
 
-        public PlayerController(PlayerModel modelToSet)
+        public PlayerController(PlayerModel modelToSet, PlayerView playerViewToSet)
         {
             playerModel = modelToSet;
+            playerView = playerViewToSet;
             playerStateMachine = new PlayerStateMachine(this);
         }
 

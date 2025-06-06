@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 using TradeMarket.Utilities;
 
@@ -6,12 +7,18 @@ namespace TradeMarket.PlayerSystem
 {
     public class PlayerView : MonoBehaviour
     {
+        [Header("Dialogue")]
+        [SerializeField] private GameObject dialoguePanel;
+        [SerializeField] private TextMeshProUGUI dialogueText;
+        [SerializeField] private float dialogueDisplayTime = 3f;
+
         private PlayerController playerController;
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction inventoryAction;
         private Rigidbody2D playerRigidBody;
         private Animator playerAnimator;
+        private Coroutine dialogueCoroutine;
 
         public void SetController(PlayerController controllerToSet) => playerController = controllerToSet;
 
@@ -23,6 +30,7 @@ namespace TradeMarket.PlayerSystem
 
             moveAction = playerInput.actions[GameString.PlayerInputActionMove];
             inventoryAction = playerInput.actions[GameString.PlayerInputActionInventory];
+            dialoguePanel?.SetActive(false);
         }
 
         private void Update()
@@ -67,6 +75,26 @@ namespace TradeMarket.PlayerSystem
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastHorizontal, lastMovement.x);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastVertical, lastMovement.y);
             playerAnimator.SetBool(GameString.PlayerAnimationBoolIsWalking, isWalking);
+        }
+
+        public void ActivateDialoguePanel() => dialoguePanel?.SetActive(true);
+
+        public void ShowDialogue(string dialogue)
+        {
+            if (dialoguePanel == null || dialogueText == null) return;
+
+            if (dialogueCoroutine != null)
+                StopCoroutine(dialogueCoroutine);
+
+            dialogueText.text = dialogue;
+            dialoguePanel.SetActive(true);
+            dialogueCoroutine = StartCoroutine(HideDialogueAfterDelay());
+        }
+
+        private System.Collections.IEnumerator HideDialogueAfterDelay()
+        {
+            yield return new WaitForSeconds(dialogueDisplayTime);
+            dialoguePanel?.SetActive(false);
         }
     }
 }

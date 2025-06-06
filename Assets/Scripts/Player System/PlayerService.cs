@@ -14,7 +14,7 @@ namespace TradeMarket.PlayerSystem
         {
             PlayerView = playerView;
             PlayerModel = new PlayerModel(playerScriptableObject, playerDataSO);
-            PlayerController = new PlayerController(PlayerModel);
+            PlayerController = new PlayerController(PlayerModel, PlayerView);
             PlayerView.SetController(PlayerController);
 
             if (initialItem != null
