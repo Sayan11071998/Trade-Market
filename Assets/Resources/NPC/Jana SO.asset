@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Jana SO
   m_EditorClassIdentifier: 
   npcName: Jana
-  itemHaving: {fileID: 11400000, guid: 0a377e08ea848174499c5b535024328a, type: 2}
-  itemDesired: {fileID: 11400000, guid: aa7bff43e43723f49bebf1a3f25c5ac1, type: 2}
+  itemHaving: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
+  itemDesired: {fileID: 11400000, guid: 0a377e08ea848174499c5b535024328a, type: 2}
   npcSprite: {fileID: 21300006, guid: df894d170d5f44be293fae0ef08b055c, type: 3}
   greetingText: Hey Sweet Heart!!
   tradeOfferText: I have {itemHaving} and I want {itemDesired}.
+  cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
   alreadyTradedText: Thanks for the trade!

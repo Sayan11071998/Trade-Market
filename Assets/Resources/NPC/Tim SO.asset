@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
-  m_Name: Bob SO
+  m_Name: Tim SO
   m_EditorClassIdentifier: 
-  npcName: Bob
-  itemHaving: {fileID: 11400000, guid: e72107d958782db45b769c9b114ea971, type: 2}
-  itemDesired: {fileID: 11400000, guid: 02a373bd555a6ae4d86e2f14f08a0028, type: 2}
-  npcSprite: {fileID: 21300000, guid: df894d170d5f44be293fae0ef08b055c, type: 3}
-  greetingText: Hello there!
+  npcName: Tim
+  itemHaving: {fileID: 11400000, guid: 0a377e08ea848174499c5b535024328a, type: 2}
+  itemDesired: {fileID: 11400000, guid: e72107d958782db45b769c9b114ea971, type: 2}
+  npcSprite: {fileID: 21300018, guid: df894d170d5f44be293fae0ef08b055c, type: 3}
+  greetingText: Hello Mr.!
   tradeOfferText: I have {itemHaving} and I want {itemDesired}.
   cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
   alreadyTradedText: Thanks for the trade!
