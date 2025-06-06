@@ -1,8 +1,8 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TradeMarket.Core;
 using TradeMarket.Utilities;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
 namespace TradeMarket.SceneTransitionSystem
 {
@@ -44,7 +44,7 @@ namespace TradeMarket.SceneTransitionSystem
                     if (playerData != null)
                         playerData.CompleteScene(currentSceneName);
 
-                    fadeAnimator.Play("FadeToBlack");
+                    fadeAnimator.Play(GameString.SceneAnimationFadeToBlack);
                     StartCoroutine(LoadDelay());
                 }
             }

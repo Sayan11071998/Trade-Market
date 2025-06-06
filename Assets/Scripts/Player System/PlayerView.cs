@@ -54,7 +54,7 @@ namespace TradeMarket.PlayerSystem
                 playerController.ToggleInventory();
         }
 
-        private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.PlayerModel.PlayerMovementVelocity;
+        private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetPlayerVelocity();
 
         private void UpdateAnimator()
         {

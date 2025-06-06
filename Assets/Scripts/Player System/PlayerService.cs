@@ -18,7 +18,7 @@ namespace TradeMarket.PlayerSystem
 
             if (initialItem != null
                             && (playerDataSO == null || !playerDataSO.hasInitializedThisSession || playerDataSO.currentItem == null))
-                PlayerModel.SetItem(initialItem);
+                PlayerController.SetCurrentItem(initialItem);
         }
 
         public void SavePlayerState() => PlayerModel.SaveState();

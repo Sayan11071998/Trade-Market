@@ -36,7 +36,7 @@ namespace TradeMarket.UISystem
 
         public void ShowTradeConfirmation(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
         {
-            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(true);
+            GameService.Instance.playerService.PlayerController.SetTradeMode(true);
             UIView.ShowTradeConfirmationPanel(npcName, playerItem, npcItem);
         }
 
@@ -47,7 +47,7 @@ namespace TradeMarket.UISystem
             if (tradeSuccess)
             {
                 UIView.HideTradeConfirmationPanel();
-                GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
+                GameService.Instance.playerService.PlayerController.SetTradeMode(false);
 
                 if (GameService.Instance.playerService.PlayerModel.IsInventoryOpen)
                     UpdateInventoryDisplay();
@@ -57,7 +57,7 @@ namespace TradeMarket.UISystem
         public void OnTradeCancelled()
         {
             UIView.HideTradeConfirmationPanel();
-            GameService.Instance.playerService.PlayerModel.SetTradeUIActive(false);
+            GameService.Instance.playerService.PlayerController.SetTradeMode(false);
         }
     }
 }

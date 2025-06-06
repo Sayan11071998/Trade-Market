@@ -33,7 +33,7 @@ namespace TradeMarket.PlayerSystem
             {
                 playerModel.SetItem(currentItem);
                 if (isInventoryOpen != playerModel.IsInventoryOpen)
-                    playerModel.ToggleInventory();
+                    playerModel.SetInventoryOpen(isInventoryOpen);
             }
         }
 
