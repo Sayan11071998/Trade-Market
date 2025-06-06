@@ -28,14 +28,11 @@ namespace TradeMarket.PlayerSystem
             CurrentItem = null;
             IsInventoryOpen = false;
             IsTradeUIActive = false;
-            
+
             playerData = playerDataSO;
-            
-            // Load persisted data if available
+
             if (playerData != null)
-            {
                 playerData.LoadPlayerState(this);
-            }
         }
 
         public void SetMovement(Vector2 newMovement)
@@ -52,7 +49,7 @@ namespace TradeMarket.PlayerSystem
             if (newMovement != Vector2.zero)
             {
                 LastMovement = newMovement;
-                // Save last movement to persistent data
+
                 if (playerData != null)
                     playerData.lastMovement = LastMovement;
             }
@@ -67,10 +64,10 @@ namespace TradeMarket.PlayerSystem
         public void SetItem(ItemScriptableObject item)
         {
             CurrentItem = item;
-            // Save to persistent data
+
             if (playerData != null)
                 playerData.currentItem = item;
-            
+
             OnItemChanged?.Invoke();
         }
 
@@ -80,24 +77,21 @@ namespace TradeMarket.PlayerSystem
         public void ToggleInventory()
         {
             IsInventoryOpen = !IsInventoryOpen;
-            
-            // Save to persistent data
+
             if (playerData != null)
                 playerData.isInventoryOpen = IsInventoryOpen;
-                
+
             OnInventoryToggled?.Invoke();
         }
 
         public void SetTradeUIActive(bool isActive) => IsTradeUIActive = isActive;
 
-        // Method to manually save state
         public void SaveState()
         {
             if (playerData != null)
                 playerData.SavePlayerState(this);
         }
 
-        // Get reference to persistent data
         public PlayerDataScriptableObject GetPersistentData() => playerData;
     }
 }

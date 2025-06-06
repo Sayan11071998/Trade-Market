@@ -10,10 +10,10 @@ namespace TradeMarket.SceneTransitionSystem
     {
         [SerializeField] private bool isFinalScene;
         [SerializeField] private ScriptableObject itemRequiredToComplete;
+        [SerializeField] private string currentSceneName;
         [SerializeField] private string sceneToLoad;
         [SerializeField] private Animator fadeAnimator;
         [SerializeField] private float fadeTimeDelay = 0.5f;
-        [SerializeField] private string currentSceneName; // Add this to track current scene
 
         private bool IsPlayerHavingTheRequiredItem()
         {
@@ -23,8 +23,7 @@ namespace TradeMarket.SceneTransitionSystem
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag(GameString.PlayerTag))
-                return;
+            if (!other.CompareTag(GameString.PlayerTag)) return;
 
             bool hasRequiredItem = IsPlayerHavingTheRequiredItem();
 
@@ -33,21 +32,18 @@ namespace TradeMarket.SceneTransitionSystem
                 if (isFinalScene)
                 {
                     Debug.Log("Game Won!!");
-                    // Mark final scene as completed
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
                         playerData.CompleteScene(currentSceneName);
                 }
                 else
                 {
-                    // Save game state before transition
                     GameService.Instance.SaveGameState();
-                    
-                    // Mark current scene as completed
+
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
                         playerData.CompleteScene(currentSceneName);
-                    
+
                     fadeAnimator.Play("FadeToBlack");
                     StartCoroutine(LoadDelay());
                 }

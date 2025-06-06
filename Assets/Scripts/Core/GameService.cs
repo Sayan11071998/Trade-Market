@@ -17,7 +17,7 @@ namespace TradeMarket.Core
         [Header("Player")]
         [SerializeField] private PlayerView playerView;
         [SerializeField] private PlayerScriptableObject playerScriptableObject;
-        [SerializeField] private PlayerDataScriptableObject playerDataScriptableObject; // Add this
+        [SerializeField] private PlayerDataScriptableObject playerDataScriptableObject;
 
         [Header("Initial Item")]
         [SerializeField] private ItemScriptableObject initialPlayerItem;
@@ -36,7 +36,6 @@ namespace TradeMarket.Core
 
         private void InitializeServices()
         {
-            // Pass the persistent data ScriptableObject to PlayerService
             playerService = new PlayerService(playerView, playerScriptableObject, playerDataScriptableObject, initialPlayerItem);
             npcManager = new NPCManager(npcSetups);
             uiService = new UIService(uiView);
@@ -49,18 +48,12 @@ namespace TradeMarket.Core
             if (playerService?.PlayerModel != null)
             {
                 playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
-                // Save state before destruction
                 playerService.SavePlayerState();
             }
         }
 
-        // Method to save game state (call this before scene transitions)
-        public void SaveGameState()
-        {
-            playerService?.SavePlayerState();
-        }
+        public void SaveGameState() => playerService?.SavePlayerState();
 
-        // Method to reset game data (for new game)
         public void ResetGameData()
         {
             if (playerDataScriptableObject != null)
