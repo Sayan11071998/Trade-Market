@@ -29,6 +29,8 @@ namespace TradeMarket.Core
         [Header("UI")]
         [SerializeField] private UIView uiView;
 
+        private PlayerSaveManager saveManager;
+
         protected override void Awake()
         {
             base.Awake();
@@ -37,6 +39,7 @@ namespace TradeMarket.Core
 
         private void InitializeServices()
         {
+            saveManager = new PlayerSaveManager(playerDataScriptableObject);
             playerService = new PlayerService(playerView, playerScriptableObject, playerDataScriptableObject, initialPlayerItem);
             npcManager = new NPCManager(npcSetups);
             uiService = new UIService(uiView);
@@ -57,8 +60,8 @@ namespace TradeMarket.Core
 
         public void ResetGameData()
         {
-            if (playerDataScriptableObject != null)
-                playerDataScriptableObject.ResetData();
+            if (saveManager != null)
+                saveManager.ResetData();
         }
 
         public bool ExecuteTradeWithNPC(string npcName)

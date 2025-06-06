@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TradeMarket.Core;
 using TradeMarket.Utilities;
+using TradeMarket.SaveSystem;
 
 namespace TradeMarket.SceneTransitionSystem
 {
@@ -34,7 +35,10 @@ namespace TradeMarket.SceneTransitionSystem
                     Debug.Log("Game Won!!");
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
-                        playerData.CompleteScene(currentSceneName);
+                    {
+                        var saveManager = new PlayerSaveManager(playerData);
+                        saveManager.CompleteScene(currentSceneName);
+                    }
                 }
                 else
                 {
@@ -42,7 +46,10 @@ namespace TradeMarket.SceneTransitionSystem
 
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
-                        playerData.CompleteScene(currentSceneName);
+                    {
+                        var saveManager = new PlayerSaveManager(playerData);
+                        saveManager.CompleteScene(currentSceneName);
+                    }
 
                     fadeAnimator.Play(GameString.SceneAnimationFadeToBlack);
                     StartCoroutine(LoadDelay());

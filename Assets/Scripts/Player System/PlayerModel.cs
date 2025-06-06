@@ -22,6 +22,7 @@ namespace TradeMarket.PlayerSystem
         public event Action OnTradeModeChanged;
 
         private PlayerDataScriptableObject playerData;
+        private PlayerSaveManager saveManager;
 
         public PlayerModel(PlayerScriptableObject playerScriptableObject, PlayerDataScriptableObject playerDataSO = null)
         {
@@ -36,7 +37,10 @@ namespace TradeMarket.PlayerSystem
             playerData = playerDataSO;
 
             if (playerData != null)
-                playerData.LoadPlayerState(this);
+            {
+                saveManager = new PlayerSaveManager(playerData);
+                saveManager.LoadPlayerState(this);
+            }
         }
 
         public void SetMovement(Vector2 newMovement)
@@ -85,8 +89,8 @@ namespace TradeMarket.PlayerSystem
 
         public void SaveState()
         {
-            if (playerData != null)
-                playerData.SavePlayerState(this);
+            if (saveManager != null)
+                saveManager.SavePlayerState(this);
         }
 
         public PlayerDataScriptableObject GetPersistentData() => playerData;
