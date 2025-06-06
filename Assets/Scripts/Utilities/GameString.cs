@@ -25,6 +25,10 @@ namespace TradeMarket.Utilities
         public const string ReceiveItemText = "Receive: {0}";
         #endregion
 
+        #region Scene Transition
+        public const string SceneAnimationFadeToBlack = "FadeToBlack";
+        #endregion
+
         #region Tags
         public const string PlayerTag = "Player";
         #endregion

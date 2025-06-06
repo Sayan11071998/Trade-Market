@@ -1,4 +1,5 @@
 using TradeMarket.ItemSystem;
+using TradeMarket.SaveSystem;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -8,15 +9,19 @@ namespace TradeMarket.PlayerSystem
         public PlayerController PlayerController { get; private set; }
         public PlayerView PlayerView { get; private set; }
 
-        public PlayerService(PlayerView playerView, PlayerScriptableObject playerScriptableObject, ItemScriptableObject initialItem = null)
+        public PlayerService(PlayerView playerView, PlayerScriptableObject playerScriptableObject,
+                           PlayerDataScriptableObject playerDataSO = null, ItemScriptableObject initialItem = null)
         {
             PlayerView = playerView;
-            PlayerModel = new PlayerModel(playerScriptableObject);
+            PlayerModel = new PlayerModel(playerScriptableObject, playerDataSO);
             PlayerController = new PlayerController(PlayerModel);
             PlayerView.SetController(PlayerController);
 
-            if (initialItem != null)
-                PlayerModel.SetItem(initialItem);
+            if (initialItem != null
+                            && (playerDataSO == null || !playerDataSO.hasInitializedThisSession || playerDataSO.currentItem == null))
+                PlayerController.SetCurrentItem(initialItem);
         }
+
+        public void SavePlayerState() => PlayerModel.SaveState();
     }
 }

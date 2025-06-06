@@ -5,6 +5,7 @@ using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
 using TradeMarket.UISystem;
 using TradeMarket.NPCSystem;
+using TradeMarket.SaveSystem;
 
 namespace TradeMarket.Core
 {
@@ -17,6 +18,7 @@ namespace TradeMarket.Core
         [Header("Player")]
         [SerializeField] private PlayerView playerView;
         [SerializeField] private PlayerScriptableObject playerScriptableObject;
+        [SerializeField] private PlayerDataScriptableObject playerDataScriptableObject;
 
         [Header("Initial Item")]
         [SerializeField] private ItemScriptableObject initialPlayerItem;
@@ -27,6 +29,8 @@ namespace TradeMarket.Core
         [Header("UI")]
         [SerializeField] private UIView uiView;
 
+        private PlayerSaveManager saveManager;
+
         protected override void Awake()
         {
             base.Awake();
@@ -35,7 +39,8 @@ namespace TradeMarket.Core
 
         private void InitializeServices()
         {
-            playerService = new PlayerService(playerView, playerScriptableObject, initialPlayerItem);
+            saveManager = new PlayerSaveManager(playerDataScriptableObject);
+            playerService = new PlayerService(playerView, playerScriptableObject, playerDataScriptableObject, initialPlayerItem);
             npcManager = new NPCManager(npcSetups);
             uiService = new UIService(uiView);
 
@@ -45,7 +50,18 @@ namespace TradeMarket.Core
         private void OnDestroy()
         {
             if (playerService?.PlayerModel != null)
+            {
                 playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
+                playerService.SavePlayerState();
+            }
+        }
+
+        public void SaveGameState() => playerService?.SavePlayerState();
+
+        public void ResetGameData()
+        {
+            if (saveManager != null)
+                saveManager.ResetData();
         }
 
         public bool ExecuteTradeWithNPC(string npcName)
