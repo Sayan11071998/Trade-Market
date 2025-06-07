@@ -101,6 +101,11 @@ namespace TradeMarket.UISystem
                 tradeConfirmationPanel.SetActive(false);
         }
 
+        public void ShowGameWonPanel()
+        {
+            Debug.Log("Game Won Panel!!");
+        }
+
         private void OnConfirmTradeClicked() => uiService?.OnTradeConfirmed(currentNPCName);
 
         private void OnCancelTradeClicked() => uiService?.OnTradeCancelled();

@@ -59,5 +59,10 @@ namespace TradeMarket.UISystem
             UIView.HideTradeConfirmationPanel();
             GameService.Instance.playerService.PlayerController.SetTradeMode(false);
         }
+
+        public void ShowGameWonPanel()
+        {
+            UIView.ShowGameWonPanel();
+        }
     }
 }

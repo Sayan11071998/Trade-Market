@@ -32,7 +32,9 @@ namespace TradeMarket.SceneTransitionSystem
             {
                 if (isFinalScene)
                 {
-                    Debug.Log("Game Won!!");
+                    GameService.Instance.playerService.PlayerController.DisableControls();
+                    GameService.Instance.uiService.ShowGameWonPanel();
+
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
                     {
