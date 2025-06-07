@@ -52,6 +52,7 @@ namespace TradeMarket.PlayerSystem
                 playerController.Update();
                 UpdatePhysics();
                 UpdateAnimator();
+                UpdateFirePoint();
                 playerBulletService.UpdateBullets();
             }
         }
@@ -96,6 +97,28 @@ namespace TradeMarket.PlayerSystem
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastHorizontal, lastMovement.x);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastVertical, lastMovement.y);
             playerAnimator.SetBool(GameString.PlayerAnimationBoolIsWalking, isWalking);
+        }
+
+        private void UpdateFirePoint()
+        {
+            if (firePoint == null) return;
+
+            Vector2 lastMovement = playerController.PlayerModel.LastMovement;
+
+            if (lastMovement != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(lastMovement.y, lastMovement.x) * Mathf.Rad2Deg;
+                firePoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                Vector3 scale = firePoint.localScale;
+
+                if (lastMovement.x < 0)
+                    scale.y = -Mathf.Abs(scale.y);
+                else if (lastMovement.x > 0)
+                    scale.y = Mathf.Abs(scale.y);
+
+                firePoint.localScale = scale;
+            }
         }
 
         public void ActivateDialoguePanel() => dialoguePanel?.SetActive(true);
