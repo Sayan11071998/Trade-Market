@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
+using UnityEngine.SceneManagement;
 
 namespace TradeMarket.UISystem
 {
@@ -23,6 +24,11 @@ namespace TradeMarket.UISystem
         [SerializeField] private Button confirmTradeButton;
         [SerializeField] private Button cancelTradeButton;
 
+        [Header("Game Over Panel")]
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private Button restartButton;
+        [SerializeField] private Button quitButton;
+
         private UIService uiService;
         private string currentNPCName;
 
@@ -38,6 +44,12 @@ namespace TradeMarket.UISystem
 
             if (cancelTradeButton != null)
                 cancelTradeButton.onClick.AddListener(OnCancelTradeClicked);
+
+            if (restartButton != null)
+                restartButton.onClick.AddListener(RestartGame);
+
+            if (quitButton != null)
+                quitButton.onClick.AddListener(QuitGame);
         }
 
         public void SetInventoryPanelActive(bool isActive) => inventoryPanel.SetActive(isActive);
@@ -101,14 +113,15 @@ namespace TradeMarket.UISystem
                 tradeConfirmationPanel.SetActive(false);
         }
 
-        public void ShowGameWonPanel()
-        {
-            Debug.Log("Game Won Panel!!");
-        }
+        public void ShowGameWonPanel() => gameOverPanel.SetActive(true);
 
         private void OnConfirmTradeClicked() => uiService?.OnTradeConfirmed(currentNPCName);
 
         private void OnCancelTradeClicked() => uiService?.OnTradeCancelled();
+
+        private void RestartGame() => SceneManager.LoadScene(GameString.VillageScene);
+
+        private void QuitGame() => Application.Quit();
 
         private void OnDestroy()
         {
