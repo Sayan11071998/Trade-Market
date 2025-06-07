@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
+  m_Name: Marcus SO
+  m_EditorClassIdentifier: 
+  npcName: Marcus
+  itemHaving: {fileID: 11400000, guid: 419ef957060a82c4682cd5268ac12eb4, type: 2}
+  itemDesired: {fileID: 11400000, guid: 71b3e88063cff564f8ab27dfd0affa86, type: 2}
+  npcSprite: {fileID: 8680820135330720172, guid: 7dde3b8acb47a7548bdf748940a434fb, type: 3}
+  greetingText: Ah, a fellow seeker of knowledge! Or perhaps you're here for more
+    practical matters?
+  tradeOfferText: This {itemHaving} contains forgotten wisdom, but I need {itemDesired}
+    to decipher some ancient texts. Knowledge for knowledge, as they say.
+  cantDoTradeText: Without {itemDesired}, these old texts remain a mystery to me.
+    Find one, and I'll share secrets lost to time!
+  alreadyTradedText: Marvelous! With this {itemDesired}, I can finally unlock the
+    secrets of the ancients. Our exchange benefits us both!

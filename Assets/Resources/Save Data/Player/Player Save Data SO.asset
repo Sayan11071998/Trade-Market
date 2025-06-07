@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItem: {fileID: 0}
   isInventoryOpen: 0
-  lastMovement: {x: 0, y: -1}
+  lastMovement: {x: 0, y: 0}
   scenesCompleted: 0
   completedSceneNames: []
   hasInitializedThisSession: 0

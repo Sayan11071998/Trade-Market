@@ -161,10 +161,10 @@ TextureImporter:
       name: Char_002_Idle_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 71
-        width: 14
-        height: 20
+        x: 6
+        y: 72
+        width: 12
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: Char_002_Idle_1
       rect:
         serializedVersion: 2
-        x: 29
-        y: 71
-        width: 14
-        height: 19
+        x: 30
+        y: 72
+        width: 12
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: Char_002_Idle_2
       rect:
         serializedVersion: 2
-        x: 53
-        y: 71
-        width: 14
-        height: 19
+        x: 54
+        y: 72
+        width: 12
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +227,10 @@ TextureImporter:
       name: Char_002_Idle_3
       rect:
         serializedVersion: 2
-        x: 77
-        y: 71
-        width: 14
-        height: 20
+        x: 78
+        y: 72
+        width: 12
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,10 +249,10 @@ TextureImporter:
       name: Char_002_Idle_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 47
-        width: 11
-        height: 20
+        x: 8
+        y: 48
+        width: 9
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,10 +271,10 @@ TextureImporter:
       name: Char_002_Idle_5
       rect:
         serializedVersion: 2
-        x: 31
-        y: 47
-        width: 11
-        height: 19
+        x: 32
+        y: 48
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +293,10 @@ TextureImporter:
       name: Char_002_Idle_6
       rect:
         serializedVersion: 2
-        x: 55
-        y: 47
-        width: 11
-        height: 19
+        x: 56
+        y: 48
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +315,10 @@ TextureImporter:
       name: Char_002_Idle_7
       rect:
         serializedVersion: 2
-        x: 79
-        y: 47
-        width: 11
-        height: 20
+        x: 80
+        y: 48
+        width: 9
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,10 +337,10 @@ TextureImporter:
       name: Char_002_Idle_8
       rect:
         serializedVersion: 2
-        x: 6
-        y: 23
-        width: 11
-        height: 20
+        x: 7
+        y: 24
+        width: 9
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,10 +359,10 @@ TextureImporter:
       name: Char_002_Idle_9
       rect:
         serializedVersion: 2
-        x: 30
-        y: 23
-        width: 11
-        height: 19
+        x: 31
+        y: 24
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,10 +381,10 @@ TextureImporter:
       name: Char_002_Idle_10
       rect:
         serializedVersion: 2
-        x: 54
-        y: 23
-        width: 11
-        height: 19
+        x: 55
+        y: 24
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,10 +403,10 @@ TextureImporter:
       name: Char_002_Idle_11
       rect:
         serializedVersion: 2
-        x: 78
-        y: 23
-        width: 11
-        height: 20
+        x: 79
+        y: 24
+        width: 9
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,10 +425,10 @@ TextureImporter:
       name: Char_002_Idle_12
       rect:
         serializedVersion: 2
-        x: 5
+        x: 6
         y: 0
-        width: 14
-        height: 19
+        width: 12
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,10 +447,10 @@ TextureImporter:
       name: Char_002_Idle_13
       rect:
         serializedVersion: 2
-        x: 29
+        x: 30
         y: 0
-        width: 14
-        height: 18
+        width: 12
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -469,10 +469,10 @@ TextureImporter:
       name: Char_002_Idle_14
       rect:
         serializedVersion: 2
-        x: 53
+        x: 54
         y: 0
-        width: 14
-        height: 18
+        width: 12
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,10 +491,10 @@ TextureImporter:
       name: Char_002_Idle_15
       rect:
         serializedVersion: 2
-        x: 77
+        x: 78
         y: 0
-        width: 14
-        height: 19
+        width: 12
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,7 +513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f17b1f244cd7936438fe97c9948e9c95
     internalID: 0
     vertices: []
     indices: 
