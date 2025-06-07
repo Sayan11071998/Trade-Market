@@ -6,22 +6,28 @@ namespace TradeMarket.BulletSystem
     public class BulletPool : GenericObjectPool<BulletController>
     {
         protected BulletView bulletPrefab;
-        protected BulletModel bulletModel;
+        protected BulletScriptableObject bulletData;
+        protected Transform parentTransform;
 
-        public BulletPool(BulletView bulletPrefabToSet, BulletModel bulletModelToSet)
+        public BulletPool(BulletView bulletPrefabToSet, BulletScriptableObject bulletDataToSet, Transform parent = null)
         {
             bulletPrefab = bulletPrefabToSet;
-            bulletModel = bulletModelToSet;
+            bulletData = bulletDataToSet;
+            parentTransform = parent;
         }
 
         public BulletController GetBullet() => GetItem<BulletController>();
 
         protected override BulletController CreateItem<T>()
         {
-            BulletView view = Object.Instantiate(bulletPrefab);
-            return CreateController(view);
+            BulletView view = Object.Instantiate(bulletPrefab, parentTransform);
+            BulletModel model = new BulletModel(bulletData);
+            return new BulletController(model, view, this);
         }
 
-        protected virtual BulletController CreateController(BulletView view) => new BulletController(bulletModel, view, this);
+        public override void ReturnItem(BulletController item)
+        {
+            base.ReturnItem(item);
+        }
     }
 }
