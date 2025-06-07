@@ -12020,6 +12020,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &421127295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421127296}
+  m_Layer: 0
+  m_Name: Player Bullet Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &421127296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421127295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5841300996374370172}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &429295816
 GameObject:
   m_ObjectHideFlags: 0
@@ -15373,6 +15404,37 @@ Transform:
   - {fileID: 1289937584}
   - {fileID: 11478843}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1706517698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706517699}
+  m_Layer: 0
+  m_Name: Fire Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706517699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706517698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.463, y: -0.086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5841300996374370172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773969543
 GameObject:
@@ -24587,6 +24649,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 122248770054195983}
+  - {fileID: 1706517699}
+  - {fileID: 421127296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5953491193219458619
@@ -24708,6 +24772,10 @@ MonoBehaviour:
   dialoguePanel: {fileID: 3646988673093726429}
   dialogueText: {fileID: 6661100431875581620}
   dialogueDisplayTime: 1.5
+  playerBulletPrefab: {fileID: 6830095410222574835, guid: 9d63e151082dbe94f87460f105df1d9f, type: 3}
+  playerBulletData: {fileID: 11400000, guid: c2621ba3b9fe6264b8aff56b5bc8afd5, type: 2}
+  firePoint: {fileID: 1706517699}
+  bulletPoolParent: {fileID: 421127296}
 --- !u!61 &6443181448058508443
 BoxCollider2D:
   m_ObjectHideFlags: 0
