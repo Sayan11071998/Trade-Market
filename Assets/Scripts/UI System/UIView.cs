@@ -4,6 +4,7 @@ using TMPro;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
 using UnityEngine.SceneManagement;
+using TradeMarket.Core;
 
 namespace TradeMarket.UISystem
 {
@@ -119,9 +120,17 @@ namespace TradeMarket.UISystem
 
         private void OnCancelTradeClicked() => uiService?.OnTradeCancelled();
 
-        private void RestartGame() => SceneManager.LoadScene(GameString.VillageScene);
+        private void RestartGame()
+        {
+            GameService.Instance.ResetGameData();
+            SceneManager.LoadScene(GameString.VillageScene);
+        }
 
-        private void QuitGame() => Application.Quit();
+        private void QuitGame()
+        {
+            GameService.Instance.ResetGameData();
+            Application.Quit();
+        }
 
         private void OnDestroy()
         {
