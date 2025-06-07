@@ -19598,7 +19598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinalScene: 0
-  itemRequiredToComplete: {fileID: 11400000, guid: 30d1b8cf4dd197c4b8d5956a7ef5bbaa, type: 2}
+  itemRequiredToComplete: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
   currentSceneName: TownScene
   sceneToLoad: ForestScene
   fadeAnimator: {fileID: 7722683568824646342}

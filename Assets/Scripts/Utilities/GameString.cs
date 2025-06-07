@@ -5,6 +5,7 @@ namespace TradeMarket.Utilities
         #region Player
         public const string PlayerInputActionMove = "Move";
         public const string PlayerInputActionInventory = "Inventory";
+        public const string PlayerInputActionFire = "Fire";
         public const string PlayerAnimationFloatHorizontal = "Horizontal";
         public const string PlayerAnimationFloatVertical = "Vertical";
         public const string PlayerAnimationFloatLastHorizontal = "LastHorizontal";

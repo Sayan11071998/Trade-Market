@@ -23107,7 +23107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinalScene: 0
-  itemRequiredToComplete: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
+  itemRequiredToComplete: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
   currentSceneName: VillageScene
   sceneToLoad: TownScene
   fadeAnimator: {fileID: 7722683568824646342}
@@ -24702,7 +24702,7 @@ MonoBehaviour:
   playerView: {fileID: 998096848514004644}
   playerScriptableObject: {fileID: 11400000, guid: 956d9e14cf5881b408e1e97647f32322, type: 2}
   playerDataScriptableObject: {fileID: 11400000, guid: c25c300cb0d916d40b974f79bbe9aaf4, type: 2}
-  initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  initialPlayerItem: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
   npcSetups:
   - npcView: {fileID: 3382672624379901746}
     npcData: {fileID: 11400000, guid: 5af1d806329886e459f7bf8af76782ac, type: 2}

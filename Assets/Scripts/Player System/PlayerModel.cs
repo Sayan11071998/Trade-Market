@@ -17,6 +17,8 @@ namespace TradeMarket.PlayerSystem
         public bool IsInTradeMode { get; private set; }
         public bool AreControlsEnabled { get; private set; } = true;
 
+        public bool CanFire { get; private set; } = false;
+
         public event Action OnInventoryToggled;
         public event Action OnItemChanged;
         public event Action OnMovementChanged;
@@ -35,6 +37,7 @@ namespace TradeMarket.PlayerSystem
             IsInventoryOpen = false;
             IsInTradeMode = false;
             AreControlsEnabled = true;
+            CanFire = false;
 
             playerData = playerDataSO;
 
@@ -100,6 +103,8 @@ namespace TradeMarket.PlayerSystem
                 SetIsWalking(false);
             }
         }
+
+        public void EnableFire(bool enabled) => CanFire = enabled;
 
         public Vector2 GetMovementVelocity() => Movement * MovementSpeed;
 

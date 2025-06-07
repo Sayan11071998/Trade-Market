@@ -16,6 +16,7 @@ namespace TradeMarket.PlayerSystem
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction inventoryAction;
+        private InputAction fireAction;
         private Rigidbody2D playerRigidBody;
         private Animator playerAnimator;
         private Coroutine dialogueCoroutine;
@@ -30,6 +31,7 @@ namespace TradeMarket.PlayerSystem
 
             moveAction = playerInput.actions[GameString.PlayerInputActionMove];
             inventoryAction = playerInput.actions[GameString.PlayerInputActionInventory];
+            fireAction = playerInput.actions[GameString.PlayerInputActionFire];
             dialoguePanel?.SetActive(false);
         }
 
@@ -50,6 +52,7 @@ namespace TradeMarket.PlayerSystem
 
             HandleMoveInput();
             HandleInventoryInput();
+            HandleFireInput();
         }
 
         private void HandleMoveInput()
@@ -62,6 +65,12 @@ namespace TradeMarket.PlayerSystem
         {
             if (inventoryAction.WasPressedThisFrame())
                 playerController.ToggleInventory();
+        }
+
+        private void HandleFireInput()
+        {
+            if (fireAction.WasPressedThisFrame() && playerController.PlayerModel.CanFire)
+                Debug.Log("Fire");
         }
 
         private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetPlayerVelocity();
