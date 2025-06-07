@@ -26,7 +26,8 @@ namespace TradeMarket.UISystem
         [SerializeField] private Button cancelTradeButton;
 
         [Header("Game Over Panel")]
-        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject gameUIPanel;
+        [SerializeField] private TextMeshProUGUI gameUIPanelHeaderText;
         [SerializeField] private Button restartButton;
         [SerializeField] private Button quitButton;
 
@@ -114,7 +115,11 @@ namespace TradeMarket.UISystem
                 tradeConfirmationPanel.SetActive(false);
         }
 
-        public void ShowGameWonPanel() => gameOverPanel.SetActive(true);
+        public void ShowGameUIPanel()
+        {
+            gameUIPanel.SetActive(true);
+            gameUIPanelHeaderText.text = "Game Completed!!";
+        }
 
         private void OnConfirmTradeClicked() => uiService?.OnTradeConfirmed(currentNPCName);
 

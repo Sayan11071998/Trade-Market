@@ -60,9 +60,9 @@ namespace TradeMarket.UISystem
             GameService.Instance.playerService.PlayerController.SetTradeMode(false);
         }
 
-        public void ShowGameWonPanel()
+        public void ShowGameUIPanel()
         {
-            UIView.ShowGameWonPanel();
+            UIView.ShowGameUIPanel();
         }
     }
 }

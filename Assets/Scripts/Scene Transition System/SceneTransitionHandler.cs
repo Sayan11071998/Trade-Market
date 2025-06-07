@@ -33,7 +33,7 @@ namespace TradeMarket.SceneTransitionSystem
                 if (isFinalScene)
                 {
                     GameService.Instance.playerService.PlayerController.DisableControls();
-                    GameService.Instance.uiService.ShowGameWonPanel();
+                    GameService.Instance.uiService.ShowGameUIPanel();
 
                     var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
                     if (playerData != null)
