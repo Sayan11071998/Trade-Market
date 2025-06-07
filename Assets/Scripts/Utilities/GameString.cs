@@ -33,6 +33,10 @@ namespace TradeMarket.Utilities
         public const string VillageScene = "VillageScene";
         #endregion
 
+        #region Fire Activation
+        public const string FireActivationDialogue = "You can Fire Now. Press 'F' to Fire";
+        #endregion
+
         #region Tags
         public const string PlayerTag = "Player";
         #endregion

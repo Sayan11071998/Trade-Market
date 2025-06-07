@@ -15179,7 +15179,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.3705902, y: -7.4631224}
+  m_Offset: {x: 3.654006, y: -7.4631224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -15189,7 +15189,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 12.506248, y: 10.452015}
+  m_Size: {x: 26.55544, y: 10.452015}
   m_EdgeRadius: 0
 --- !u!114 &1574305423
 MonoBehaviour:
@@ -24707,7 +24707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 3646988673093726429}
   dialogueText: {fileID: 6661100431875581620}
-  dialogueDisplayTime: 3
+  dialogueDisplayTime: 1.5
 --- !u!61 &6443181448058508443
 BoxCollider2D:
   m_ObjectHideFlags: 0

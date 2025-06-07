@@ -9,7 +9,12 @@ namespace TradeMarket.FireSystem
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(GameString.PlayerTag))
-                GameService.Instance.playerService.PlayerController.PlayerModel.EnableFire(true);
+            {
+                var playerController = GameService.Instance.playerService.PlayerController;
+                playerController.PlayerView.ActivateDialoguePanel();
+                playerController.PlayerView.ShowDialogue(GameString.FireActivationDialogue);
+                playerController.PlayerModel.EnableFire(true);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
