@@ -19533,7 +19533,7 @@ GameObject:
   - component: {fileID: 3313085186354687236}
   - component: {fileID: 989289101793639468}
   m_Layer: 0
-  m_Name: NPC_Prefab
+  m_Name: NPC_Elena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
