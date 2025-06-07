@@ -19403,7 +19403,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.875, y: 1.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -19938,8 +19938,8 @@ MonoBehaviour:
   playerDataScriptableObject: {fileID: 11400000, guid: c25c300cb0d916d40b974f79bbe9aaf4, type: 2}
   initialPlayerItem: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
   npcSetups:
-  - npcView: {fileID: 0}
-    npcData: {fileID: 0}
+  - npcView: {fileID: 989289101793639468}
+    npcData: {fileID: 11400000, guid: 00519a7d748e19146a9b4b917c8b10d0, type: 2}
   uiView: {fileID: 741758458}
 --- !u!222 &5997336877641269796
 CanvasRenderer:
@@ -20401,7 +20401,7 @@ SpriteRenderer:
   m_SortingLayerID: 2050729265
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df894d170d5f44be293fae0ef08b055c, type: 3}
+  m_Sprite: {fileID: -1954712371729123082, guid: 3ea404610e526fc4a9f530d3453d8672, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
