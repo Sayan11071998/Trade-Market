@@ -23722,7 +23722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinalScene: 1
-  itemRequiredToComplete: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
+  itemRequiredToComplete: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
   currentSceneName: ForestScene
   sceneToLoad: ForestScene
   fadeAnimator: {fileID: 7722683568824646342}

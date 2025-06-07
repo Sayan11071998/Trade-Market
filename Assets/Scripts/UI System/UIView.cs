@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
-using UnityEngine.SceneManagement;
-using TradeMarket.Core;
 
 namespace TradeMarket.UISystem
 {
@@ -25,33 +23,38 @@ namespace TradeMarket.UISystem
         [SerializeField] private Button confirmTradeButton;
         [SerializeField] private Button cancelTradeButton;
 
-        [Header("Game Over Panel")]
+        [Header("Game UI Panel")]
         [SerializeField] private GameObject gameUIPanel;
         [SerializeField] private TextMeshProUGUI gameUIPanelHeaderText;
         [SerializeField] private Button restartButton;
         [SerializeField] private Button quitButton;
 
-        private UIService uiService;
+        private UIController uiController;
         private string currentNPCName;
 
-        public void SetService(UIService uiServiceToSet) => uiService = uiServiceToSet;
-
+        public void SetController(UIController controller) => uiController = controller;
         private void Start()
         {
-            if (tradeConfirmationPanel != null)
-                tradeConfirmationPanel.SetActive(false);
+            InitializeButtons();
+            HideTradeConfirmationPanel();
+        }
 
-            if (confirmTradeButton != null)
-                confirmTradeButton.onClick.AddListener(OnConfirmTradeClicked);
+        private void InitializeButtons()
+        {
+            confirmTradeButton?.onClick.AddListener(OnConfirmTradeClicked);
+            cancelTradeButton?.onClick.AddListener(OnCancelTradeClicked);
+            restartButton?.onClick.AddListener(OnRestartClicked);
+            quitButton?.onClick.AddListener(OnQuitClicked);
+        }
 
-            if (cancelTradeButton != null)
-                cancelTradeButton.onClick.AddListener(OnCancelTradeClicked);
+        private void OnDestroy() => UnsubscribeButtons();
 
-            if (restartButton != null)
-                restartButton.onClick.AddListener(RestartGame);
-
-            if (quitButton != null)
-                quitButton.onClick.AddListener(QuitGame);
+        private void UnsubscribeButtons()
+        {
+            confirmTradeButton?.onClick.RemoveListener(OnConfirmTradeClicked);
+            cancelTradeButton?.onClick.RemoveListener(OnCancelTradeClicked);
+            restartButton?.onClick.RemoveListener(OnRestartClicked);
+            quitButton?.onClick.RemoveListener(OnQuitClicked);
         }
 
         public void SetInventoryPanelActive(bool isActive) => inventoryPanel.SetActive(isActive);
@@ -59,18 +62,24 @@ namespace TradeMarket.UISystem
         public void UpdateInventoryItem(ItemScriptableObject item)
         {
             if (item != null)
-            {
-                itemSprite.sprite = item.ItemIcon;
-                itemNameText.text = item.ItemName;
-
-                itemSprite.gameObject.SetActive(true);
-                itemNameText.gameObject.SetActive(true);
-            }
+                ShowInventoryItem(item);
             else
-            {
-                itemSprite.gameObject.SetActive(false);
-                itemNameText.gameObject.SetActive(false);
-            }
+                HideInventoryItem();
+        }
+
+        private void ShowInventoryItem(ItemScriptableObject item)
+        {
+            itemSprite.sprite = item.ItemIcon;
+            itemNameText.text = item.ItemName;
+            SetInventoryItemVisibility(true);
+        }
+
+        private void HideInventoryItem() => SetInventoryItemVisibility(false);
+
+        private void SetInventoryItemVisibility(bool isVisible)
+        {
+            itemSprite.gameObject.SetActive(isVisible);
+            itemNameText.gameObject.SetActive(isVisible);
         }
 
         public void ShowTradeConfirmationPanel(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
@@ -78,72 +87,71 @@ namespace TradeMarket.UISystem
             if (tradeConfirmationPanel == null) return;
 
             currentNPCName = npcName;
+            SetupTradeConfirmationContent(npcName, playerItem, npcItem);
+            tradeConfirmationPanel.SetActive(true);
+        }
 
+        private void SetupTradeConfirmationContent(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
+        {
+            SetTradeDescription(npcName);
+            SetupPlayerItemDisplay(playerItem);
+            SetupNPCItemDisplay(npcItem);
+        }
+
+        private void SetTradeDescription(string npcName)
+        {
             if (tradeDescriptionText != null)
                 tradeDescriptionText.text = string.Format(GameString.TradePrompt, npcName);
+        }
 
-            if (playerItemImage != null && playerItem != null)
+        private void SetupPlayerItemDisplay(ItemScriptableObject playerItem)
+        {
+            if (playerItem == null) return;
+
+            if (playerItemImage != null)
             {
                 playerItemImage.sprite = playerItem.ItemIcon;
                 playerItemImage.gameObject.SetActive(true);
             }
 
-            if (playerItemNameText != null && playerItem != null)
+            if (playerItemNameText != null)
             {
                 playerItemNameText.text = string.Format(GameString.GiveItemText, playerItem.ItemName);
                 playerItemNameText.gameObject.SetActive(true);
             }
+        }
 
-            if (npcItemImage != null && npcItem != null)
+        private void SetupNPCItemDisplay(ItemScriptableObject npcItem)
+        {
+            if (npcItem == null) return;
+
+            if (npcItemImage != null)
             {
                 npcItemImage.sprite = npcItem.ItemIcon;
                 npcItemImage.gameObject.SetActive(true);
             }
 
-            if (npcItemNameText != null && npcItem != null)
+            if (npcItemNameText != null)
             {
                 npcItemNameText.text = string.Format(GameString.ReceiveItemText, npcItem.ItemName);
                 npcItemNameText.gameObject.SetActive(true);
             }
-
-            tradeConfirmationPanel.SetActive(true);
         }
 
-        public void HideTradeConfirmationPanel()
-        {
-            if (tradeConfirmationPanel != null)
-                tradeConfirmationPanel.SetActive(false);
-        }
+        public void HideTradeConfirmationPanel() => tradeConfirmationPanel?.SetActive(false);
 
         public void ShowGameUIPanel()
         {
             gameUIPanel.SetActive(true);
-            gameUIPanelHeaderText.text = "Game Completed!!";
+            gameUIPanelHeaderText.text = GameString.GameCompletedText;
         }
 
-        private void OnConfirmTradeClicked() => uiService?.OnTradeConfirmed(currentNPCName);
+        private void OnConfirmTradeClicked() => uiController?.OnTradeConfirmed(currentNPCName);
 
-        private void OnCancelTradeClicked() => uiService?.OnTradeCancelled();
+        private void OnCancelTradeClicked() => uiController?.OnTradeCancelled();
 
-        private void RestartGame()
-        {
-            GameService.Instance.ResetGameData();
-            SceneManager.LoadScene(GameString.VillageScene);
-        }
+        private void OnRestartClicked() => uiController?.RestartGame();
 
-        private void QuitGame()
-        {
-            GameService.Instance.ResetGameData();
-            Application.Quit();
-        }
-
-        private void OnDestroy()
-        {
-            if (confirmTradeButton != null)
-                confirmTradeButton.onClick.RemoveListener(OnConfirmTradeClicked);
-
-            if (cancelTradeButton != null)
-                cancelTradeButton.onClick.RemoveListener(OnCancelTradeClicked);
-        }
+        private void OnQuitClicked() => uiController?.QuitGame();
     }
 }

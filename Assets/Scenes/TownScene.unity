@@ -12016,7 +12016,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.77174, y: -1.7983899, z: -10}
+  m_LocalPosition: {x: -10.798391, y: -1.7983799, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12684,6 +12684,10 @@ MonoBehaviour:
   npcItemNameText: {fileID: 1561001437}
   confirmTradeButton: {fileID: 1644228388}
   cancelTradeButton: {fileID: 1116233614}
+  gameUIPanel: {fileID: 0}
+  gameUIPanelHeaderText: {fileID: 0}
+  restartButton: {fileID: 0}
+  quitButton: {fileID: 0}
 --- !u!1 &814812109
 GameObject:
   m_ObjectHideFlags: 0
@@ -19594,7 +19598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinalScene: 0
-  itemRequiredToComplete: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
+  itemRequiredToComplete: {fileID: 11400000, guid: 30d1b8cf4dd197c4b8d5956a7ef5bbaa, type: 2}
   currentSceneName: TownScene
   sceneToLoad: ForestScene
   fadeAnimator: {fileID: 7722683568824646342}

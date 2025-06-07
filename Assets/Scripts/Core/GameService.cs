@@ -44,25 +44,28 @@ namespace TradeMarket.Core
             npcManager = new NPCManager(npcSetups);
             uiService = new UIService(uiView);
 
-            playerService.PlayerModel.OnInventoryToggled += uiService.ToggleInventoryPanel;
+            SubscribeToEvents();
         }
+
+        private void SubscribeToEvents() => playerService.PlayerModel.OnInventoryToggled += uiService.ToggleInventoryPanel;
 
         private void OnDestroy()
         {
-            if (playerService?.PlayerModel != null)
-            {
-                playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
-                playerService.SavePlayerState();
-            }
+            UnsubscribeFromEvents();
+            SavePlayerStateOnDestroy();
         }
+
+        private void UnsubscribeFromEvents()
+        {
+            if (playerService?.PlayerModel != null)
+                playerService.PlayerModel.OnInventoryToggled -= uiService.ToggleInventoryPanel;
+        }
+
+        private void SavePlayerStateOnDestroy() => playerService?.SavePlayerState();
 
         public void SaveGameState() => playerService?.SavePlayerState();
 
-        public void ResetGameData()
-        {
-            if (saveManager != null)
-                saveManager.ResetData();
-        }
+        public void ResetGameData() => saveManager?.ResetData();
 
         public bool ExecuteTradeWithNPC(string npcName)
         {
