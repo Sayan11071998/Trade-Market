@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
+  m_Name: Eren SO
+  m_EditorClassIdentifier: 
+  npcName: Eren
+  itemHaving: {fileID: 11400000, guid: 30d1b8cf4dd197c4b8d5956a7ef5bbaa, type: 2}
+  itemDesired: {fileID: 11400000, guid: 5adcfc7247ac42e4895ccff76822cfd3, type: 2}
+  npcSprite: {fileID: 907596226379672215, guid: 7d586f5a418634e499b58dd456387ca6, type: 3}
+  greetingText: Hello there!
+  tradeOfferText: I have {itemHaving} and I want {itemDesired}.
+  cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
+  alreadyTradedText: Thanks for the trade!

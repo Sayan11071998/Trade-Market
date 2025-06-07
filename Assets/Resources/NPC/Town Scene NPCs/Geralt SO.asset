@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
+  m_Name: Geralt SO
+  m_EditorClassIdentifier: 
+  npcName: Geralt
+  itemHaving: {fileID: 11400000, guid: 5adcfc7247ac42e4895ccff76822cfd3, type: 2}
+  itemDesired: {fileID: 11400000, guid: 7d9c79c52948a224893fa98f0ff09c8b, type: 2}
+  npcSprite: {fileID: 59197388459127302, guid: 3d0f5cb60af5df9498d54fa5f5ace27b, type: 3}
+  greetingText: Hello there!
+  tradeOfferText: I have {itemHaving} and I want {itemDesired}.
+  cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
+  alreadyTradedText: Thanks for the trade!

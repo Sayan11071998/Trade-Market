@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
+  m_Name: Willow SO
+  m_EditorClassIdentifier: 
+  npcName: Willow
+  itemHaving: {fileID: 11400000, guid: dd9718915684cd94aa437f4202328dd0, type: 2}
+  itemDesired: {fileID: 11400000, guid: 419ef957060a82c4682cd5268ac12eb4, type: 2}
+  npcSprite: {fileID: 6698568452693482262, guid: db781f5e7efd7a040b01b809b184be90, type: 3}
+  greetingText: Hello there!
+  tradeOfferText: I have {itemHaving} and I want {itemDesired}.
+  cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
+  alreadyTradedText: Thanks for the trade!

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377ce5ed1ad0757468fb271b99d424d8, type: 3}
+  m_Name: Elena SO
+  m_EditorClassIdentifier: 
+  npcName: Elena
+  itemHaving: {fileID: 11400000, guid: 71b3e88063cff564f8ab27dfd0affa86, type: 2}
+  itemDesired: {fileID: 11400000, guid: 439b1f735dc4c11418202b1cdf293e4d, type: 2}
+  npcSprite: {fileID: 2199404268297581694, guid: 926ad08a9ed0e294b888025457eab54f, type: 3}
+  greetingText: Welcome, traveler! I've been expecting someone like you.
+  tradeOfferText: I have {itemHaving} to spare, but I'm desperately seeking {itemDesired}
+    for my collection. What do you say?
+  cantDoTradeText: Ah, you don't have any {itemDesired} with you? That's unfortunate.
+    Return when you've found some, and we'll make a deal!
+  alreadyTradedText: Excellent! These {itemDesired} are exactly what I needed. Pleasure
+    doing business with you!
