@@ -39,6 +39,7 @@ namespace TradeMarket.Utilities
 
         #region Tags
         public const string PlayerTag = "Player";
+        public const string EnemyTag = "Enemy";
         #endregion
     }
 }

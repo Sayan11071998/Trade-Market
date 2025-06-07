@@ -35,9 +35,7 @@ namespace TradeMarket.BulletSystem
             {
                 CurrentLifeTime += deltaTime;
                 if (CurrentLifeTime >= BulletLifeTime)
-                {
                     IsActive = false;
-                }
             }
         }
 

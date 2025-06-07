@@ -52,6 +52,7 @@ namespace TradeMarket.PlayerSystem
                 playerController.Update();
                 UpdatePhysics();
                 UpdateAnimator();
+                playerBulletService.UpdateBullets();
             }
         }
 
@@ -119,7 +120,11 @@ namespace TradeMarket.PlayerSystem
 
         private void FireBullet()
         {
-            Vector2 fireDirection = transform.forward;
+            Vector2 fireDirection = playerController.PlayerModel.LastMovement.normalized;
+
+            if (fireDirection == Vector2.zero)
+                fireDirection = Vector2.right;
+
             playerBulletService.FireBullet(firePoint.position, fireDirection);
         }
     }

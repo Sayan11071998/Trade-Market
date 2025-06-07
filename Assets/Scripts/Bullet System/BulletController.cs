@@ -1,4 +1,5 @@
 using UnityEngine;
+using TradeMarket.Utilities;
 
 namespace TradeMarket.BulletSystem
 {
@@ -17,8 +18,7 @@ namespace TradeMarket.BulletSystem
             bulletModel = modelToSet;
             bulletView = viewToSet;
             bulletPool = bulletPoolToSet;
-            
-            // Subscribe to view events
+
             bulletView.Initialize(this);
         }
 
@@ -35,24 +35,15 @@ namespace TradeMarket.BulletSystem
             if (!bulletModel.IsActive) return;
 
             bulletModel.UpdateLifetime(Time.deltaTime);
-            
-            if (!bulletModel.IsActive)
-            {
-                DeactivateBullet();
-            }
-        }
 
-        public void OnCollisionDetected(Collision2D collision)
-        {
-            // Handle collision logic here
-            // For example: deal damage, create effects, etc.
-            DeactivateBullet();
+            if (!bulletModel.IsActive)
+                DeactivateBullet();
         }
 
         public void OnTriggerDetected(Collider2D other)
         {
-            // Handle trigger logic here
-            DeactivateBullet();
+            if (other.CompareTag(GameString.EnemyTag))
+                DeactivateBullet();
         }
 
         private void DeactivateBullet()

@@ -22,11 +22,9 @@ namespace TradeMarket.BulletSystem
         {
             BulletController bullet = bulletPool.GetBullet();
             bullet.FireBullet(startPosition, direction);
-            
+
             if (!activeBullets.Contains(bullet))
-            {
                 activeBullets.Add(bullet);
-            }
         }
 
         public void UpdateBullets()
@@ -34,15 +32,11 @@ namespace TradeMarket.BulletSystem
             for (int i = activeBullets.Count - 1; i >= 0; i--)
             {
                 BulletController bullet = activeBullets[i];
-                
+
                 if (bullet.IsActive)
-                {
                     bullet.UpdateBullet();
-                }
                 else
-                {
                     activeBullets.RemoveAt(i);
-                }
             }
         }
 

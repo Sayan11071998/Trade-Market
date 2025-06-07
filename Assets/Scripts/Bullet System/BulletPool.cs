@@ -25,9 +25,6 @@ namespace TradeMarket.BulletSystem
             return new BulletController(model, view, this);
         }
 
-        public override void ReturnItem(BulletController item)
-        {
-            base.ReturnItem(item);
-        }
+        public override void ReturnItem(BulletController item) => base.ReturnItem(item);
     }
 }
