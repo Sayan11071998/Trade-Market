@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using TradeMarket.Utilities;
+using TradeMarket.BulletSystem;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -12,10 +13,18 @@ namespace TradeMarket.PlayerSystem
         [SerializeField] private TextMeshProUGUI dialogueText;
         [SerializeField] private float dialogueDisplayTime = 3f;
 
+        [Header("Shooting")]
+        [SerializeField] private BulletView playerBulletPrefab;
+        [SerializeField] private BulletScriptableObject playerBulletData;
+        [SerializeField] private Transform firePoint;
+        [SerializeField] private Transform bulletPoolParent;
+
         private PlayerController playerController;
+        private BulletService playerBulletService;
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction inventoryAction;
+        private InputAction fireAction;
         private Rigidbody2D playerRigidBody;
         private Animator playerAnimator;
         private Coroutine dialogueCoroutine;
@@ -30,6 +39,8 @@ namespace TradeMarket.PlayerSystem
 
             moveAction = playerInput.actions[GameString.PlayerInputActionMove];
             inventoryAction = playerInput.actions[GameString.PlayerInputActionInventory];
+            fireAction = playerInput.actions[GameString.PlayerInputActionFire];
+            playerBulletService = new BulletService(playerBulletPrefab, playerBulletData, bulletPoolParent);
             dialoguePanel?.SetActive(false);
         }
 
@@ -41,6 +52,8 @@ namespace TradeMarket.PlayerSystem
                 playerController.Update();
                 UpdatePhysics();
                 UpdateAnimator();
+                UpdateFirePoint();
+                playerBulletService.UpdateBullets();
             }
         }
 
@@ -50,6 +63,7 @@ namespace TradeMarket.PlayerSystem
 
             HandleMoveInput();
             HandleInventoryInput();
+            HandleFireInput();
         }
 
         private void HandleMoveInput()
@@ -62,6 +76,12 @@ namespace TradeMarket.PlayerSystem
         {
             if (inventoryAction.WasPressedThisFrame())
                 playerController.ToggleInventory();
+        }
+
+        private void HandleFireInput()
+        {
+            if (fireAction.WasPressedThisFrame() && playerController.PlayerModel.CanFire)
+                FireBullet();
         }
 
         private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetPlayerVelocity();
@@ -77,6 +97,28 @@ namespace TradeMarket.PlayerSystem
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastHorizontal, lastMovement.x);
             playerAnimator.SetFloat(GameString.PlayerAnimationFloatLastVertical, lastMovement.y);
             playerAnimator.SetBool(GameString.PlayerAnimationBoolIsWalking, isWalking);
+        }
+
+        private void UpdateFirePoint()
+        {
+            if (firePoint == null) return;
+
+            Vector2 lastMovement = playerController.PlayerModel.LastMovement;
+
+            if (lastMovement != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(lastMovement.y, lastMovement.x) * Mathf.Rad2Deg;
+                firePoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                Vector3 scale = firePoint.localScale;
+
+                if (lastMovement.x < 0)
+                    scale.y = -Mathf.Abs(scale.y);
+                else if (lastMovement.x > 0)
+                    scale.y = Mathf.Abs(scale.y);
+
+                firePoint.localScale = scale;
+            }
         }
 
         public void ActivateDialoguePanel() => dialoguePanel?.SetActive(true);
@@ -97,6 +139,16 @@ namespace TradeMarket.PlayerSystem
         {
             yield return new WaitForSeconds(dialogueDisplayTime);
             dialoguePanel?.SetActive(false);
+        }
+
+        private void FireBullet()
+        {
+            Vector2 fireDirection = playerController.PlayerModel.LastMovement.normalized;
+
+            if (fireDirection == Vector2.zero)
+                fireDirection = Vector2.right;
+
+            playerBulletService.FireBullet(firePoint.position, fireDirection);
         }
     }
 }

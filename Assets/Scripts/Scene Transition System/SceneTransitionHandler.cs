@@ -59,8 +59,9 @@ namespace TradeMarket.SceneTransitionSystem
 
         private void ShowRequiredItemMessage()
         {
-            GameService.Instance.playerService.PlayerController.PlayerView.ActivateDialoguePanel();
-            GameService.Instance.playerService.PlayerController.PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
+            var PlayerView = GameService.Instance.playerService.PlayerController.PlayerView;
+            PlayerView.ActivateDialoguePanel();
+            PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
         }
 
         private void CompleteCurrentScene()
