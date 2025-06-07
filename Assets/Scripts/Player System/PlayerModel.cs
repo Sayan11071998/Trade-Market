@@ -15,6 +15,7 @@ namespace TradeMarket.PlayerSystem
         public ItemScriptableObject CurrentItem { get; private set; }
         public bool IsInventoryOpen { get; private set; }
         public bool IsInTradeMode { get; private set; }
+        public bool AreControlsEnabled { get; private set; } = true;
 
         public event Action OnInventoryToggled;
         public event Action OnItemChanged;
@@ -33,6 +34,7 @@ namespace TradeMarket.PlayerSystem
             CurrentItem = null;
             IsInventoryOpen = false;
             IsInTradeMode = false;
+            AreControlsEnabled = true;
 
             playerData = playerDataSO;
 
@@ -45,6 +47,8 @@ namespace TradeMarket.PlayerSystem
 
         public void SetMovement(Vector2 newMovement)
         {
+            if (!AreControlsEnabled) return;
+
             Movement = newMovement;
             OnMovementChanged?.Invoke();
         }
@@ -71,6 +75,8 @@ namespace TradeMarket.PlayerSystem
 
         public void SetInventoryOpen(bool isOpen)
         {
+            if (!AreControlsEnabled) return;
+
             IsInventoryOpen = isOpen;
 
             if (playerData != null)
@@ -83,6 +89,16 @@ namespace TradeMarket.PlayerSystem
         {
             IsInTradeMode = isInTradeMode;
             OnTradeModeChanged?.Invoke();
+        }
+
+        public void SetControlsEnabled(bool enabled)
+        {
+            AreControlsEnabled = enabled;
+            if (!enabled)
+            {
+                SetMovement(Vector2.zero);
+                SetIsWalking(false);
+            }
         }
 
         public Vector2 GetMovementVelocity() => Movement * MovementSpeed;

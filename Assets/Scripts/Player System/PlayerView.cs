@@ -46,6 +46,8 @@ namespace TradeMarket.PlayerSystem
 
         private void HandleInput()
         {
+            if (!playerController.PlayerModel.AreControlsEnabled) return;
+
             HandleMoveInput();
             HandleInventoryInput();
         }

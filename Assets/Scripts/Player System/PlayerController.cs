@@ -54,11 +54,15 @@ namespace TradeMarket.PlayerSystem
 
         public Vector2 GetPlayerVelocity() => playerModel.GetMovementVelocity();
 
-        private void StopPlayerMovement()
+        public void StopPlayerMovement()
         {
             playerModel.SetMovement(Vector2.zero);
             playerModel.SetIsWalking(false);
         }
+
+        public void DisableControls() => playerModel.SetControlsEnabled(false);
+
+        public void EnableControls() => playerModel.SetControlsEnabled(true);
 
         public void Update() => playerStateMachine.Update();
     }

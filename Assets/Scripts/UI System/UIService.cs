@@ -1,4 +1,3 @@
-using TradeMarket.Core;
 using TradeMarket.ItemSystem;
 
 namespace TradeMarket.UISystem
@@ -6,58 +5,19 @@ namespace TradeMarket.UISystem
     public class UIService
     {
         public UIView UIView { get; private set; }
+        public UIController UIController { get; private set; }
 
-        public UIService(UIView uiViewToSet)
+        public UIService(UIView uiView)
         {
-            UIView = uiViewToSet;
-
-            UIView.SetService(this);
-            InitializeUI();
+            UIView = uiView;
+            UIController = new UIController(uiView);
         }
 
-        private void InitializeUI() => RefreshInventoryUI();
-
-        public void ToggleInventoryPanel() => RefreshInventoryUI();
-
-        private void RefreshInventoryUI()
-        {
-            bool isInventoryOpen = GameService.Instance.playerService.PlayerModel.IsInventoryOpen;
-            UIView.SetInventoryPanelActive(isInventoryOpen);
-
-            if (isInventoryOpen)
-                UpdateInventoryDisplay();
-        }
-
-        private void UpdateInventoryDisplay()
-        {
-            var currentItem = GameService.Instance.playerService.PlayerModel.CurrentItem;
-            UIView.UpdateInventoryItem(currentItem);
-        }
+        public void ToggleInventoryPanel() => UIController.ToggleInventoryPanel();
 
         public void ShowTradeConfirmation(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
-        {
-            GameService.Instance.playerService.PlayerController.SetTradeMode(true);
-            UIView.ShowTradeConfirmationPanel(npcName, playerItem, npcItem);
-        }
+            => UIController.ShowTradeConfirmation(npcName, playerItem, npcItem);
 
-        public void OnTradeConfirmed(string npcName)
-        {
-            bool tradeSuccess = GameService.Instance.ExecuteTradeWithNPC(npcName);
-
-            if (tradeSuccess)
-            {
-                UIView.HideTradeConfirmationPanel();
-                GameService.Instance.playerService.PlayerController.SetTradeMode(false);
-
-                if (GameService.Instance.playerService.PlayerModel.IsInventoryOpen)
-                    UpdateInventoryDisplay();
-            }
-        }
-
-        public void OnTradeCancelled()
-        {
-            UIView.HideTradeConfirmationPanel();
-            GameService.Instance.playerService.PlayerController.SetTradeMode(false);
-        }
+        public void ShowGameCompletion() => UIController.ShowGameCompletion();
     }
 }

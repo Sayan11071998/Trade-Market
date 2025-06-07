@@ -12684,6 +12684,10 @@ MonoBehaviour:
   npcItemNameText: {fileID: 1561001437}
   confirmTradeButton: {fileID: 1644228388}
   cancelTradeButton: {fileID: 1116233614}
+  gameUIPanel: {fileID: 0}
+  gameUIPanelHeaderText: {fileID: 0}
+  restartButton: {fileID: 0}
+  quitButton: {fileID: 0}
 --- !u!1 &814812109
 GameObject:
   m_ObjectHideFlags: 0

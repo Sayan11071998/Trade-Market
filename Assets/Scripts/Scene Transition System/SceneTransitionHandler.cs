@@ -31,35 +31,52 @@ namespace TradeMarket.SceneTransitionSystem
             if (hasRequiredItem)
             {
                 if (isFinalScene)
-                {
-                    Debug.Log("Game Won!!");
-                    var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
-                    if (playerData != null)
-                    {
-                        var saveManager = new PlayerSaveManager(playerData);
-                        saveManager.CompleteScene(currentSceneName);
-                    }
-                }
+                    HandleFinalScene();
                 else
-                {
-                    GameService.Instance.SaveGameState();
-
-                    var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
-                    if (playerData != null)
-                    {
-                        var saveManager = new PlayerSaveManager(playerData);
-                        saveManager.CompleteScene(currentSceneName);
-                    }
-
-                    fadeAnimator.Play(GameString.SceneAnimationFadeToBlack);
-                    StartCoroutine(LoadDelay());
-                }
+                    HandleSceneTransition();
             }
             else
             {
-                GameService.Instance.playerService.PlayerController.PlayerView.ActivateDialoguePanel();
-                GameService.Instance.playerService.PlayerController.PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
+                ShowRequiredItemMessage();
             }
+        }
+
+        private void HandleFinalScene()
+        {
+            var playerController = GameService.Instance.playerService.PlayerController;
+            playerController.SetCurrentItem(null);
+            playerController.DisableControls();
+            GameService.Instance.uiService.ShowGameCompletion();
+            CompleteCurrentScene();
+        }
+
+        private void HandleSceneTransition()
+        {
+            GameService.Instance.SaveGameState();
+            CompleteCurrentScene();
+            StartSceneTransition();
+        }
+
+        private void ShowRequiredItemMessage()
+        {
+            GameService.Instance.playerService.PlayerController.PlayerView.ActivateDialoguePanel();
+            GameService.Instance.playerService.PlayerController.PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
+        }
+
+        private void CompleteCurrentScene()
+        {
+            var playerData = GameService.Instance.playerService.PlayerModel.GetPersistentData();
+            if (playerData != null)
+            {
+                var saveManager = new PlayerSaveManager(playerData);
+                saveManager.CompleteScene(currentSceneName);
+            }
+        }
+
+        private void StartSceneTransition()
+        {
+            fadeAnimator.Play(GameString.SceneAnimationFadeToBlack);
+            StartCoroutine(LoadDelay());
         }
 
         private IEnumerator LoadDelay()
