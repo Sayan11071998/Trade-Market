@@ -84,6 +84,17 @@ namespace TradeMarket.PlayerSystem
             return true;
         }
 
+        public void TakeDamage(float damageValue) => PlayerModel.TakeDamage(damageValue);
+
+        public void HandleDeath()
+        {
+            if (PlayerModel.IsDead)
+            {
+                DisableControls();
+                Debug.Log("Player is Dead!");
+            }
+        }
+
         public void Update() => playerStateMachine.Update();
     }
 }

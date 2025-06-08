@@ -1,6 +1,5 @@
 using UnityEngine;
 using TradeMarket.Core;
-using System;
 
 namespace TradeMarket.EnemySystem
 {

@@ -7,6 +7,10 @@ namespace TradeMarket.PlayerSystem
 {
     public class PlayerModel
     {
+        public float MaxHealth { get; private set; }
+        public float CurrentHealth { get; private set; }
+        public bool IsDead { get; private set; }
+
         public float MovementSpeed { get; private set; }
         public Vector2 Movement { get; private set; }
         public Vector2 LastMovement { get; private set; }
@@ -31,6 +35,9 @@ namespace TradeMarket.PlayerSystem
 
         public PlayerModel(PlayerScriptableObject playerScriptableObject, PlayerDataScriptableObject playerDataSO = null)
         {
+            MaxHealth = playerScriptableObject.PlayerHealth;
+            CurrentHealth = MaxHealth;
+            IsDead = false;
             MovementSpeed = playerScriptableObject.playerMovementSpeed;
             FireCooldown = playerScriptableObject.fireCooldown;
             Movement = Vector2.zero;
@@ -50,6 +57,15 @@ namespace TradeMarket.PlayerSystem
                 saveManager = new PlayerSaveManager(playerData);
                 saveManager.LoadPlayerState(this);
             }
+        }
+
+        public void TakeDamage(float damageValue)
+        {
+            CurrentHealth = MathF.Max(0, CurrentHealth - damageValue);
+            Debug.Log(CurrentHealth);
+
+            if (CurrentHealth <= 0)
+                IsDead = true;
         }
 
         public void SetMovement(Vector2 newMovement)

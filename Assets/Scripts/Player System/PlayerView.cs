@@ -54,6 +54,7 @@ namespace TradeMarket.PlayerSystem
                 UpdateAnimator();
                 UpdateFirePoint();
                 playerBulletService.UpdateBullets();
+                playerController.HandleDeath();
             }
         }
 
