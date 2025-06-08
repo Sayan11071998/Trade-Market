@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.InputSystem;
 using TradeMarket.Utilities;
 using TradeMarket.BulletSystem;
+using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -49,7 +51,6 @@ namespace TradeMarket.PlayerSystem
             if (playerController != null)
             {
                 playerController.Update();
-                
                 HandleInput();
                 UpdatePhysics();
                 UpdateAnimator();
@@ -145,6 +146,10 @@ namespace TradeMarket.PlayerSystem
             dialoguePanel?.SetActive(false);
         }
 
-        private void FireBullet(Vector2 fireDirection) => playerBulletService.FireBullet(firePoint.position, fireDirection);
+        private void FireBullet(Vector2 fireDirection)
+        {
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.PlayerFire, false);
+            playerBulletService.FireBullet(firePoint.position, fireDirection);
+        }
     }
 }

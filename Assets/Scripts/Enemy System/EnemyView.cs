@@ -1,5 +1,7 @@
 using UnityEngine;
 using TradeMarket.BulletSystem;
+using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.EnemySystem
 {
@@ -56,6 +58,7 @@ namespace TradeMarket.EnemySystem
         {
             if (enemyController.EnemyModel.IsDead)
             {
+                GameService.Instance.soundService.PlaySoundEffects(SoundType.Death);
                 enemyController.DisableFire();
                 Destroy(gameObject);
             }

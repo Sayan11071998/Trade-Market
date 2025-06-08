@@ -1,5 +1,6 @@
 using UnityEngine;
 using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.EnemySystem
 {
@@ -45,6 +46,10 @@ namespace TradeMarket.EnemySystem
             return Vector3.zero;
         }
 
-        public void TakeDamage(float damageValue) => enemyModel.TakeDamage(damageValue);
+        public void TakeDamage(float damageValue)
+        {
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.Damage);
+            enemyModel.TakeDamage(damageValue);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using TradeMarket.ItemSystem;
 using TradeMarket.Core;
 using TradeMarket.Utilities;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.NPCSystem
 {
@@ -20,6 +21,8 @@ namespace TradeMarket.NPCSystem
 
         public void OnPlayerInteract()
         {
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.Interact);
+
             if (npcModel.HasTraded)
             {
                 npcView?.ShowDialogue(GetFormattedText(npcModel.AlreadyTradedText));
