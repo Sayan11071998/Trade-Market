@@ -7,6 +7,9 @@ namespace TradeMarket.EnemySystem
         [Header("Visual Components")]
         [SerializeField] private SpriteRenderer enemySpriteRenderer;
 
+        [Header("Combat")]
+        [SerializeField] private Transform firePoint;
+
         private EnemyController enemyController;
 
         public EnemyController EnemyController => enemyController;
@@ -19,16 +22,20 @@ namespace TradeMarket.EnemySystem
                 enemySpriteRenderer.sprite = enemyData.enemySprite;
         }
 
-        // Add simple behavior methods here if needed
-        // public void UpdateEnemy()
-        // {
-        //     if (enemyController?.EnemyModel != null)
-        //     {
-        //         enemyController.EnemyModel.UpdateFireCooldown(Time.time);
+        private void Update() => UpdateEnemy();
 
-        //         // Add your simple enemy behaviors here
-        //         // For example: movement, simple AI, etc.
-        //     }
-        // }
+        public void UpdateEnemy()
+        {
+            if (enemyController?.EnemyModel != null && enemyController.EnemyModel.CanFire)
+            {
+                if (enemyController.TryFire(out Vector2 fireDirection))
+                    FireAtPlayer(fireDirection);
+            }
+        }
+
+        private void FireAtPlayer(Vector2 fireDirection)
+        {
+            Debug.Log($"Enemy {gameObject.name} is firing in direction: {fireDirection}");
+        }
     }
 }

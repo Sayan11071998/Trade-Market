@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace TradeMarket.EnemySystem
 {
     public class EnemyModel
@@ -18,25 +20,22 @@ namespace TradeMarket.EnemySystem
             LastFireTime = -1f;
         }
 
+        public void EnableFire(bool enabled) => CanFire = enabled;
+
+        public bool CanFireNow()
+        {
+            if (!CanFire) return false;
+
+            return LastFireTime < 0f || Time.time >= LastFireTime + FireCooldown;
+        }
+
+        public void RegisterFire() => LastFireTime = Time.time;
+
         // public void TakeDamage(float damage)
         // {
         //     EnemyHealth = UnityEngine.Mathf.Max(0, EnemyHealth - damage);
         // }
 
         // public bool IsDead() => EnemyHealth <= 0;
-
-        // public void UpdateFireCooldown(float currentTime)
-        // {
-        //     if (!CanFire && currentTime - LastFireTime >= FireCooldown)
-        //     {
-        //         CanFire = true;
-        //     }
-        // }
-
-        // public void SetFired(float currentTime)
-        // {
-        //     CanFire = false;
-        //     LastFireTime = currentTime;
-        // }
     }
 }
