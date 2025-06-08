@@ -117,10 +117,7 @@ namespace TradeMarket.PlayerSystem
             return lastFireTime < 0f || Time.time >= lastFireTime + FireCooldown;
         }
 
-        public void RegisterFire()
-        {
-            lastFireTime = Time.time;
-        }
+        public void RegisterFire() => lastFireTime = Time.time;
 
         public Vector2 GetMovementVelocity() => Movement * MovementSpeed;
 
