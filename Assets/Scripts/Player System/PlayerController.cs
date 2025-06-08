@@ -84,6 +84,14 @@ namespace TradeMarket.PlayerSystem
             return true;
         }
 
+        public void TakeDamage(float damageValue)
+        {
+            PlayerModel.TakeDamage(damageValue);
+
+            if (PlayerModel.IsDead)
+                playerStateMachine.ChangeState(PlayerState.Dead);
+        }
+
         public void Update() => playerStateMachine.Update();
     }
 }

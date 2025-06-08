@@ -14,13 +14,17 @@ namespace TradeMarket.FireSystem
                 playerController.PlayerView.ActivateDialoguePanel();
                 playerController.PlayerView.ShowDialogue(GameString.FireActivationDialogue);
                 playerController.EnableFire();
+                GameService.Instance.enemyManager.EnableAllEnemiesFiring();
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag(GameString.PlayerTag))
+            {
                 GameService.Instance.playerService.PlayerController.DisableFire();
+                GameService.Instance.enemyManager.DisableAllEnemiesFiring();
+            }
         }
     }
 }

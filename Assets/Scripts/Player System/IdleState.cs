@@ -20,6 +20,12 @@ namespace TradeMarket.PlayerSystem
         {
             if (playerController?.PlayerModel == null) return;
 
+            if (playerController.PlayerModel.IsDead)
+            {
+                playerStateMachine.ChangeState(PlayerState.Dead);
+                return;
+            }
+
             Vector2 movement = playerController.PlayerModel.Movement;
             if (movement.magnitude > 0.1f)
                 playerStateMachine.ChangeState(PlayerState.Walk);

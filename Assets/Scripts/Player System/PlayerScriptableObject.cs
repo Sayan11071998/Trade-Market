@@ -5,6 +5,9 @@ namespace TradeMarket.PlayerSystem
     [CreateAssetMenu(fileName = "PlayerScriptableObject", menuName = "Player/PlayerScriptableObject")]
     public class PlayerScriptableObject : ScriptableObject
     {
+        [Header("Player Health")]
+        public float PlayerHealth;
+
         [Header("Player Movement")]
         public float playerMovementSpeed = 5f;
 

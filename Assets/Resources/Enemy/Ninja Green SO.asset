@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f362bfccd0b5b0499de68c122c4e808, type: 3}
-  m_Name: Player SO
+  m_Script: {fileID: 11500000, guid: bab9a01222b53e44aab9a99fa082e4cb, type: 3}
+  m_Name: Ninja Green SO
   m_EditorClassIdentifier: 
-  PlayerHealth: 50
-  playerMovementSpeed: 10
+  enemyHealth: 100
   fireCooldown: 0.5
+  enemySprite: {fileID: 5546671543968653177, guid: 4d44a8fa34f000c44a92b6ff50b0c14b, type: 3}

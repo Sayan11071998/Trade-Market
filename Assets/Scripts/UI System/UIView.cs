@@ -140,10 +140,10 @@ namespace TradeMarket.UISystem
 
         public void HideTradeConfirmationPanel() => tradeConfirmationPanel?.SetActive(false);
 
-        public void ShowGameUIPanel()
+        public void ShowGameUIPanel(string message)
         {
             gameUIPanel.SetActive(true);
-            gameUIPanelHeaderText.text = GameString.GameCompletedText;
+            gameUIPanelHeaderText.text = message;
         }
 
         private void OnConfirmTradeClicked() => uiController?.OnTradeConfirmed(currentNPCName);

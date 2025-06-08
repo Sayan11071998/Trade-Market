@@ -62,7 +62,7 @@ namespace TradeMarket.UISystem
             SetPlayerTradeMode(false);
         }
 
-        public void ShowGameCompletion() => uiView.ShowGameUIPanel();
+        public void ShowGameCompletion(string message) => uiView.ShowGameUIPanel(message);
 
         public void RestartGame()
         {

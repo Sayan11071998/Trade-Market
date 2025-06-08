@@ -18,6 +18,6 @@ namespace TradeMarket.UISystem
         public void ShowTradeConfirmation(string npcName, ItemScriptableObject playerItem, ItemScriptableObject npcItem)
             => UIController.ShowTradeConfirmation(npcName, playerItem, npcItem);
 
-        public void ShowGameCompletion() => UIController.ShowGameCompletion();
+        public void ShowGameCompletion(string message) => UIController.ShowGameCompletion(message);
     }
 }

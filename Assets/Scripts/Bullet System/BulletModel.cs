@@ -4,6 +4,7 @@ namespace TradeMarket.BulletSystem
 {
     public class BulletModel
     {
+        public BulletType bulletType;
         public float Speed { get; private set; }
         public float Damage { get; private set; }
         public float BulletLifeTime { get; private set; }
@@ -14,6 +15,7 @@ namespace TradeMarket.BulletSystem
 
         public BulletModel(BulletScriptableObject bulletData)
         {
+            bulletType = bulletData.BulletType;
             Speed = bulletData.BulletSpeed;
             Damage = bulletData.BulletDamage;
             BulletLifeTime = bulletData.BulletLifetime;
