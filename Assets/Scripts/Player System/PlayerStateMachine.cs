@@ -16,6 +16,7 @@ namespace TradeMarket.PlayerSystem
         public PlayerStateMachine(PlayerController controllerToSet)
         {
             playerController = controllerToSet;
+            currentPlayerState = (PlayerState)(-1);
             InitializeStates();
             ChangeState(PlayerState.Idle);
         }
