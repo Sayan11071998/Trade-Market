@@ -6,6 +6,9 @@ namespace TradeMarket.SoundSystem
         PlayerWalk,
         InventoryTab,
         Interact,
-        ButtonClick
+        ButtonClick,
+        PlayerFire,
+        Damage,
+        Death
     }
 }

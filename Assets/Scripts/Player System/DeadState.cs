@@ -1,5 +1,6 @@
 using TradeMarket.Utilities;
 using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -19,6 +20,7 @@ namespace TradeMarket.PlayerSystem
             playerController.DisableControls();
             playerController.StopPlayerMovement();
             playerController.DisableFire();
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.Death);
             GameService.Instance.enemyManager.DisableAllEnemiesFiring();
             GameService.Instance.uiService.ShowGameCompletion(GameString.GameOverText);
         }

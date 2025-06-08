@@ -89,6 +89,7 @@ namespace TradeMarket.PlayerSystem
 
         public void TakeDamage(float damageValue)
         {
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.Damage);
             PlayerModel.TakeDamage(damageValue);
 
             if (PlayerModel.IsDead)
