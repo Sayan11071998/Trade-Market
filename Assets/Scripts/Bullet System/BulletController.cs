@@ -42,7 +42,7 @@ namespace TradeMarket.BulletSystem
 
         public void OnTriggerDetected(Collider2D other)
         {
-            if (other.CompareTag(GameString.EnemyTag))
+            if (other.CompareTag(GameString.EnemyTag) && bulletModel.bulletType == BulletType.Player)
                 DeactivateBullet();
         }
 
