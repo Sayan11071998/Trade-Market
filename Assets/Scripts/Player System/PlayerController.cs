@@ -64,6 +64,26 @@ namespace TradeMarket.PlayerSystem
 
         public void EnableControls() => playerModel.SetControlsEnabled(true);
 
+        public void EnableFire() => playerModel.EnableFire(true);
+
+        public void DisableFire() => playerModel.EnableFire(false);
+
+        public bool TryFire(out Vector2 fireDirection)
+        {
+            fireDirection = Vector2.zero;
+
+            if (!playerModel.CanFireNow())
+                return false;
+
+            fireDirection = playerModel.LastMovement.normalized;
+
+            if (fireDirection == Vector2.zero)
+                fireDirection = Vector2.right;
+
+            playerModel.RegisterFire();
+            return true;
+        }
+
         public void Update() => playerStateMachine.Update();
     }
 }

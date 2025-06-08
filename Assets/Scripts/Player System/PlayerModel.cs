@@ -18,6 +18,8 @@ namespace TradeMarket.PlayerSystem
         public bool AreControlsEnabled { get; private set; } = true;
 
         public bool CanFire { get; private set; } = false;
+        public float FireCooldown { get; private set; } = 0.5f;
+        private float lastFireTime = -1f;
 
         public event Action OnInventoryToggled;
         public event Action OnItemChanged;
@@ -30,6 +32,7 @@ namespace TradeMarket.PlayerSystem
         public PlayerModel(PlayerScriptableObject playerScriptableObject, PlayerDataScriptableObject playerDataSO = null)
         {
             MovementSpeed = playerScriptableObject.playerMovementSpeed;
+            FireCooldown = playerScriptableObject.fireCooldown;
             Movement = Vector2.zero;
             LastMovement = Vector2.zero;
             IsWalking = false;
@@ -38,6 +41,7 @@ namespace TradeMarket.PlayerSystem
             IsInTradeMode = false;
             AreControlsEnabled = true;
             CanFire = false;
+            lastFireTime = -1f;
 
             playerData = playerDataSO;
 
@@ -105,6 +109,18 @@ namespace TradeMarket.PlayerSystem
         }
 
         public void EnableFire(bool enabled) => CanFire = enabled;
+
+        public bool CanFireNow()
+        {
+            if (!CanFire) return false;
+
+            return lastFireTime < 0f || Time.time >= lastFireTime + FireCooldown;
+        }
+
+        public void RegisterFire()
+        {
+            lastFireTime = Time.time;
+        }
 
         public Vector2 GetMovementVelocity() => Movement * MovementSpeed;
 
