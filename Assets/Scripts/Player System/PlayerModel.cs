@@ -61,7 +61,7 @@ namespace TradeMarket.PlayerSystem
 
         public void TakeDamage(float damageValue)
         {
-            CurrentHealth = MathF.Max(0, CurrentHealth - damageValue);
+            CurrentHealth = Mathf.Max(0, CurrentHealth - damageValue);
             Debug.Log(CurrentHealth);
 
             if (CurrentHealth <= 0)

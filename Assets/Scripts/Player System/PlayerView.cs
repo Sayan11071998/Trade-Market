@@ -48,13 +48,13 @@ namespace TradeMarket.PlayerSystem
         {
             if (playerController != null)
             {
-                HandleInput();
                 playerController.Update();
+                
+                HandleInput();
                 UpdatePhysics();
                 UpdateAnimator();
                 UpdateFirePoint();
                 playerBulletService.UpdateBullets();
-                playerController.HandleDeath();
             }
         }
 
