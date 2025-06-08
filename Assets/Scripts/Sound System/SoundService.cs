@@ -24,10 +24,18 @@ namespace TradeMarket.SoundSystem
             {
                 audioEffects.loop = loopSound;
                 audioEffects.clip = clip;
-                audioEffects.PlayOneShot(clip);
+
+                if (loopSound)
+                    audioEffects.Play();
+                else
+                    audioEffects.PlayOneShot(clip);
             }
-            else
-                Debug.LogError("No Audio Clip selected.");
+        }
+
+        public void StopSoundEffects()
+        {
+            if (audioEffects.isPlaying)
+                audioEffects.Stop();
         }
 
         private void PlaybackgroundMusic(SoundType soundType, bool loopSound = false)
