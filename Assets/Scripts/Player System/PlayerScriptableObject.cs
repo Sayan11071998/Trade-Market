@@ -7,5 +7,8 @@ namespace TradeMarket.PlayerSystem
     {
         [Header("Player Movement")]
         public float playerMovementSpeed = 5f;
+
+        [Header("Player Combat")]
+        public float fireCooldown = 0.5f;
     }
 }

@@ -72,7 +72,7 @@ namespace TradeMarket.PlayerSystem
         {
             fireDirection = Vector2.zero;
 
-            if (!playerModel.CanFire)
+            if (!playerModel.CanFireNow())
                 return false;
 
             fireDirection = playerModel.LastMovement.normalized;
@@ -80,6 +80,7 @@ namespace TradeMarket.PlayerSystem
             if (fireDirection == Vector2.zero)
                 fireDirection = Vector2.right;
 
+            playerModel.RegisterFire();
             return true;
         }
 
