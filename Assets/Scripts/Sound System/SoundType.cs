@@ -3,6 +3,9 @@ namespace TradeMarket.SoundSystem
     public enum SoundType
     {
         BackgroundMusic,
-        PlayerWalk
+        PlayerWalk,
+        InventoryTab,
+        Interact,
+        ButtonClick
     }
 }

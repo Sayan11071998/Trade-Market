@@ -1,5 +1,7 @@
 using UnityEngine;
 using TradeMarket.ItemSystem;
+using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -38,6 +40,7 @@ namespace TradeMarket.PlayerSystem
 
         public void ToggleInventory()
         {
+            GameService.Instance.soundService.PlaySoundEffects(SoundType.InventoryTab, false);
             bool newInventoryState = !playerModel.IsInventoryOpen;
             playerModel.SetInventoryOpen(newInventoryState);
         }

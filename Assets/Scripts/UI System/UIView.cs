@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
+using TradeMarket.Core;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.UISystem
 {
@@ -146,12 +148,30 @@ namespace TradeMarket.UISystem
             gameUIPanelHeaderText.text = message;
         }
 
-        private void OnConfirmTradeClicked() => uiController?.OnTradeConfirmed(currentNPCName);
+        private void OnConfirmTradeClicked()
+        {
+            PlayButtonClickSound();
+            uiController?.OnTradeConfirmed(currentNPCName);
+        }
 
-        private void OnCancelTradeClicked() => uiController?.OnTradeCancelled();
+        private void OnCancelTradeClicked()
+        {
+            PlayButtonClickSound();
+            uiController?.OnTradeCancelled();
+        }
 
-        private void OnRestartClicked() => uiController?.RestartGame();
+        private void OnRestartClicked()
+        {
+            PlayButtonClickSound();
+            uiController?.RestartGame();
+        }
 
-        private void OnQuitClicked() => uiController?.QuitGame();
+        private void OnQuitClicked()
+        {
+            PlayButtonClickSound();
+            uiController?.QuitGame();
+        }
+
+        private void PlayButtonClickSound() => GameService.Instance.soundService.PlaySoundEffects(SoundType.ButtonClick);
     }
 }
