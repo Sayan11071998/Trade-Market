@@ -15,7 +15,6 @@ namespace TradeMarket.FireSystem
                 playerController.PlayerView.ShowDialogue(GameString.FireActivationDialogue);
                 playerController.EnableFire();
                 GameService.Instance.enemyManager.EnableAllEnemiesFiring();
-                Debug.Log("Fire system activated! Enemies will start firing!");
             }
         }
 
@@ -25,7 +24,6 @@ namespace TradeMarket.FireSystem
             {
                 GameService.Instance.playerService.PlayerController.DisableFire();
                 GameService.Instance.enemyManager.DisableAllEnemiesFiring();
-                Debug.Log("Fire system deactivated! Enemies stopped firing!");
             }
         }
     }

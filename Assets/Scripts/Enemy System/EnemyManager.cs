@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace TradeMarket.EnemySystem
 {
@@ -38,9 +37,9 @@ namespace TradeMarket.EnemySystem
         public void EnableAllEnemiesFiring()
         {
             var enemies = enemyRepository.GetAllEnemies();
+
             foreach (var enemy in enemies)
                 enemy.EnableFire();
-            Debug.Log($"Enabled firing for {enemies.Count} enemies");
         }
 
         public void DisableAllEnemiesFiring()
@@ -48,7 +47,6 @@ namespace TradeMarket.EnemySystem
             var enemies = enemyRepository.GetAllEnemies();
             foreach (var enemy in enemies)
                 enemy.DisableFire();
-            Debug.Log($"Disabled firing for {enemies.Count} enemies");
         }
     }
 }
