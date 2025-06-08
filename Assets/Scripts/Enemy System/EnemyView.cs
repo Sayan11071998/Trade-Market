@@ -26,19 +26,7 @@ namespace TradeMarket.EnemySystem
             if (enemySpriteRenderer != null && enemyData.enemySprite != null)
                 enemySpriteRenderer.sprite = enemyData.enemySprite;
 
-            InitializeBulletService();
-        }
-
-        private void InitializeBulletService()
-        {
-            if (enemyBulletPrefab != null && enemyBulletData != null)
-            {
-                enemyBulletService = new BulletService(enemyBulletPrefab, enemyBulletData, bulletPoolParent);
-            }
-            else
-            {
-                Debug.LogError($"Enemy {gameObject.name}: Missing bullet prefab or bullet data!");
-            }
+            enemyBulletService = new BulletService(enemyBulletPrefab, enemyBulletData, bulletPoolParent);
         }
 
         private void Update() => UpdateEnemy();
@@ -57,20 +45,9 @@ namespace TradeMarket.EnemySystem
         private void FireAtPlayer(Vector2 fireDirection)
         {
             if (enemyBulletService != null && firePoint != null)
-            {
                 enemyBulletService.FireBullet(firePoint.position, fireDirection);
-                Debug.Log($"Enemy {gameObject.name} is firing in direction: {fireDirection}");
-            }
-            else
-            {
-                Debug.LogWarning($"Enemy {gameObject.name}: Cannot fire - missing bullet service or fire point!");
-            }
         }
 
-        private void OnDestroy()
-        {
-            // Clean up bullets when enemy is destroyed
-            enemyBulletService?.DeactivateAllBullets();
-        }
+        private void OnDestroy() => enemyBulletService?.DeactivateAllBullets();
     }
 }

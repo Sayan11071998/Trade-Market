@@ -16,7 +16,7 @@ namespace TradeMarket.EnemySystem
             EnemyHealth = enemyData.enemyHealth;
             MaxHealth = enemyData.enemyHealth;
             FireCooldown = enemyData.fireCooldown;
-            CanFire = true;
+            CanFire = false;
             LastFireTime = -1f;
         }
 
