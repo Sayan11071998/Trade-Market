@@ -23704,7 +23704,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -23988,7 +23988,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -24874,8 +24874,8 @@ MonoBehaviour:
   enemySetups: []
   uiView: {fileID: 741758458}
   soundScriptableObject: {fileID: 11400000, guid: 725301ae25abe1146963c4a2f36e163a, type: 2}
-  sfxSource: {fileID: 3566798960029525898}
-  bgMusicSource: {fileID: 4298395941394235397}
+  sfxSource: {fileID: 4298395941394235397}
+  bgMusicSource: {fileID: 3566798960029525898}
 --- !u!222 &6025943837293637610
 CanvasRenderer:
   m_ObjectHideFlags: 0
