@@ -6,6 +6,7 @@ using TradeMarket.Utilities;
 using TradeMarket.UISystem;
 using TradeMarket.NPCSystem;
 using TradeMarket.SaveSystem;
+using TradeMarket.EnemySystem;
 
 namespace TradeMarket.Core
 {
@@ -13,6 +14,7 @@ namespace TradeMarket.Core
     {
         public PlayerService playerService { get; private set; }
         public NPCManager npcManager { get; private set; }
+        public EnemyManager enemyManager { get; private set; }
         public UIService uiService { get; private set; }
 
         [Header("Player")]
@@ -25,6 +27,9 @@ namespace TradeMarket.Core
 
         [Header("NPCs")]
         [SerializeField] private List<NPCSetup> npcSetups = new List<NPCSetup>();
+
+        [Header("Enemies")]
+        [SerializeField] private List<EnemySetup> enemySetups = new List<EnemySetup>();
 
         [Header("UI")]
         [SerializeField] private UIView uiView;
@@ -42,6 +47,7 @@ namespace TradeMarket.Core
             saveManager = new PlayerSaveManager(playerDataScriptableObject);
             playerService = new PlayerService(playerView, playerScriptableObject, playerDataScriptableObject, initialPlayerItem);
             npcManager = new NPCManager(npcSetups);
+            enemyManager = new EnemyManager(enemySetups);
             uiService = new UIService(uiView);
 
             SubscribeToEvents();
