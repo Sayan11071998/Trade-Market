@@ -1,5 +1,5 @@
-using UnityEngine;
 using TradeMarket.Utilities;
+using TradeMarket.Core;
 
 namespace TradeMarket.PlayerSystem
 {
@@ -19,7 +19,8 @@ namespace TradeMarket.PlayerSystem
             playerController.DisableControls();
             playerController.StopPlayerMovement();
             playerController.DisableFire();
-            Debug.Log("Player is Dead!");
+            GameService.Instance.enemyManager.DisableAllEnemiesFiring();
+            GameService.Instance.uiService.ShowGameCompletion(GameString.GameOverText);
         }
 
         public void Update() { }

@@ -25,6 +25,7 @@ namespace TradeMarket.Utilities
         public const string GiveItemText = "Give: {0}";
         public const string ReceiveItemText = "Receive: {0}";
         public const string GameCompletedText = "Game Completed!";
+        public const string GameOverText = "Game Over!";
         #endregion
 
         #region Scene Transition

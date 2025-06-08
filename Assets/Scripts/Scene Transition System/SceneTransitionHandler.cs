@@ -46,7 +46,7 @@ namespace TradeMarket.SceneTransitionSystem
             var playerController = GameService.Instance.playerService.PlayerController;
             playerController.SetCurrentItem(null);
             playerController.DisableControls();
-            GameService.Instance.uiService.ShowGameCompletion();
+            GameService.Instance.uiService.ShowGameCompletion(GameString.GameCompletedText);
             CompleteCurrentScene();
         }
 
