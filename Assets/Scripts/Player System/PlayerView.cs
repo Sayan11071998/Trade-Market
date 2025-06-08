@@ -80,8 +80,11 @@ namespace TradeMarket.PlayerSystem
 
         private void HandleFireInput()
         {
-            if (fireAction.WasPressedThisFrame() && playerController.PlayerModel.CanFire)
-                FireBullet();
+            if (fireAction.WasPressedThisFrame())
+            {
+                if (playerController.TryFire(out Vector2 fireDirection))
+                    FireBullet(fireDirection);
+            }
         }
 
         private void UpdatePhysics() => playerRigidBody.linearVelocity = playerController.GetPlayerVelocity();
@@ -141,14 +144,6 @@ namespace TradeMarket.PlayerSystem
             dialoguePanel?.SetActive(false);
         }
 
-        private void FireBullet()
-        {
-            Vector2 fireDirection = playerController.PlayerModel.LastMovement.normalized;
-
-            if (fireDirection == Vector2.zero)
-                fireDirection = Vector2.right;
-
-            playerBulletService.FireBullet(firePoint.position, fireDirection);
-        }
+        private void FireBullet(Vector2 fireDirection) => playerBulletService.FireBullet(firePoint.position, fireDirection);
     }
 }
