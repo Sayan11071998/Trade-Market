@@ -29,7 +29,11 @@ namespace TradeMarket.EnemySystem
             enemyBulletService = new BulletService(enemyBulletPrefab, enemyBulletData, bulletPoolParent);
         }
 
-        private void Update() => UpdateEnemy();
+        private void Update()
+        {
+            UpdateEnemy();
+            HandleDeath();
+        }
 
         public void UpdateEnemy()
         {
@@ -46,6 +50,15 @@ namespace TradeMarket.EnemySystem
         {
             if (enemyBulletService != null && firePoint != null)
                 enemyBulletService.FireBullet(firePoint.position, fireDirection);
+        }
+
+        private void HandleDeath()
+        {
+            if (enemyController.EnemyModel.IsDead)
+            {
+                enemyController.DisableFire();
+                Destroy(gameObject);
+            }
         }
 
         private void OnDestroy() => enemyBulletService?.DeactivateAllBullets();

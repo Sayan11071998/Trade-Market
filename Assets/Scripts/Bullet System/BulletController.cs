@@ -1,5 +1,6 @@
 using UnityEngine;
 using TradeMarket.Utilities;
+using TradeMarket.EnemySystem;
 
 namespace TradeMarket.BulletSystem
 {
@@ -43,7 +44,14 @@ namespace TradeMarket.BulletSystem
         public void OnTriggerDetected(Collider2D other)
         {
             if (other.CompareTag(GameString.EnemyTag) && bulletModel.bulletType == BulletType.Player)
+            {
+                EnemyView enemyView = other.GetComponent<EnemyView>();
+
+                if (enemyView != null && enemyView.EnemyController != null)
+                    enemyView.EnemyController.TakeDamage(bulletModel.Damage);
+
                 DeactivateBullet();
+            }
         }
 
         private void DeactivateBullet()

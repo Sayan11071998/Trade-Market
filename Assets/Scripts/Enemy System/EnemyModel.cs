@@ -6,6 +6,7 @@ namespace TradeMarket.EnemySystem
     {
         public float EnemyHealth { get; private set; }
         public float MaxHealth { get; private set; }
+        public bool IsDead { get; private set; }
 
         public float FireCooldown { get; private set; }
         public bool CanFire { get; private set; }
@@ -15,6 +16,7 @@ namespace TradeMarket.EnemySystem
         {
             EnemyHealth = enemyData.enemyHealth;
             MaxHealth = enemyData.enemyHealth;
+            IsDead = false;
             FireCooldown = enemyData.fireCooldown;
             CanFire = false;
             LastFireTime = -1f;
@@ -31,11 +33,12 @@ namespace TradeMarket.EnemySystem
 
         public void RegisterFire() => LastFireTime = Time.time;
 
-        // public void TakeDamage(float damage)
-        // {
-        //     EnemyHealth = UnityEngine.Mathf.Max(0, EnemyHealth - damage);
-        // }
+        public void TakeDamage(float damage)
+        {
+            EnemyHealth = Mathf.Max(0, EnemyHealth - damage);
 
-        // public bool IsDead() => EnemyHealth <= 0;
+            if (EnemyHealth <= 0)
+                IsDead = true;
+        }
     }
 }

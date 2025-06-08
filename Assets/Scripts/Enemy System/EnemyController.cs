@@ -1,5 +1,6 @@
 using UnityEngine;
 using TradeMarket.Core;
+using System;
 
 namespace TradeMarket.EnemySystem
 {
@@ -44,5 +45,7 @@ namespace TradeMarket.EnemySystem
 
             return Vector3.zero;
         }
+
+        public void TakeDamage(float damageValue) => enemyModel.TakeDamage(damageValue);
     }
 }
