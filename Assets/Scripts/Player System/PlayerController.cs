@@ -88,11 +88,8 @@ namespace TradeMarket.PlayerSystem
 
         public void HandleDeath()
         {
-            if (PlayerModel.IsDead)
-            {
-                DisableControls();
-                Debug.Log("Player is Dead!");
-            }
+            if (PlayerModel.IsDead && playerStateMachine.CurrentStateEnum != PlayerState.Dead)
+                playerStateMachine.ChangeState(PlayerState.Dead);
         }
 
         public void Update() => playerStateMachine.Update();

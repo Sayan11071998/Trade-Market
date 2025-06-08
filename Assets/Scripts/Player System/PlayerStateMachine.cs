@@ -26,6 +26,7 @@ namespace TradeMarket.PlayerSystem
             {
                 { PlayerState.Idle, new IdleState(playerController, this) },
                 { PlayerState.Walk, new WalkState(playerController, this) },
+                { PlayerState.Dead, new DeadState(playerController, this) },
             };
         }
 
