@@ -64,6 +64,10 @@ namespace TradeMarket.PlayerSystem
 
         public void EnableControls() => playerModel.SetControlsEnabled(true);
 
+        public void EnableFire() => playerModel.EnableFire(true);
+
+        public void DisableFire() => playerModel.EnableFire(false);
+
         public void Update() => playerStateMachine.Update();
     }
 }
