@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cea98086d7927f43b458cbbc8c2fe84, type: 3}
   m_Name: Player Save Data SO
   m_EditorClassIdentifier: 
-  currentItem: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
+  currentItem: {fileID: 0}
   isInventoryOpen: 0
   lastMovement: {x: 0, y: 0}
   scenesCompleted: 0

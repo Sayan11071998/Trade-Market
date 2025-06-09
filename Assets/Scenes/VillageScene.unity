@@ -17906,6 +17906,41 @@ Transform:
   - {fileID: 11478843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1771996138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771996139}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771996139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771996138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 352480229160016614}
+  - {fileID: 352480228762854563}
+  - {fileID: 5869490234774805248}
+  - {fileID: 352480229050368801}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773969543
 GameObject:
   m_ObjectHideFlags: 0
@@ -27213,14 +27248,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663283007011425182}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15.56, y: -3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7599976144373578556}
   - {fileID: 7061074325673177448}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1771996139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &352480229050368801
 Transform:
@@ -27230,14 +27265,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663283006761823260}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.43, y: 1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7599976144090373310}
   - {fileID: 7061074325923043050}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1771996139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &352480229160016614
 Transform:
@@ -27247,14 +27282,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663283007407027675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.51, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7599976143964865913}
   - {fileID: 7061074325277577005}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1771996139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &446049179506210763
 CanvasRenderer:
@@ -29408,14 +29443,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4793509743094035517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.55, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4388853128027833503}
   - {fileID: 3777716429789531851}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1771996139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5887954917548040208
 RectTransform:
@@ -31027,15 +31062,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 1700470934}
   - {fileID: 619394802}
-  - {fileID: 5464959885306892136}
-  - {fileID: 8500553012269096944}
   - {fileID: 325246841}
   - {fileID: 146099622}
+  - {fileID: 3077299754959647579}
   - {fileID: 741758457}
   - {fileID: 84029668}
-  - {fileID: 352480229160016614}
-  - {fileID: 352480228762854563}
-  - {fileID: 5869490234774805248}
-  - {fileID: 352480229050368801}
-  - {fileID: 3077299754959647579}
+  - {fileID: 5464959885306892136}
+  - {fileID: 8500553012269096944}
+  - {fileID: 1771996139}
   - {fileID: 7931515454246903987}

@@ -761,6 +761,72 @@ Transform:
   - {fileID: 574796776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &254331964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254331965}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &254331965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254331964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8937281230792410201}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &262846524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262846525}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262846525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262846524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3695744908765215102}
+  - {fileID: 147662854066380822}
+  - {fileID: 664081354}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &325246839
 GameObject:
   m_ObjectHideFlags: 0
@@ -13697,7 +13763,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.8258915, y: 0.13167, z: -10}
+  m_LocalPosition: {x: -10.222054, y: 0.13159999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14271,14 +14337,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664081350}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.05, y: -7.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 367313236}
   - {fileID: 1786979263}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 262846525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676586895
 GameObject:
@@ -26297,14 +26363,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6247602716986890157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.17, y: -3.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3396638124292809160}
   - {fileID: 3283395453854557085}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 262846525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183663766823642692
 GameObject:
@@ -26623,7 +26689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinalScene: 1
-  itemRequiredToComplete: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
+  itemRequiredToComplete: {fileID: 11400000, guid: 74d701b3daa187c4c891117b7cf1fd92, type: 2}
   currentSceneName: ForestScene
   sceneToLoad: ForestScene
   fadeAnimator: {fileID: 7722683568824646342}
@@ -27208,14 +27274,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4090456685651973155}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.15, y: -1.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2850437566656460859}
   - {fileID: 1044458455350486660}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 262846525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!223 &3767417534384855946
 Canvas:
@@ -27919,7 +27985,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.97262526, y: -10.665472}
+  m_Offset: {x: 0.5378418, y: -10.665472}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27929,7 +27995,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1410322, y: 3.2492828}
+  m_Size: {x: 2.0105991, y: 3.2492828}
   m_EdgeRadius: 0
 --- !u!1 &6694958637641046779
 GameObject:
@@ -28598,14 +28664,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8067899798067080036}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15.91, y: 5.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1268696791217576902}
   - {fileID: 1809922290302226834}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 254331965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8965715930110046528
 MonoBehaviour:
@@ -28643,16 +28709,14 @@ SceneRoots:
   m_Roots:
   - {fileID: 1700470934}
   - {fileID: 619394802}
-  - {fileID: 5464959885306892136}
-  - {fileID: 4933085622958236404}
   - {fileID: 325246841}
   - {fileID: 146099622}
   - {fileID: 741758457}
   - {fileID: 84029668}
   - {fileID: 3077299754959647579}
-  - {fileID: 8937281230792410201}
   - {fileID: 1574305421}
-  - {fileID: 3695744908765215102}
-  - {fileID: 147662854066380822}
-  - {fileID: 664081354}
+  - {fileID: 5464959885306892136}
+  - {fileID: 4933085622958236404}
+  - {fileID: 254331965}
+  - {fileID: 262846525}
   - {fileID: 1003946625047114680}
