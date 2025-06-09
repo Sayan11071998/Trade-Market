@@ -21,7 +21,7 @@ namespace TradeMarket.NPCSystem
 
         public void OnPlayerInteract()
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.Interact);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.Interact);
 
             if (npcModel.HasTraded)
             {

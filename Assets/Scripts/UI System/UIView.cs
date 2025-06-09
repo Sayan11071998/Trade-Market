@@ -172,6 +172,6 @@ namespace TradeMarket.UISystem
             uiController?.QuitGame();
         }
 
-        private void PlayButtonClickSound() => GameService.Instance.soundService.PlaySoundEffects(SoundType.ButtonClick);
+        private void PlayButtonClickSound() => SoundManager.Instance.soundService.PlaySoundEffects(SoundType.ButtonClick);
     }
 }

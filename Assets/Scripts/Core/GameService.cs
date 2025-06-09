@@ -7,7 +7,6 @@ using TradeMarket.UISystem;
 using TradeMarket.NPCSystem;
 using TradeMarket.SaveSystem;
 using TradeMarket.EnemySystem;
-using TradeMarket.SoundSystem;
 
 namespace TradeMarket.Core
 {
@@ -17,7 +16,6 @@ namespace TradeMarket.Core
         public NPCManager npcManager { get; private set; }
         public EnemyManager enemyManager { get; private set; }
         public UIService uiService { get; private set; }
-        public SoundService soundService { get; private set; }
 
         [Header("Player")]
         [SerializeField] private PlayerView playerView;
@@ -36,11 +34,6 @@ namespace TradeMarket.Core
         [Header("UI")]
         [SerializeField] private UIView uiView;
 
-        [Header("Sound")]
-        [SerializeField] private SoundScriptableObject soundScriptableObject;
-        [SerializeField] private AudioSource sfxSource;
-        [SerializeField] private AudioSource bgMusicSource;
-
         private PlayerSaveManager saveManager;
 
         protected override void Awake()
@@ -56,7 +49,6 @@ namespace TradeMarket.Core
             npcManager = new NPCManager(npcSetups);
             enemyManager = new EnemyManager(enemySetups);
             uiService = new UIService(uiView);
-            soundService = new SoundService(soundScriptableObject, sfxSource, bgMusicSource);
 
             SubscribeToEvents();
         }
