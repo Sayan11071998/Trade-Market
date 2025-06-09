@@ -10,9 +10,6 @@ namespace TradeMarket.PlayerSystem
         private PlayerState currentPlayerState;
         private PlayerController playerController;
 
-        public PlayerState CurrentStateEnum => currentPlayerState;
-        public IState CurrentState => currentState;
-
         public PlayerStateMachine(PlayerController controllerToSet)
         {
             playerController = controllerToSet;

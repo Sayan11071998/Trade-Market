@@ -1,6 +1,5 @@
 using UnityEngine;
 using TradeMarket.ItemSystem;
-using TradeMarket.Core;
 using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem
