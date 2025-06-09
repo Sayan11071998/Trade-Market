@@ -5,8 +5,10 @@ namespace TradeMarket.NPCSystem
     public class NPCModel
     {
         public string NPCName { get; private set; }
+
         public ItemScriptableObject ItemNPCHaving { get; private set; }
         public ItemScriptableObject ItemDesired { get; private set; }
+
         public bool HasTraded { get; private set; }
 
         public string GreetingText { get; private set; }
