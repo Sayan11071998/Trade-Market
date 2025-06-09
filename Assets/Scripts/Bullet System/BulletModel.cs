@@ -5,13 +5,17 @@ namespace TradeMarket.BulletSystem
     public class BulletModel
     {
         public BulletType bulletType;
+
         public float Speed { get; private set; }
         public float Damage { get; private set; }
+
         public float BulletLifeTime { get; private set; }
+        public float CurrentLifeTime { get; private set; }
+
         public Vector2 Direction { get; private set; }
         public Vector2 StartPosition { get; private set; }
+
         public bool IsActive { get; private set; }
-        public float CurrentLifeTime { get; private set; }
 
         public BulletModel(BulletScriptableObject bulletData)
         {
