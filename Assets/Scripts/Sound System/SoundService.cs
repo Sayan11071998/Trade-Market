@@ -9,17 +9,19 @@ namespace TradeMarket.SoundSystem
         private AudioSource audioEffects;
         private AudioSource backgroundMusic;
 
-        public SoundService(SoundScriptableObject soundScriptableObject, AudioSource audioEffectSource, AudioSource bgMusicSource)
+        public SoundService(SoundScriptableObject soundData, AudioSource audioEffectSource, AudioSource bgMusicSource)
         {
-            this.soundScriptableObject = soundScriptableObject;
+            soundScriptableObject = soundData;
             audioEffects = audioEffectSource;
             backgroundMusic = bgMusicSource;
+
             PlaybackgroundMusic(SoundType.BackgroundMusic, true);
         }
 
         public void PlaySoundEffects(SoundType soundType, bool loopSound = false)
         {
             AudioClip clip = GetSoundClip(soundType);
+
             if (clip != null)
             {
                 audioEffects.loop = loopSound;

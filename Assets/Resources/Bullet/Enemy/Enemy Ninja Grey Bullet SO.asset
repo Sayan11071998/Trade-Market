@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cea98086d7927f43b458cbbc8c2fe84, type: 3}
-  m_Name: Player Save Data SO
+  m_Script: {fileID: 11500000, guid: a854e1a655d7c5b499670142e9a7559d, type: 3}
+  m_Name: Enemy Ninja Grey Bullet SO
   m_EditorClassIdentifier: 
-  currentItem: {fileID: 0}
-  isInventoryOpen: 0
-  lastMovement: {x: 0, y: 0}
-  scenesCompleted: 0
-  completedSceneNames: []
-  hasInitializedThisSession: 0
+  BulletType: 1
+  BulletSpeed: 35
+  BulletDamage: 7
+  BulletLifetime: 2

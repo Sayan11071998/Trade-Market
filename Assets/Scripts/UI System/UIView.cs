@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using TradeMarket.ItemSystem;
 using TradeMarket.Utilities;
-using TradeMarket.Core;
 using TradeMarket.SoundSystem;
 
 namespace TradeMarket.UISystem
@@ -34,7 +33,8 @@ namespace TradeMarket.UISystem
         private UIController uiController;
         private string currentNPCName;
 
-        public void SetController(UIController controller) => uiController = controller;
+        public void SetController(UIController controllerToSet) => uiController = controllerToSet;
+
         private void Start()
         {
             InitializeButtons();

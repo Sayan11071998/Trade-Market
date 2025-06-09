@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a854e1a655d7c5b499670142e9a7559d, type: 3}
-  m_Name: Enemy Bullet SO
+  m_Name: Enemy Ninja Red Bullet SO
   m_EditorClassIdentifier: 
   BulletType: 1
-  BulletSpeed: 15
-  BulletDamage: 25
+  BulletSpeed: 5
+  BulletDamage: 10
   BulletLifetime: 2

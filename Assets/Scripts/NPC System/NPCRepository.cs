@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TradeMarket.ItemSystem;
 
 namespace TradeMarket.NPCSystem
 {
@@ -24,29 +23,6 @@ namespace TradeMarket.NPCSystem
         {
             npcsByName.TryGetValue(npcName, out NPCController npc);
             return npc;
-        }
-
-        public List<NPCController> GetAllNPCs() => new List<NPCController>(allNPCs);
-
-        public List<NPCController> GetNPCsWantingItem(ItemScriptableObject item)
-        {
-            List<NPCController> interestedNPCs = new List<NPCController>();
-
-            foreach (var npc in allNPCs)
-            {
-                if (npc.CanTrade(item))
-                    interestedNPCs.Add(npc);
-            }
-
-            return interestedNPCs;
-        }
-
-        public int GetTradedNPCCount()
-        {
-            int count = 0;
-            foreach (var npc in allNPCs)
-                if (npc.NPCModel.HasTraded) count++;
-            return count;
         }
     }
 }

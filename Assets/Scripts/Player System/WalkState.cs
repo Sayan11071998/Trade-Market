@@ -1,6 +1,5 @@
 using UnityEngine;
 using TradeMarket.Utilities;
-using TradeMarket.Core;
 using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem
@@ -16,10 +15,7 @@ namespace TradeMarket.PlayerSystem
             playerStateMachine = stateMachineToSet;
         }
 
-        public void OnStateEnter()
-        {
-            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.PlayerWalk, true);
-        }
+        public void OnStateEnter() => SoundManager.Instance.soundService.PlaySoundEffects(SoundType.PlayerWalk, true);
 
         public void Update()
         {

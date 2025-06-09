@@ -30,10 +30,6 @@ namespace TradeMarket.EnemySystem
             }
         }
 
-        public List<EnemyController> GetAllEnemies() => enemyRepository.GetAllEnemies();
-
-        public int GetEnemyCount() => enemyRepository.GetEnemyCount();
-
         public void EnableAllEnemiesFiring()
         {
             var enemies = enemyRepository.GetAllEnemies();
@@ -45,6 +41,7 @@ namespace TradeMarket.EnemySystem
         public void DisableAllEnemiesFiring()
         {
             var enemies = enemyRepository.GetAllEnemies();
+
             foreach (var enemy in enemies)
                 enemy.DisableFire();
         }

@@ -15,9 +15,9 @@ namespace TradeMarket.EnemySystem
         public EnemyModel(EnemyScriptableObject enemyData)
         {
             MaxHealth = enemyData.enemyHealth;
+            FireCooldown = enemyData.fireCooldown;
             EnemyHealth = MaxHealth;
             IsDead = false;
-            FireCooldown = enemyData.fireCooldown;
             CanFire = false;
             LastFireTime = -1f;
         }

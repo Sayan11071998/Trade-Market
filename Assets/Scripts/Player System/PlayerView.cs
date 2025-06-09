@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine.InputSystem;
 using TradeMarket.Utilities;
 using TradeMarket.BulletSystem;
-using TradeMarket.Core;
 using TradeMarket.SoundSystem;
 
 namespace TradeMarket.PlayerSystem

@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cea98086d7927f43b458cbbc8c2fe84, type: 3}
-  m_Name: Player Save Data SO
+  m_Script: {fileID: 11500000, guid: bab9a01222b53e44aab9a99fa082e4cb, type: 3}
+  m_Name: Ninja Grey SO
   m_EditorClassIdentifier: 
-  currentItem: {fileID: 0}
-  isInventoryOpen: 0
-  lastMovement: {x: 0, y: 0}
-  scenesCompleted: 0
-  completedSceneNames: []
-  hasInitializedThisSession: 0
+  enemyHealth: 70
+  fireCooldown: 0.7
+  enemySprite: {fileID: 5546671543968653177, guid: 421ab4435029a004fad97924e06a0059, type: 3}
