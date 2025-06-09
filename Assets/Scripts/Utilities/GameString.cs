@@ -31,6 +31,7 @@ namespace TradeMarket.Utilities
         #region Scene Transition
         public const string SceneAnimationFadeToBlack = "FadeToBlack";
         public const string DoNotHaveRequiredItem = "You do not have the required item to go to next level";
+        public const string DoNotHaveRequiredKillCount = "You have to kill all the enemies to finish the level";
         public const string VillageScene = "VillageScene";
         #endregion
 

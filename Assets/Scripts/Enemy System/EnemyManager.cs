@@ -45,5 +45,7 @@ namespace TradeMarket.EnemySystem
             foreach (var enemy in enemies)
                 enemy.DisableFire();
         }
+
+        public int GetAliveEnemiesCount() => enemyRepository.GetAliveEnemiesCount();
     }
 }
