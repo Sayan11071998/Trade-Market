@@ -22,7 +22,7 @@ namespace TradeMarket.Core
         [SerializeField] private PlayerScriptableObject playerScriptableObject;
         [SerializeField] private PlayerDataScriptableObject playerDataScriptableObject;
 
-        [Header("Initial Item")]
+        [Header("Initial Player Item")]
         [SerializeField] private ItemScriptableObject initialPlayerItem;
 
         [Header("NPCs")]
