@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TradeMarket.Core;
 using TradeMarket.Utilities;
 using TradeMarket.SaveSystem;
+using TradeMarket.SoundSystem;
 
 namespace TradeMarket.SceneTransitionSystem
 {
@@ -47,6 +48,7 @@ namespace TradeMarket.SceneTransitionSystem
             playerController.SetCurrentItem(null);
             playerController.DisableControls();
             GameService.Instance.uiService.ShowGameCompletion(GameString.GameCompletedText);
+            SoundManager.Instance.soundService.StopSoundEffects();
             CompleteCurrentScene();
         }
 
