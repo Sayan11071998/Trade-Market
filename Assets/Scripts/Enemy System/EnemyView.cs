@@ -1,6 +1,5 @@
 using UnityEngine;
 using TradeMarket.BulletSystem;
-using TradeMarket.Core;
 using TradeMarket.SoundSystem;
 
 namespace TradeMarket.EnemySystem
