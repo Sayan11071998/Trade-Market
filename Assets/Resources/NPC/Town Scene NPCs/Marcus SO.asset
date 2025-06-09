@@ -16,11 +16,7 @@ MonoBehaviour:
   itemHaving: {fileID: 11400000, guid: 419ef957060a82c4682cd5268ac12eb4, type: 2}
   itemDesired: {fileID: 11400000, guid: 71b3e88063cff564f8ab27dfd0affa86, type: 2}
   npcSprite: {fileID: 8680820135330720172, guid: 7dde3b8acb47a7548bdf748940a434fb, type: 3}
-  greetingText: Ah, a fellow seeker of knowledge! Or perhaps you're here for more
-    practical matters?
-  tradeOfferText: This {itemHaving} contains forgotten wisdom, but I need {itemDesired}
-    to decipher some ancient texts. Knowledge for knowledge, as they say.
-  cantDoTradeText: Without {itemDesired}, these old texts remain a mystery to me.
-    Find one, and I'll share secrets lost to time!
-  alreadyTradedText: Marvelous! With this {itemDesired}, I can finally unlock the
-    secrets of the ancients. Our exchange benefits us both!
+  greetingText: Oh! A fellow traveler?
+  tradeOfferText: I hold a {itemHaving}, may I trade for a {itemDesired}?
+  cantDoTradeText: "No {itemDesired}? That\u2019s unfortunate."
+  alreadyTradedText: Delightful! Thank you!

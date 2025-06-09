@@ -16,7 +16,7 @@ MonoBehaviour:
   itemHaving: {fileID: 11400000, guid: 02a373bd555a6ae4d86e2f14f08a0028, type: 2}
   itemDesired: {fileID: 11400000, guid: cd31bbdf2129a834ab6c5d46c8803a11, type: 2}
   npcSprite: {fileID: 21300012, guid: df894d170d5f44be293fae0ef08b055c, type: 3}
-  greetingText: Hey Traveller!!
-  tradeOfferText: I have {itemHaving} to offer and I am craving for some {itemDesired}.
-  cantDoTradeText: Ah! it's not quite what I want. Come back when you have {itemDesired}.
-  alreadyTradedText: Thanks for the trade! Have a safe journey.
+  greetingText: Hi there!
+  tradeOfferText: I found a {itemHaving}, can I have a {itemDesired}?
+  cantDoTradeText: Oh... no {itemDesired}? That's okay
+  alreadyTradedText: Yay! Thank you so much!
