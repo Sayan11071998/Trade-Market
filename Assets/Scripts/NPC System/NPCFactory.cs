@@ -5,10 +5,9 @@ namespace TradeMarket.NPCSystem
         public static NPCController CreateNPC(NPCView npcView, NPCScriptableObject npcData)
         {
             var npcModel = new NPCModel(npcData);
-            var npcController = new NPCController(npcModel);
+            var npcController = new NPCController(npcModel, npcView);
 
             npcView.SetController(npcController);
-            npcController.SetView(npcView);
             npcView.Initialize(npcData);
 
             return npcController;

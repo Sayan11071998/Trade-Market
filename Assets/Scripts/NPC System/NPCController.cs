@@ -15,9 +15,11 @@ namespace TradeMarket.NPCSystem
 
         public NPCModel NPCModel => npcModel;
 
-        public NPCController(NPCModel npcModelToSet) => npcModel = npcModelToSet;
-
-        public void SetView(NPCView npcViewToSet) => npcView = npcViewToSet;
+        public NPCController(NPCModel npcModelToSet, NPCView npcViewToSet)
+        {
+            npcModel = npcModelToSet;
+            npcView = npcViewToSet;
+        }
 
         public void OnPlayerInteract()
         {
