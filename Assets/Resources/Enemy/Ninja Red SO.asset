@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bab9a01222b53e44aab9a99fa082e4cb, type: 3}
-  m_Name: Ninja Green SO
+  m_Name: Ninja Red SO
   m_EditorClassIdentifier: 
-  enemyHealth: 35
-  fireCooldown: 1.5
-  enemySprite: {fileID: 5546671543968653177, guid: 4d44a8fa34f000c44a92b6ff50b0c14b, type: 3}
+  enemyHealth: 50
+  fireCooldown: 1
+  enemySprite: {fileID: 5546671543968653177, guid: f4afef61a4abbc64d9fd3cf198ad47bc, type: 3}
