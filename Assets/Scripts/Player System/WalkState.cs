@@ -18,7 +18,7 @@ namespace TradeMarket.PlayerSystem
 
         public void OnStateEnter()
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.PlayerWalk, true);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.PlayerWalk, true);
         }
 
         public void Update()
@@ -37,6 +37,6 @@ namespace TradeMarket.PlayerSystem
                 playerStateMachine.ChangeState(PlayerState.Idle);
         }
 
-        public void OnStateExit() => GameService.Instance.soundService.StopSoundEffects();
+        public void OnStateExit() => SoundManager.Instance.soundService.StopSoundEffects();
     }
 }

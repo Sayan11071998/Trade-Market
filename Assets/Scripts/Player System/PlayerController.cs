@@ -40,7 +40,7 @@ namespace TradeMarket.PlayerSystem
 
         public void ToggleInventory()
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.InventoryTab, false);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.InventoryTab, false);
             bool newInventoryState = !playerModel.IsInventoryOpen;
             playerModel.SetInventoryOpen(newInventoryState);
         }
@@ -89,7 +89,7 @@ namespace TradeMarket.PlayerSystem
 
         public void TakeDamage(float damageValue)
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.Damage);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.Damage);
             PlayerModel.TakeDamage(damageValue);
 
             if (PlayerModel.IsDead)

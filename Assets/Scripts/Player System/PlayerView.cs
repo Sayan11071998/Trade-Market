@@ -148,7 +148,7 @@ namespace TradeMarket.PlayerSystem
 
         private void FireBullet(Vector2 fireDirection)
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.PlayerFire, false);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.PlayerFire, false);
             playerBulletService.FireBullet(firePoint.position, fireDirection);
         }
     }

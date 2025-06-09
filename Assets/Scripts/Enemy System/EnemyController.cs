@@ -48,7 +48,7 @@ namespace TradeMarket.EnemySystem
 
         public void TakeDamage(float damageValue)
         {
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.Damage);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.Damage);
             enemyModel.TakeDamage(damageValue);
         }
     }

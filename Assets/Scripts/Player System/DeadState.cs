@@ -20,7 +20,7 @@ namespace TradeMarket.PlayerSystem
             playerController.DisableControls();
             playerController.StopPlayerMovement();
             playerController.DisableFire();
-            GameService.Instance.soundService.PlaySoundEffects(SoundType.Death);
+            SoundManager.Instance.soundService.PlaySoundEffects(SoundType.Death);
             GameService.Instance.enemyManager.DisableAllEnemiesFiring();
             GameService.Instance.uiService.ShowGameCompletion(GameString.GameOverText);
         }

@@ -17,4 +17,4 @@ MonoBehaviour:
   lastMovement: {x: 0, y: 1}
   scenesCompleted: 0
   completedSceneNames: []
-  hasInitializedThisSession: 1
+  hasInitializedThisSession: 0

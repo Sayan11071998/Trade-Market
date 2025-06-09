@@ -58,7 +58,7 @@ namespace TradeMarket.EnemySystem
         {
             if (enemyController.EnemyModel.IsDead)
             {
-                GameService.Instance.soundService.PlaySoundEffects(SoundType.Death);
+                SoundManager.Instance.soundService.PlaySoundEffects(SoundType.Death);
                 enemyController.DisableFire();
                 Destroy(gameObject);
             }
