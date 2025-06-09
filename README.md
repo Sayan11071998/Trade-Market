@@ -63,6 +63,13 @@ Step into the vibrant bazaar of Trade Market. Every NPC you meet holds one prize
 
 ---
 
+## Play Link
+
+----
+
+[![Watch the video](https://img.youtube.com/vi/tKzj3EghfZY/maxresdefault.jpg)](https://youtu.be/tKzj3EghfZY)
+### [Gameplay Video](https://youtu.be/tKzj3EghfZY)
+
 ![Image](https://github.com/user-attachments/assets/a2a71760-c55b-48d0-b405-6554cfaf8101)
 
 ![Image](https://github.com/user-attachments/assets/080c0e95-a9e0-4769-a379-bad653029ee2)
