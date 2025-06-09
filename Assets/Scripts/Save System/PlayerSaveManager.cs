@@ -8,10 +8,7 @@ namespace TradeMarket.SaveSystem
     {
         private PlayerDataScriptableObject playerData;
 
-        public PlayerSaveManager(PlayerDataScriptableObject data)
-        {
-            playerData = data;
-        }
+        public PlayerSaveManager(PlayerDataScriptableObject data) => playerData = data;
 
         public void SavePlayerState(PlayerModel playerModel)
         {
@@ -61,9 +58,5 @@ namespace TradeMarket.SaveSystem
             playerData.completedSceneNames = new string[0];
             playerData.hasInitializedThisSession = false;
         }
-
-        public int GetScenesCompleted() => playerData?.scenesCompleted ?? 0;
-
-        public string[] GetCompletedSceneNames() => playerData?.completedSceneNames ?? new string[0];
     }
 }
