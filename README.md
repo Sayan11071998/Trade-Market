@@ -64,7 +64,7 @@ Step into the vibrant bazaar of Trade Market. Every NPC you meet holds one prize
 ---
 
 ## Play Link
-https://sayannandi.itch.io/trade-market
+- https://sayannandi.itch.io/trade-market
 ----
 
 [![Watch the video](https://img.youtube.com/vi/tKzj3EghfZY/maxresdefault.jpg)](https://youtu.be/tKzj3EghfZY)
