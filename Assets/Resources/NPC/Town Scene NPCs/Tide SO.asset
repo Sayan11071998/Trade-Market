@@ -16,7 +16,7 @@ MonoBehaviour:
   itemHaving: {fileID: 11400000, guid: 7d9c79c52948a224893fa98f0ff09c8b, type: 2}
   itemDesired: {fileID: 11400000, guid: dd9718915684cd94aa437f4202328dd0, type: 2}
   npcSprite: {fileID: -1903240744945611512, guid: 202c700a3d1707b43aa36d2f01886a49, type: 3}
-  greetingText: Hello there!
-  tradeOfferText: I have {itemHaving} and I want {itemDesired}.
-  cantDoTradeText: You don't have what I need. Come back when you have {itemDesired}.
-  alreadyTradedText: Thanks for the trade!
+  greetingText: Smells good, huh?
+  tradeOfferText: I've got {itemHaving}, need {itemDesired}
+  cantDoTradeText: Come back with {itemDesired}
+  alreadyTradedText: Enjoy the trade!

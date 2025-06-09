@@ -28,13 +28,18 @@ namespace TradeMarket.SceneTransitionSystem
             if (!other.CompareTag(GameString.PlayerTag)) return;
 
             bool hasRequiredItem = IsPlayerHavingTheRequiredItem();
+            bool hasKilledAllEnemies = GameService.Instance.enemyManager.GetAliveEnemiesCount() == 0;
 
-            if (hasRequiredItem)
+            if (hasRequiredItem && hasKilledAllEnemies)
             {
                 if (isFinalScene)
                     HandleFinalScene();
                 else
                     HandleSceneTransition();
+            }
+            else if (hasRequiredItem && !hasKilledAllEnemies)
+            {
+                ShowRequiredEnemyKillCountMessage();
             }
             else
             {
@@ -64,6 +69,13 @@ namespace TradeMarket.SceneTransitionSystem
             var PlayerView = GameService.Instance.playerService.PlayerController.PlayerView;
             PlayerView.ActivateDialoguePanel();
             PlayerView.ShowDialogue(GameString.DoNotHaveRequiredItem);
+        }
+
+        private void ShowRequiredEnemyKillCountMessage()
+        {
+            var PlayerView = GameService.Instance.playerService.PlayerController.PlayerView;
+            PlayerView.ActivateDialoguePanel();
+            PlayerView.ShowDialogue(GameString.DoNotHaveRequiredKillCount);
         }
 
         private void CompleteCurrentScene()
