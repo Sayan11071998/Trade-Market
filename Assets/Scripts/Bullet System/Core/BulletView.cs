@@ -34,5 +34,9 @@ namespace TradeMarket.BulletSystem
             if (bulletSpriteRenderer != null)
                 bulletSpriteRenderer.sprite = sprite;
         }
+
+        private void OnTriggerEnter2D(Collider2D other) => HandleTrigger(other);
+
+        protected virtual void HandleTrigger(Collider2D other) { }
     }
 }

@@ -13455,7 +13455,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.512723, y: 0.13188, z: -10}
+  m_LocalPosition: {x: -8.610228, y: 0.13145, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13743,7 +13743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpriteRenderer: {fileID: 664081353}
-  enemyBulletPrefab: {fileID: 4625513590075068630, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
+  enemyBulletPrefab: {fileID: 3484010482896293135, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
   enemyBulletData: {fileID: 11400000, guid: 6bbe134cb5e2efc499b193ab89f57251, type: 2}
   firePoint: {fileID: 367313236}
   bulletPoolParent: {fileID: 1786979263}
@@ -24656,7 +24656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpriteRenderer: {fileID: 8330459582103969401}
-  enemyBulletPrefab: {fileID: 4625513590075068630, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
+  enemyBulletPrefab: {fileID: 3484010482896293135, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
   enemyBulletData: {fileID: 11400000, guid: 76f14e090f59f9940843ff26aec10be5, type: 2}
   firePoint: {fileID: 3396638124292809160}
   bulletPoolParent: {fileID: 3283395453854557085}
@@ -27748,7 +27748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpriteRenderer: {fileID: 4346336558086790025}
-  enemyBulletPrefab: {fileID: 4625513590075068630, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
+  enemyBulletPrefab: {fileID: 3484010482896293135, guid: c4149da9341b04e459e84c1fb271ae7e, type: 3}
   enemyBulletData: {fileID: 11400000, guid: 5823b425e109718449f7b3679e0fa5a0, type: 2}
   firePoint: {fileID: 2850437566656460859}
   bulletPoolParent: {fileID: 1044458455350486660}
@@ -28348,7 +28348,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 413597014640425319}
   dialogueText: {fileID: 6241048028270148282}
   dialogueDisplayTime: 1.5
-  playerBulletPrefab: {fileID: 6830095410222574835, guid: 9d63e151082dbe94f87460f105df1d9f, type: 3}
+  playerBulletPrefab: {fileID: 6689325229698056260, guid: 9d63e151082dbe94f87460f105df1d9f, type: 3}
   playerBulletData: {fileID: 11400000, guid: c2621ba3b9fe6264b8aff56b5bc8afd5, type: 2}
   firePoint: {fileID: 328806955024927530}
   bulletPoolParent: {fileID: 5036312520080544838}
