@@ -15,7 +15,7 @@ namespace TradeMarket.PlayerSystem
         [SerializeField] private float dialogueDisplayTime = 3f;
 
         [Header("Shooting")]
-        [SerializeField] private BulletView playerBulletPrefab;
+        [SerializeField] private PlayerBullet playerBulletPrefab;
         [SerializeField] private BulletScriptableObject playerBulletData;
         [SerializeField] private Transform firePoint;
         [SerializeField] private Transform bulletPoolParent;

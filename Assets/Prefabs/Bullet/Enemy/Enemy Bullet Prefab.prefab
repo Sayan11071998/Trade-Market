@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1274177845401932914}
   - component: {fileID: 1611057142241526593}
   - component: {fileID: 265535399774872137}
-  - component: {fileID: 4625513590075068630}
+  - component: {fileID: 3484010482896293135}
   m_Layer: 0
   m_Name: Enemy Bullet Prefab
   m_TagString: Untagged
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.46874997
---- !u!114 &4625513590075068630
+--- !u!114 &3484010482896293135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7734600583932431645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f420d0d9eeb231e4688a36e4ae6638bc, type: 3}
+  m_Script: {fileID: 11500000, guid: dba366c675fdb4141b53a317c6833255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

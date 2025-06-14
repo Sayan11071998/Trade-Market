@@ -28355,7 +28355,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 3760704265197438051}
   dialogueText: {fileID: 7426850082216970174}
   dialogueDisplayTime: 1.5
-  playerBulletPrefab: {fileID: 6830095410222574835, guid: 9d63e151082dbe94f87460f105df1d9f, type: 3}
+  playerBulletPrefab: {fileID: 6689325229698056260, guid: 9d63e151082dbe94f87460f105df1d9f, type: 3}
   playerBulletData: {fileID: 11400000, guid: c2621ba3b9fe6264b8aff56b5bc8afd5, type: 2}
   firePoint: {fileID: 3827489034320377390}
   bulletPoolParent: {fileID: 8388309844325493058}

@@ -10,7 +10,7 @@ namespace TradeMarket.EnemySystem
         [SerializeField] private SpriteRenderer enemySpriteRenderer;
 
         [Header("Shooting")]
-        [SerializeField] private BulletView enemyBulletPrefab;
+        [SerializeField] private EnemyBullet enemyBulletPrefab;
         [SerializeField] private BulletScriptableObject enemyBulletData;
         [SerializeField] private Transform firePoint;
         [SerializeField] private Transform bulletPoolParent;
