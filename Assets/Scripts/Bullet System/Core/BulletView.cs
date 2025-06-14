@@ -16,6 +16,8 @@ namespace TradeMarket.BulletSystem
 
         public void Initialize(BulletController controllerToInitialize) => bulletController = controllerToInitialize;
 
+        public BulletController GetController() => bulletController;
+
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
@@ -32,7 +34,5 @@ namespace TradeMarket.BulletSystem
             if (bulletSpriteRenderer != null)
                 bulletSpriteRenderer.sprite = sprite;
         }
-
-        private void OnTriggerEnter2D(Collider2D other) => bulletController?.OnTriggerDetected(other);
     }
 }
