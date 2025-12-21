@@ -57,8 +57,12 @@ BulletService
 ### Combat System
 `BulletService` manages projectile firing with object pooling. When a character fires, `BulletPool` retrieves an inactive bullet or creates a new one. `BulletController` handles lifetime and deactivation. Collision detection uses Unity tags to identify targets, applying damage through the appropriate model.
 
+<img width="9566" height="9148" alt="Image" src="https://github.com/user-attachments/assets/3cc68be2-3a4c-4807-a9ff-9c2b38b06a05" />
+
 ### Trading System
 `NPCController` manages a three-stage dialogue flow (greeting → offer → confirmation). Trade validation checks player inventory against NPC requirements. Successful trades update both inventories and persist the NPC's traded state through `NPCModel`.
+
+<img width="4589" height="10777" alt="Image" src="https://github.com/user-attachments/assets/1699001c-44d8-48a7-9c7d-7fb832273908" />
 
 ### State Management
 `PlayerStateMachine` implements the State pattern with `IState` interface. States (Idle, Walk, Dead) handle specific behaviors and transitions. Movement magnitude determines Idle↔Walk transitions, while health triggers the Dead state.
