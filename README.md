@@ -67,6 +67,8 @@ BulletService
 ### State Management
 `PlayerStateMachine` implements the State pattern with `IState` interface. States (Idle, Walk, Dead) handle specific behaviors and transitions. Movement magnitude determines Idle↔Walk transitions, while health triggers the Dead state.
 
+<img width="15844" height="2928" alt="Image" src="https://github.com/user-attachments/assets/ce7d079a-24eb-463b-bf87-e87e50601ba3" />
+
 ### Save System
 `PlayerSaveManager` serializes game state to `PlayerDataScriptableObject`. The system tracks scene completion, inventory state, and NPC trade history. Data persists across sessions and initializes on first load.
 
