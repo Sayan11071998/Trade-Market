@@ -8,33 +8,6 @@ The game uses MVC (Model-View-Controller) pattern with service layers. Each syst
 
 ### System Overview
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      GameService                            │
-│                  (Central Coordinator)                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
-│  │PlayerService │    │  NPCManager  │    │EnemyManager  │   │
-│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘   │
-│         │                   │                   │           │
-│         │ Coordinates       │ Coordinates       │           │
-│         ▼                   ▼                   ▼           │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
-│  │ PlayerModel  │    │   NPCModel   │    │  EnemyModel  │   │
-│  │PlayerControl │    │NPCController │    │EnemyControl  │   │
-│  │  PlayerView  │    │   NPCView    │    │  EnemyView   │   │
-│  └──────────────┘    └──────────────┘    └──────────────┘   │
-│         │                   │                   │           │
-│         └───────────────────┼───────────────────┘           │
-│                             │                               │
-│                      ┌──────▼───────┐                       │
-│                      │ BulletService│                       │
-│                      │  + BulletPool│                       │
-│                      └──────────────┘                       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
 <img width="8238" height="3968" alt="Image" src="https://github.com/user-attachments/assets/12bdab17-57df-48e5-84b5-2936d97e5106" />
 
 ### Component Structure
