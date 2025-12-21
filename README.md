@@ -1,66 +1,119 @@
-# Trade Market
+# TradeMarket
 
-**Trade Market** is a top‑down 2D Unity adventure where you guide a lone trader through three bustling levels of barter—and fend off a surprise ambush to claim ultimate victory.
+A 2D action-adventure game built in Unity where players trade items with NPCs, fight enemies, and progress through levels. Features MVC architecture, object pooling, and state-driven gameplay.
 
----
+## Architecture
 
-## 📜 Game Lore  
-Step into the vibrant bazaar of Trade Market. Every NPC you meet holds one prized item and secretly craves another. It’s up to you to uncover their desires, negotiate exchanges, and amass the goods needed to unlock each checkpoint. After collecting the ultimate prize in level three, a sudden wave of enemies attacks—test your combat skills in a climactic battle before you can truly win.
+The game uses MVC (Model-View-Controller) pattern with service layers. Each system (Player, Enemy, NPC, Bullet) follows the same structure for consistency and maintainability.
 
----
+### System Overview
 
-## 🚀 Key Features  
-- **Three Levels of Trading**  
-  - Explore modular, tilemap‑based markets.  
-  - Discover NPC desires and execute dynamic trades.  
-- **Surprise Final Ambush**  
-  - After the last trade, defend against a horde of enemies.  
-  - Engage with a seamless damage & cooldown system.  
-- **Fluid Top‑Down Controls**  
-  - Dash, strafe, and circle NPCs with precision.  
-- **Cinematic Camera**  
-  - Unity Cinemachine Follow & Confiner keep the action centered and within bounds.
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      GameService                            │
+│                  (Central Coordinator)                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │PlayerService │    │  NPCManager  │    │EnemyManager  │  │
+│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘  │
+│         │                   │                   │          │
+│         │ Coordinates       │ Coordinates       │          │
+│         ▼                   ▼                   ▼          │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │ PlayerModel  │    │   NPCModel   │    │  EnemyModel  │  │
+│  │PlayerControl │    │NPCController │    │EnemyControl  │  │
+│  │  PlayerView  │    │   NPCView    │    │  EnemyView   │  │
+│  └──────────────┘    └──────────────┘    └──────────────┘  │
+│         │                   │                   │          │
+│         └───────────────────┼───────────────────┘          │
+│                             │                              │
+│                      ┌──────▼───────┐                      │
+│                      │ BulletService│                      │
+│                      │  + BulletPool│                      │
+│                      └──────────────┘                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
----
+### Component Structure
 
-## 🏗️ Architecture & Design Patterns  
-- **Model‑View‑Controller (MVC)**  
-  Clear separation of data, presentation, and game logic for maintainability.  
-- **Factory & Repository**  
-  Encapsulates object creation and data access to reduce coupling.  
-- **Singleton & Service Locator**  
-  Global access to core services (audio, game state) via a centralized registry.  
-- **Observer / Event‑Driven**  
-  Decoupled event broadcasts for trades, state changes, and damage notifications.  
-- **State Machine**  
-  Modular player modes (idle, trading, combat) with clean interface‑based transitions.  
-- **Object Pool**  
-  Efficient reuse of trading prompts, market stalls, and enemies to minimize GC spikes.
+```
+PlayerView (MonoBehaviour)
+├── PlayerController (Logic layer)
+│   └── PlayerModel (Data layer)
+│       ├── Health & Stamina
+│       ├── Inventory System
+│       └── Combat State
+├── PlayerStateMachine
+│   ├── IdleState
+│   ├── WalkState
+│   └── DeadState
+└── Input System Integration
 
----
+NPCView (MonoBehaviour)
+├── NPCController (Trade logic)
+│   └── NPCModel (Trade data)
+│       ├── Dialogue States
+│       ├── Required Items
+│       └── Rewards
+└── NPCFactory (Creation)
+    └── NPCRepository (Storage)
 
-## 🛠️ Coding Principles & Best Practices  
-- **SOLID & SRP**: One responsibility per module; high‑level components depend on abstractions.  
-- **Dependency Injection & Interfaces**: Decoupled, testable modules with swappable implementations.  
-- **DRY & Separation of Concerns**: Shared utilities centralized; UI, data, and core mechanics remain distinct.  
-- **Encapsulation & Composition Over Inheritance**: Protected internal states; flexible behavior assembly.  
-- **Defensive Programming**: Null‑checks, early returns, and input abstractions guard against errors.  
-- **Data‑Driven Design**: ScriptableObjects and enums define items, trades, and states externally.  
-- **Generic Programming**: Reusable, type‑safe pools and service bases streamline resource management.
+EnemyView (MonoBehaviour)
+├── EnemyController (AI behavior)
+│   └── EnemyModel (Enemy stats)
+│       ├── Target Tracking
+│       ├── Fire Cooldown
+│       └── Health System
+└── EnemyFactory (Creation)
+    └── EnemyRepository (Management)
 
----
+BulletService
+├── BulletPool (Object pooling)
+└── BulletController
+    ├── BulletModel (Properties)
+    └── BulletView (Collision)
+        ├── PlayerBullet
+        └── EnemyBullet
+```
 
-## 🎮 Unity Integration  
-- **Tilemap System**  
-  Modular, artist‑friendly layouts for rapid level iteration.  
-- **Cinemachine**  
-  - *Camera Follow*: Smooth tracking of the player character.  
-  - *Camera Confiner*: Keeps the view strictly within level bounds.  
-- **Coroutine‑Based Timing**  
-  Non‑blocking cooldowns, animation delays, and ambush triggers.  
-- **Performance Optimization**  
-  Efficient update loops, collision checks, and minimal GC overhead—even during the final enemy wave.
+## Core Systems
 
+### Combat System
+`BulletService` manages projectile firing with object pooling. When a character fires, `BulletPool` retrieves an inactive bullet or creates a new one. `BulletController` handles lifetime and deactivation. Collision detection uses Unity tags to identify targets, applying damage through the appropriate model.
+
+### Trading System
+`NPCController` manages a three-stage dialogue flow (greeting → offer → confirmation). Trade validation checks player inventory against NPC requirements. Successful trades update both inventories and persist the NPC's traded state through `NPCModel`.
+
+### State Management
+`PlayerStateMachine` implements the State pattern with `IState` interface. States (Idle, Walk, Dead) handle specific behaviors and transitions. Movement magnitude determines Idle↔Walk transitions, while health triggers the Dead state.
+
+### Save System
+`PlayerSaveManager` serializes game state to `PlayerDataScriptableObject`. The system tracks scene completion, inventory state, and NPC trade history. Data persists across sessions and initializes on first load.
+
+## Implementation Details
+
+**Design Patterns:**
+- MVC for system separation
+- Factory pattern for entity creation
+- Repository pattern for data access
+- Object Pool for performance
+- State Machine for player states
+- Observer (delegates/events) for loose coupling
+- Singleton for global services
+
+**Key Features:**
+- Generic base classes (`GenericObjectPool<T>`, `GenericMonoSingleton<T>`)
+- ScriptableObject-based configuration
+- Event-driven UI updates
+- Component caching for performance
+- Tag-based collision detection
+
+**Dependencies:**
+- Unity 2021.3+
+- TextMeshPro
+- Unity Input System
 ---
 
 ## Play Link
